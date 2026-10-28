@@ -1,0 +1,1044 @@
+<title>Dabar · Sesión 3</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Hebreo I, Sesión 3: estado constructo, pronombres y sufijos pronominales. Teoría, flashcards con repaso espaciado, práctica por niveles y simulacro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Noto+Serif+Hebrew:wght@400;600;700&display=swap">
+<style>
+/* Layout: app de estudio móvil primero; cabecera, una vista a la vez, barra de pestañas fija abajo. Sistema "Dabar Padilla" (tema único crema). */
+:root{
+  color-scheme: light;
+  --crema:#fffdf4; --cielo-claro:#d6e9fb; --tinta:#4a1015; --tinta-suave:#7a4a4c;
+  --cielo:#7eb9f2; --miel:#fef1af; --verde:#3e9c4e; --verde-oscuro:#2e7d3c;
+  --azul:#4373f3; --azul-oscuro:#2f5bd6; --lila:#ab69e4; --lila-oscuro:#8a46c8;
+  --naranja:#ff7b03; --coral:#ff5658; --lima:#dae979; --rosa:#ffd3ce;
+  --display: Poppins, "Arial Black", sans-serif;
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  --hebrew: "Noto Serif Hebrew", "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  --r-md:16px; --r-lg:28px; --r-pill:999px; --trazo:3px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--crema);color:var(--tinta)}
+body{font-family:var(--sans);font-size:17px;line-height:1.5;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--crema)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--tinta);outline-offset:2px}
+.he{font-family:var(--hebrew);direction:rtl;unicode-bidi:isolate;font-size:1.15em;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--crema);border-bottom:2px solid var(--cielo-claro)}
+.top .wrap{display:flex;align-items:center;gap:12px;padding-block:10px}
+.logo{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;line-height:1}
+.logo small{font-family:var(--sans);font-weight:500;font-size:13px;color:var(--tinta-suave);letter-spacing:0;margin-left:6px}
+.top .spacer{flex:1}
+.saved{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--tinta-suave);opacity:.0;transition:opacity .3s}
+.saved.on{opacity:1}
+.saved i{width:8px;height:8px;border-radius:50%;background:var(--verde-oscuro);display:inline-block}
+.iconbtn{border:var(--trazo) solid var(--tinta);background:var(--crema);width:38px;height:38px;border-radius:50%;font-weight:700;display:grid;place-items:center}
+
+main{padding-block:20px 24px;display:grid;gap:20px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,7vw,44px);line-height:1.02;letter-spacing:-.015em}
+h2{font-size:24px;line-height:30px;font-weight:650}
+h3{font-size:19px;line-height:24px;font-weight:650}
+p{margin:0}
+.muted{color:var(--tinta-suave)}
+.cap{font-size:13px;line-height:18px;color:var(--tinta-suave)}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-suave)}
+.stack{display:grid;gap:12px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* Pills */
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:var(--r-pill);padding:6px 16px;font-size:15px;font-weight:600;line-height:20px;white-space:nowrap}
+.pill.tilt{transform:rotate(-4deg)}
+.pill.tilt2{transform:rotate(3deg)}
+.p-verde{background:var(--verde-oscuro);color:var(--crema)}
+.p-azul{background:var(--azul-oscuro);color:var(--crema)}
+.p-lila{background:var(--lila-oscuro);color:var(--crema)}
+.p-miel{background:var(--miel);color:var(--tinta)}
+.p-lima{background:var(--lima);color:var(--tinta)}
+.p-rosa{background:var(--rosa);color:var(--tinta)}
+.p-line{background:var(--crema);color:var(--tinta);border:var(--trazo) solid var(--tinta)}
+.dot{width:12px;height:12px;border-radius:50%;flex:none;display:inline-block}
+
+/* Buttons */
+.btn{border:var(--trazo) solid var(--tinta);background:var(--tinta);color:var(--crema);border-radius:var(--r-pill);padding:10px 22px;font-weight:650;font-size:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px}
+.btn.ghost{background:var(--crema);color:var(--tinta)}
+.btn.miel{background:var(--miel);color:var(--tinta)}
+.btn.block{width:100%}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.link{background:none;border:0;padding:0;color:var(--azul-oscuro);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* Hero */
+.hero{background:var(--cielo);border-radius:var(--r-lg);padding:24px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.hero h1 .hl{background:var(--miel);border-radius:14px;padding:0 10px;display:inline-block;transform:rotate(-2deg)}
+.hero .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.hero .star{position:absolute;right:-18px;top:-18px;width:90px;height:90px;opacity:.9}
+.ring{width:108px;height:108px;position:relative;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:800;font-size:26px;line-height:1}
+.ring .v small{display:block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.04em}
+@media (max-width:480px){.hero{grid-template-columns:1fr}.hero .ringbox{justify-self:start}}
+
+/* Cards / blocks */
+.card{background:var(--cielo-claro);border-radius:var(--r-lg);padding:20px}
+.card.crema{background:var(--crema);border:var(--trazo) solid var(--tinta)}
+.card.miel{background:var(--miel)}
+.card.rosa{background:var(--rosa)}
+.card.lima{background:var(--lima)}
+.card.sm{border-radius:var(--r-md);padding:16px}
+
+/* Plan checklist */
+.plan{display:grid;gap:10px;counter-reset:p}
+.step{display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center;background:var(--crema);border-radius:var(--r-md);padding:12px 14px;border:2px solid transparent}
+.step .n{width:36px;height:36px;border-radius:50%;border:var(--trazo) solid var(--tinta);display:grid;place-items:center;font-weight:700;font-variant-numeric:tabular-nums}
+.step.done .n{background:var(--verde-oscuro);border-color:var(--verde-oscuro);color:var(--crema)}
+.step b{display:block;font-weight:650}
+.step .cap{display:block}
+
+/* Decks */
+.deck{background:var(--crema);border:var(--trazo) solid var(--tinta);border-radius:var(--r-lg);padding:16px 18px;display:grid;gap:12px}
+.deck-h{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+.deck-badge{width:52px;height:52px;border-radius:var(--r-md);display:grid;place-items:center;font-family:var(--hebrew);font-size:26px;font-weight:700;color:var(--crema)}
+.deck-h h3{font-size:18px}
+.counts{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.counts span{font-size:12.5px;font-weight:600;border-radius:var(--r-pill);padding:2px 10px;font-variant-numeric:tabular-nums}
+.c-new{background:var(--cielo-claro)}.c-learn{background:var(--miel)}.c-done{background:var(--lima)}
+.bar{height:10px;border-radius:var(--r-pill);background:var(--cielo-claro);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--verde-oscuro);border-radius:var(--r-pill)}
+.deck-actions{display:flex;gap:8px;flex-wrap:wrap}
+.deck-actions .btn{min-height:40px;padding:8px 16px;font-size:15px}
+
+/* Segmented tabs */
+.seg{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none}
+.seg::-webkit-scrollbar{display:none}
+.seg button{flex:none;border:var(--trazo) solid var(--tinta);background:var(--crema);border-radius:var(--r-pill);padding:8px 16px;font-weight:600;font-size:15px;display:inline-flex;gap:6px;align-items:center}
+.seg button[aria-selected="true"]{background:var(--tinta);color:var(--crema)}
+.seg .tick{width:16px;height:16px;border-radius:50%;background:var(--verde-oscuro);display:inline-grid;place-items:center;color:var(--crema);font-size:11px}
+
+/* Theory */
+.t-sec{display:grid;gap:14px}
+.t-sec p{max-width:65ch}
+.tbl-wrap{overflow-x:auto;border-radius:var(--r-md);border:var(--trazo) solid var(--tinta);background:var(--crema)}
+table{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
+th,td{padding:10px 12px;text-align:left;vertical-align:middle;border-bottom:1.5px solid var(--cielo-claro)}
+th{background:var(--cielo-claro);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:650}
+tr:last-child td{border-bottom:0}
+td .he{font-size:1.45em}
+.suf{color:var(--crema);background:var(--verde-oscuro);border-radius:6px;padding:0 3px}
+.suf.y{background:var(--lila-oscuro)}
+.rules{display:grid;gap:10px}
+.rule{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;background:var(--crema);border-radius:var(--r-md);padding:12px 14px}
+.rule .pill{margin-top:2px}
+
+/* Chain diagram */
+.chain{display:flex;flex-direction:row-reverse;justify-content:center;gap:10px;flex-wrap:wrap;align-items:stretch}
+.link-box{border-radius:var(--r-md);padding:12px 16px;text-align:center;min-width:120px;display:grid;gap:4px}
+.link-box .he{font-size:2em;line-height:1.3}
+.link-box.c{background:var(--miel)}
+.link-box.a{background:var(--tinta);color:var(--crema)}
+.link-box.a .cap{color:var(--miel)}
+.chain .arrow{align-self:center;font-weight:700;font-size:22px}
+.readdir{display:flex;justify-content:center;gap:8px;align-items:center;font-size:13px;color:var(--tinta-suave)}
+
+/* Flashcard */
+.fc-top{display:flex;align-items:center;gap:10px}
+.fc-top .bar{flex:1}
+.fc-stage{position:relative;padding:10px 6px 6px}
+.fc-stage::before{content:"";position:absolute;inset:18px 2px -2px 14px;background:var(--miel);border-radius:var(--r-lg);transform:rotate(2.2deg)}
+.fc{position:relative;background:var(--crema);border:var(--trazo) solid var(--tinta);border-radius:var(--r-lg);min-height:330px;padding:22px 20px;display:grid;align-content:center;gap:14px;text-align:center}
+.fc .front{font-family:var(--hebrew);direction:rtl;font-size:clamp(40px,11vw,62px);line-height:1.35;font-weight:600}
+.fc .front.long{font-size:clamp(28px,7.5vw,42px)}
+.fc .q{font-size:21px;font-weight:650;line-height:1.35}
+.fc .tr{font-style:italic;color:var(--tinta-suave);font-size:16px}
+.fc .es{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.15}
+.fc .an{display:grid;gap:6px;text-align:left;background:var(--cielo-claro);border-radius:var(--r-md);padding:12px 14px;font-size:15px}
+.fc .an div{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.fc .tip{font-size:14px;text-align:left;background:var(--rosa);border-radius:var(--r-md);padding:10px 14px}
+.fc .tag{justify-self:center}
+.rate{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.rate button{border:var(--trazo) solid var(--tinta);border-radius:var(--r-md);padding:10px 6px;display:grid;gap:2px;background:var(--crema);font-weight:700}
+.rate button small{font-weight:500;font-size:12.5px;color:var(--tinta-suave)}
+.rate .r1{background:var(--rosa)}.rate .r2{background:var(--lima)}.rate .r3{background:var(--cielo-claro)}
+.rate-help{font-size:13px;color:var(--tinta-suave);text-align:center}
+
+/* Exercises */
+.levels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:520px){.levels{grid-template-columns:1fr}}
+.level{border:var(--trazo) solid var(--tinta);border-radius:var(--r-lg);padding:18px;background:var(--crema);text-align:left;display:grid;gap:8px;align-content:start}
+.level .row{justify-content:space-between}
+.level .pill{font-size:13px;padding:3px 12px}
+.ex{display:grid;gap:16px}
+.ex .prompt{font-size:19px;font-weight:650;line-height:1.35}
+.ex .big{font-family:var(--hebrew);direction:rtl;text-align:center;font-size:clamp(34px,9vw,52px);font-weight:600;line-height:1.4;background:var(--miel);border-radius:var(--r-lg);padding:16px 12px}
+.opts{display:grid;gap:10px}
+.opt{border:var(--trazo) solid var(--tinta);background:var(--crema);border-radius:var(--r-md);padding:12px 14px;text-align:left;font-size:16px;line-height:1.45;display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.opt .k{width:28px;height:28px;border-radius:50%;background:var(--cielo-claro);display:grid;place-items:center;font-size:13px;font-weight:700}
+.opt.ok{background:var(--lima)}
+.opt.ok .k{background:var(--verde-oscuro);color:var(--crema)}
+.opt.bad{background:var(--rosa)}
+.opt.bad .k{background:var(--tinta);color:var(--crema)}
+.opt[disabled]{cursor:default}
+.feedback{border-radius:var(--r-md);padding:14px 16px;display:grid;gap:6px}
+.feedback.ok{background:var(--lima)}
+.feedback.bad{background:var(--rosa)}
+.feedback b{font-size:17px}
+.tiles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;direction:rtl}
+.tile{border:var(--trazo) solid var(--tinta);background:var(--crema);border-radius:var(--r-md);padding:6px 14px;font-family:var(--hebrew);font-size:28px;line-height:1.4}
+.tile.used{opacity:.3}
+.built{min-height:72px;border:var(--trazo) dashed var(--tinta);border-radius:var(--r-lg);display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;padding:10px;direction:rtl;background:var(--crema)}
+.built .tile{background:var(--miel)}
+.built:empty::before{content:"Toca las palabras en orden";direction:ltr;font-family:var(--sans);font-size:14px;color:var(--tinta-suave)}
+.parts{display:grid;gap:8px}
+.part{display:grid;grid-template-columns:minmax(90px,auto) 1fr;gap:12px;align-items:center;background:var(--crema);border-radius:var(--r-md);padding:8px 12px}
+.part .he{font-size:1.5em;text-align:right}
+.part span:last-child{font-size:14.5px}
+
+/* Results */
+.score{font-family:var(--display);font-weight:800;font-size:64px;line-height:1}
+.miss{display:grid;gap:4px;background:var(--crema);border-radius:var(--r-md);padding:12px 14px;font-size:15px}
+
+/* Progress */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.week div{display:grid;gap:4px;justify-items:center;font-size:12px;color:var(--tinta-suave)}
+.week i{width:30px;height:30px;border-radius:50%;border:2px solid var(--tinta);display:block}
+.week i.on{background:var(--verde-oscuro);border-color:var(--verde-oscuro)}
+.statrow{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center}
+.statrow .bar{grid-column:1/-1}
+.num{font-variant-numeric:tabular-nums;font-weight:700}
+.tiles3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tiles3 .card{padding:14px;text-align:center;border-radius:var(--r-md)}
+.tiles3 .num{font-family:var(--display);font-size:28px;display:block;line-height:1.1}
+
+/* Tab bar */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--crema);border-top:2px solid var(--cielo-claro);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar .wrap{display:grid;grid-template-columns:repeat(5,1fr);align-items:end;padding-block:6px 8px}
+.tab{background:none;border:0;display:grid;justify-items:center;gap:2px;font-size:11.5px;font-weight:600;color:var(--tinta-suave);padding:4px 0}
+.tab svg{width:24px;height:24px}
+.tab[aria-current="page"]{color:var(--tinta)}
+.tab[aria-current="page"] .ico{background:var(--miel)}
+.tab .ico{border-radius:var(--r-pill);padding:3px 14px;display:grid;place-items:center}
+.tab.center .ico{background:var(--tinta);color:var(--crema);width:58px;height:58px;border-radius:50%;margin-top:-26px;border:4px solid var(--crema);padding:0}
+.tab.center[aria-current="page"] .ico{background:var(--verde-oscuro)}
+
+/* Coach overlay */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(74,16,21,.55);display:grid;place-items:center;padding:20px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px))}
+.coach{background:var(--crema);border-radius:var(--r-lg);max-width:440px;width:100%;padding:24px;display:grid;gap:14px;border:var(--trazo) solid var(--tinta)}
+.coach .dots{display:flex;gap:6px}
+.coach .dots i{width:8px;height:8px;border-radius:50%;background:var(--cielo-claro)}
+.coach .dots i.on{background:var(--tinta)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));background:var(--tinta);color:var(--crema);border-radius:var(--r-pill);padding:10px 18px;font-size:14px;font-weight:600;z-index:40;max-width:calc(100% - 32px)}
+@media (prefers-reduced-motion:no-preference){
+  .fc.flip{animation:flip .28s ease}
+  @keyframes flip{from{transform:rotateX(70deg);opacity:.3}to{transform:none;opacity:1}}
+  .view{animation:fade .2s ease}
+  @keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">Dabar<small>Hebreo I · Sesión 3</small></div>
+    <div class="spacer"></div>
+    <span class="saved" id="saved"><i></i>Guardado</span>
+    <button class="iconbtn" id="helpBtn" aria-label="Cómo usar la app">?</button>
+  </div>
+</header>
+
+<main class="wrap" id="view" aria-live="polite"></main>
+
+<nav class="tabbar" aria-label="Secciones">
+  <div class="wrap">
+    <button class="tab" data-go="inicio"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>Inicio</button>
+    <button class="tab" data-go="teoria"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 8h6"/></svg></span>Teoría</button>
+    <button class="tab center" data-go="estudiar" aria-label="Flashcards"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg></span>Flashcards</button>
+    <button class="tab" data-go="practica"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg></span>Práctica</button>
+    <button class="tab" data-go="progreso"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>Progreso</button>
+  </div>
+</nav>
+
+<script>
+/* =========================================================
+   CONTENIDO — Hebreo I, Sesión 3
+   Transliteración según el sistema de Page H. Kelley.
+   ========================================================= */
+const DECKS = [
+ { id:"con", name:"Estado constructo", short:"Constructo", color:"var(--azul-oscuro)", letter:"ד", cards:[
+  {f:"דְּבַר יְהוָה", tr:"dᵉḇar YHWH", es:"la palabra de Jehová", an:["דְּבַר — sust. masc. sg. constructo (de דָּבָר)","יְהוָה — nombre propio, absoluto","Cadena determinada por el nombre propio"]},
+  {f:"בֵּית אֱלֹהִים", tr:"bêṯ ʾᵉlōhîm", es:"la casa de Dios", an:["בֵּית — sust. masc. sg. constructo (de בַּיִת)","אֱלֹהִים — sust. masc. pl. absoluto (Dios)"], tip:"בַּיִת → בֵּית: el diptongo ַיִ se contrae a ֵי en constructo."},
+  {f:"תּוֹרַת יְהוָה", tr:"tôraṯ YHWH", es:"la ley de Jehová", an:["תּוֹרַת — sust. fem. sg. constructo (de תּוֹרָה)","יְהוָה — nombre propio, absoluto"], tip:"Femenino singular: ◌ָה → ◌ַת"},
+  {f:"עַם הָאָרֶץ", tr:"ʿam hāʾāreṣ", es:"el pueblo de la tierra", an:["עַם — sust. masc. sg. constructo","הָאָרֶץ — artículo + sust. fem. sg. absoluto","El artículo del absoluto determina toda la cadena"]},
+  {f:"בְּנֵי יִשְׂרָאֵל", tr:"bᵉnê yiśrāʾēl", es:"los hijos de Israel", an:["בְּנֵי — sust. masc. pl. constructo (de בָּנִים)","יִשְׂרָאֵל — nombre propio, absoluto"], tip:"Masculino plural: ◌ִים → ◌ֵי"},
+  {f:"סוּסֵי הָעִיר", tr:"sûsê hāʿîr", es:"los caballos de la ciudad", an:["סוּסֵי — sust. masc. pl. constructo (de סוּסִים)","הָעִיר — artículo + sust. fem. sg. absoluto"]},
+  {f:"אַנְשֵׁי הַמֶּלֶךְ", tr:"ʾanšê hammeleḵ", es:"los hombres del rey", an:["אַנְשֵׁי — sust. masc. pl. constructo (de אֲנָשִׁים, plural irregular de אִישׁ)","הַמֶּלֶךְ — artículo + sust. masc. sg. absoluto"]},
+  {f:"בְּנוֹת הָאָרֶץ", tr:"bᵉnôṯ hāʾāreṣ", es:"las hijas de la tierra", an:["בְּנוֹת — sust. fem. pl. constructo (de בָּנוֹת)","הָאָרֶץ — artículo + sust. fem. sg. absoluto"], tip:"Femenino plural: ◌וֹת se mantiene; solo se reducen las vocales de la base."},
+  {f:"סוּסַת הַמֶּלֶךְ", tr:"sûsaṯ hammeleḵ", es:"la yegua del rey", an:["סוּסַת — sust. fem. sg. constructo (de סוּסָה)","הַמֶּלֶךְ — artículo + sust. masc. sg. absoluto"]},
+  {f:"דְּבַר הַמֶּלֶךְ", tr:"dᵉḇar hammeleḵ", es:"la palabra del rey", an:["דְּבַר — sust. masc. sg. constructo","הַמֶּלֶךְ — artículo + sust. masc. sg. absoluto"], tip:"דָּבָר → דְּבַר: qamets pretónica → shewa; qamets tónica → patach."},
+  {f:"בְּנֵי אֱלֹהִים", tr:"bᵉnê ʾᵉlōhîm", es:"los hijos de Dios", an:["בְּנֵי — sust. masc. pl. constructo","אֱלֹהִים — sust. masc. pl. absoluto"]},
+  {f:"תּוֹרַת מֹשֶׁה", tr:"tôraṯ mōšeh", es:"la ley de Moisés", an:["תּוֹרַת — sust. fem. sg. constructo","מֹשֶׁה — nombre propio, absoluto"]},
+  {q:"¿El sustantivo en estado constructo puede llevar artículo הַ?", es:"Nunca", an:["El artículo solo puede ir en la última palabra (el absoluto).","Correcto: דְּבַר הַמֶּלֶךְ · Incorrecto: הַדְּבַר הַמֶּלֶךְ"]},
+  {q:"¿Cuándo es determinada toda la cadena?", es:"Cuando el absoluto es determinado", an:["lleva artículo הַ","es nombre propio (יְהוָה, יִשְׂרָאֵל, מֹשֶׁה)","o tiene sufijo pronominal"]},
+  {q:"Constructo de la terminación femenina singular ◌ָה", es:"◌ַת", an:["סוּסָה → סוּסַת","תּוֹרָה → תּוֹרַת"]},
+  {q:"Constructo de la terminación masculina plural ◌ִים (y dual ◌ַיִם)", es:"◌ֵי", an:["סוּסִים → סוּסֵי","בָּנִים → בְּנֵי"]}
+ ]},
+ { id:"pro", name:"Pronombres", short:"Pronombres", color:"var(--lila-oscuro)", letter:"א", cards:[
+  {f:"אֲנִי / אָנֹכִי", tr:"ʾᵃnî / ʾānōḵî", es:"yo", an:["Pronombre personal 1ª común singular"]},
+  {f:"אַתָּה", tr:"ʾattāh", es:"tú (masculino)", an:["Pronombre personal 2ª masc. singular"]},
+  {f:"אַתְּ", tr:"ʾatt", es:"tú (femenino)", an:["Pronombre personal 2ª fem. singular"]},
+  {f:"הוּא", tr:"hûʾ", es:"él", an:["Pronombre personal 3ª masc. singular","También demostrativo de lejanía: «aquel»"]},
+  {f:"הִיא", tr:"hîʾ", es:"ella", an:["Pronombre personal 3ª fem. singular","También demostrativo de lejanía: «aquella»"]},
+  {f:"אֲנַחְנוּ", tr:"ʾᵃnaḥnû", es:"nosotros / nosotras", an:["Pronombre personal 1ª común plural"]},
+  {f:"אַתֶּם", tr:"ʾattem", es:"vosotros / ustedes", an:["Pronombre personal 2ª masc. plural"]},
+  {f:"אַתֵּן", tr:"ʾattēn", es:"vosotras / ustedes", an:["Pronombre personal 2ª fem. plural"]},
+  {f:"הֵם / הֵמָּה", tr:"hēm / hēmmāh", es:"ellos", an:["Pronombre personal 3ª masc. plural","También «aquellos»"]},
+  {f:"הֵן / הֵנָּה", tr:"hēn / hēnnāh", es:"ellas", an:["Pronombre personal 3ª fem. plural","También «aquellas»"]},
+  {f:"זֶה", tr:"zeh", es:"este", an:["Demostrativo de cercanía, masc. singular"]},
+  {f:"זֹאת", tr:"zōʾṯ", es:"esta", an:["Demostrativo de cercanía, fem. singular"]},
+  {f:"אֵלֶּה", tr:"ʾēlleh", es:"estos / estas", an:["Demostrativo de cercanía, común plural (igual para masc. y fem.)"]},
+  {f:"מִי", tr:"mî", es:"¿quién?", an:["Interrogativo para personas; invariable"]},
+  {f:"מָה / מַה־", tr:"māh / mah-", es:"¿qué?", an:["Interrogativo para cosas","Con maqqef suele duplicar la consonante siguiente: מַה־זֶּה"]},
+  {f:"אֲשֶׁר", tr:"ʾᵃšer", es:"que, el cual, la cual, los cuales", an:["Pronombre relativo; invariable en género y número"]},
+  {f:"זֶה הָאִישׁ", tr:"zeh hāʾîš", es:"Este es el hombre", an:["זֶה — demostrativo masc. sg., SIN artículo, delante → predicativo","הָאִישׁ — artículo + sust. masc. sg. absoluto"], tip:"Predicativo: el demostrativo sin artículo crea una oración: «este ES…»"},
+  {f:"הָאִישׁ הַזֶּה", tr:"hāʾîš hazzeh", es:"este hombre", an:["הָאִישׁ — artículo + sust. masc. sg. absoluto","הַזֶּה — demostrativo CON artículo, detrás → atributivo"], tip:"Atributivo: artículo en los dos, demostrativo detrás."},
+  {f:"הָאִישׁ הַהוּא", tr:"hāʾîš hahûʾ", es:"aquel hombre", an:["הַהוּא — הוּא con artículo, detrás → «aquel» (atributivo)"]},
+  {f:"אֵלֶּה הַדְּבָרִים", tr:"ʾēlleh haddᵉḇārîm", es:"Estas son las palabras", an:["אֵלֶּה — demostrativo plural, sin artículo → predicativo","הַדְּבָרִים — artículo + sust. masc. pl. absoluto"]}
+ ]},
+ { id:"suf", name:"Sufijos en sustantivos", short:"Sufijos", color:"var(--verde-oscuro)", letter:"י", cards:[
+  {f:"סוּסִי", tr:"sûsî", es:"mi caballo", an:["סוּס — masc. sg. + ◌ִי 1ª común sg."]},
+  {f:"סוּסְךָ", tr:"sûsᵉḵā", es:"tu caballo (de ti, varón)", an:["סוּס + ◌ְךָ 2ª masc. sg."]},
+  {f:"סוּסֵךְ", tr:"sûsēḵ", es:"tu caballo (de ti, mujer)", an:["סוּס + ◌ֵךְ 2ª fem. sg."]},
+  {f:"סוּסוֹ", tr:"sûsô", es:"su caballo (de él)", an:["סוּס + ◌וֹ 3ª masc. sg."]},
+  {f:"סוּסָהּ", tr:"sûsāh", es:"su caballo (de ella)", an:["סוּס + ◌ָהּ 3ª fem. sg. (mappiq en la ה)"]},
+  {f:"סוּסֵנוּ", tr:"sûsēnû", es:"nuestro caballo", an:["סוּס + ◌ֵנוּ 1ª común pl."]},
+  {f:"סוּסְכֶם", tr:"sûsᵉḵem", es:"vuestro caballo (de vosotros)", an:["סוּס + ◌ְכֶם 2ª masc. pl."]},
+  {f:"סוּסָם", tr:"sûsām", es:"su caballo (de ellos)", an:["סוּס + ◌ָם 3ª masc. pl."]},
+  {f:"סוּסַי", tr:"sûsay", es:"mis caballos", an:["סוּסִים — masc. pl. + ◌ַי 1ª común sg."], tip:"La י antes del sufijo marca que lo poseído es PLURAL."},
+  {f:"סוּסֶיךָ", tr:"sûseyḵā", es:"tus caballos (varón)", an:["סוּסִים + ◌ֶיךָ 2ª masc. sg."]},
+  {f:"סוּסָיו", tr:"sûsāyw", es:"sus caballos (de él)", an:["סוּסִים + ◌ָיו 3ª masc. sg."], tip:"Compara: סוּסוֹ = su caballo · סוּסָיו = sus caballos"},
+  {f:"סוּסֶיהָ", tr:"sûseyhā", es:"sus caballos (de ella)", an:["סוּסִים + ◌ֶיהָ 3ª fem. sg."]},
+  {f:"סוּסֵינוּ", tr:"sûsênû", es:"nuestros caballos", an:["סוּסִים + ◌ֵינוּ 1ª común pl."], tip:"Compara: סוּסֵנוּ = nuestro caballo · סוּסֵינוּ = nuestros caballos"},
+  {f:"סוּסֵיהֶם", tr:"sûsêhem", es:"sus caballos (de ellos)", an:["סוּסִים + ◌ֵיהֶם 3ª masc. pl."]},
+  {f:"אָבִי", tr:"ʾāḇî", es:"mi padre", an:["אָב — masc. sg. + ◌ִי 1ª común sg."]},
+  {f:"בֵּיתְךָ", tr:"bêṯᵉḵā", es:"tu casa", an:["בַּיִת — masc. sg. (base בֵּית־) + ◌ְךָ 2ª masc. sg."]},
+  {f:"דְּבָרוֹ", tr:"dᵉḇārô", es:"su palabra (de él)", an:["דָּבָר — masc. sg. + ◌וֹ 3ª masc. sg."]},
+  {f:"עַמֵּנוּ", tr:"ʿammēnû", es:"nuestro pueblo", an:["עַם — masc. sg. + ◌ֵנוּ 1ª común pl. (la מ se duplica)"]},
+  {f:"אַרְצָם", tr:"ʾarṣām", es:"su tierra (de ellos)", an:["אֶרֶץ — fem. sg. (base אַרְצ־) + ◌ָם 3ª masc. pl."]},
+  {f:"בָּנַי", tr:"bānay", es:"mis hijos", an:["בָּנִים — masc. pl. + ◌ַי 1ª común sg."], tip:"No confundir con בְּנֵי (constructo: «hijos de»)."},
+  {f:"דְּבָרָיו", tr:"dᵉḇārāyw", es:"sus palabras (de él)", an:["דְּבָרִים — masc. pl. + ◌ָיו 3ª masc. sg."]},
+  {f:"עֵינֶיהָ", tr:"ʿêneyhā", es:"sus ojos (de ella)", an:["עֵינַיִם — fem. dual + ◌ֶיהָ 3ª fem. sg."]},
+  {f:"יָדֵינוּ", tr:"yādênû", es:"nuestras manos", an:["יָדַיִם — fem. dual + ◌ֵינוּ 1ª común pl."]},
+  {f:"סִפְרִי", tr:"sip̄rî", es:"mi libro", an:["סֵפֶר — masc. sg. segolado (base סִפְר־) + ◌ִי 1ª común sg."]}
+ ]},
+ { id:"pre", name:"Preposiciones con sufijo", short:"Preposiciones", color:"var(--naranja)", letter:"ל", cards:[
+  {f:"לִי", tr:"lî", es:"a mí / para mí", an:["לְ + 1ª común sg."]},
+  {f:"לְךָ", tr:"lᵉḵā", es:"a ti / para ti (varón)", an:["לְ + 2ª masc. sg."]},
+  {f:"לוֹ", tr:"lô", es:"a él / para él", an:["לְ + 3ª masc. sg."]},
+  {f:"לָהּ", tr:"lāh", es:"a ella / para ella", an:["לְ + 3ª fem. sg."]},
+  {f:"לָנוּ", tr:"lānû", es:"a nosotros / para nosotros", an:["לְ + 1ª común pl."]},
+  {f:"לָכֶם", tr:"lāḵem", es:"a vosotros / para vosotros", an:["לְ + 2ª masc. pl."]},
+  {f:"לָהֶם", tr:"lāhem", es:"a ellos / para ellos", an:["לְ + 3ª masc. pl."]},
+  {f:"עִמִּי", tr:"ʿimmî", es:"conmigo", an:["עִם + 1ª común sg. (la מ se duplica)"], tip:"עִמִּי (hireq) = conmigo · עַמִּי (patach) = mi pueblo"},
+  {f:"עִמְּךָ", tr:"ʿimmᵉḵā", es:"contigo (varón)", an:["עִם + 2ª masc. sg."]},
+  {f:"עִמּוֹ", tr:"ʿimmô", es:"con él", an:["עִם + 3ª masc. sg."]},
+  {f:"עִמָּנוּ", tr:"ʿimmānû", es:"con nosotros", an:["עִם + 1ª común pl."]},
+  {f:"עִמָּהֶם", tr:"ʿimmāhem", es:"con ellos", an:["עִם + 3ª masc. pl."]},
+  {f:"עִמָּנוּ אֵל", tr:"ʿimmānû ʾēl", es:"Dios con nosotros (Is 7:14)", an:["עִמָּנוּ — עִם + 1ª común pl.","אֵל — sust. masc. sg. absoluto: Dios"]},
+  {f:"אֲשֶׁר לִי", tr:"ʾᵃšer lî", es:"lo que es mío / que es para mí", an:["אֲשֶׁר — relativo","לִי — לְ + 1ª común sg."]},
+  {f:"לָנוּ וְלָכֶם", tr:"lānû wᵉlāḵem", es:"a nosotros y a vosotros", an:["לָנוּ — לְ + 1ª común pl.","וְלָכֶם — וְ «y» + לְ + 2ª masc. pl."]}
+ ]},
+ { id:"ver", name:"Frases y versículos", short:"Versículos", color:"var(--coral)", letter:"ת", cards:[
+  {f:"יְהוָה רֹעִי לֹא אֶחְסָר", tr:"YHWH rōʿî lōʾ ʾeḥsār", es:"Jehová es mi pastor, nada me faltará", ref:"Sal 23:1", an:["יְהוָה — nombre propio (sujeto)","רֹעִי — רֹעֶה «pastor», masc. sg. + ◌ִי «mi»","לֹא — negación «no»","אֶחְסָר — verbo 1ª común sg., «careceré / me faltará»"], tip:"Oración nominal: el «es» no está escrito; lo pones tú."},
+  {f:"תּוֹרַת יְהוָה תְּמִימָה", tr:"tôraṯ YHWH tᵉmîmāh", es:"La ley de Jehová es perfecta", ref:"Sal 19:8 (19:7 en RV)", an:["תּוֹרַת — sust. fem. sg. constructo «ley de»","יְהוָה — nombre propio, absoluto","תְּמִימָה — adjetivo fem. sg., predicativo «es perfecta»"]},
+  {f:"זֶה דְּבַר־יְהוָה אֵלֵינוּ", tr:"zeh dᵉḇar-YHWH ʾēlênû", es:"Esta es la palabra de Jehová para nosotros", an:["זֶה — demostrativo masc. sg., predicativo «este es»","דְּבַר — sust. masc. sg. constructo «palabra de»","יְהוָה — nombre propio, absoluto","אֵלֵינוּ — prep. אֶל «a, hacia» + 1ª común pl."]},
+  {f:"בָּרוּךְ הָאִישׁ אֲשֶׁר יִבְטַח בַּיהוָה", tr:"bārûḵ hāʾîš ʾᵃšer yiḇṭaḥ bayhwh", es:"Bendito el hombre que confía en Jehová", ref:"cf. Jer 17:7", an:["בָּרוּךְ — participio pasivo masc. sg. «bendito»","הָאִישׁ — artículo + sust. masc. sg. absoluto","אֲשֶׁר — relativo «que»","יִבְטַח — verbo 3ª masc. sg. «confía»","בַּיהוָה — prep. בְּ «en» + Jehová"]},
+  {f:"אֲנִי הַמֶּלֶךְ", tr:"ʾᵃnî hammeleḵ", es:"Yo soy el rey", an:["אֲנִי — pron. 1ª común sg. (sujeto)","הַמֶּלֶךְ — artículo + sust. masc. sg. absoluto (predicado)"]},
+  {f:"אַתָּה אִישׁ טוֹב", tr:"ʾattāh ʾîš ṭôḇ", es:"Tú eres un hombre bueno", an:["אַתָּה — pron. 2ª masc. sg.","אִישׁ — sust. masc. sg. absoluto, indeterminado","טוֹב — adjetivo masc. sg., atributivo"]},
+  {f:"אֲנַחְנוּ עַם יְהוָה", tr:"ʾᵃnaḥnû ʿam YHWH", es:"Nosotros somos el pueblo de Jehová", an:["אֲנַחְנוּ — pron. 1ª común pl.","עַם — sust. masc. sg. constructo","יְהוָה — nombre propio, absoluto"]},
+  {f:"הֵמָּה אֲנָשִׁים גְּדֹלִים", tr:"hēmmāh ʾᵃnāšîm gᵉḏōlîm", es:"Ellos son hombres grandes", an:["הֵמָּה — pron. 3ª masc. pl.","אֲנָשִׁים — sust. masc. pl. absoluto (irregular de אִישׁ)","גְּדֹלִים — adjetivo masc. pl., atributivo"]},
+  {f:"זֹאת הָאָרֶץ הַטּוֹבָה", tr:"zōʾṯ hāʾāreṣ haṭṭôḇāh", es:"Esta es la buena tierra", an:["זֹאת — demostrativo fem. sg., predicativo","הָאָרֶץ — artículo + sust. fem. sg. absoluto","הַטּוֹבָה — adjetivo fem. sg. con artículo, atributivo"]},
+  {f:"יְהוָה לִי", tr:"YHWH lî", es:"Jehová está conmigo (es por mí)", ref:"Sal 118:6", an:["יְהוָה — nombre propio","לִי — לְ + 1ª común sg."]},
+  {f:"הָאָרֶץ אֲשֶׁר נָתַן", tr:"hāʾāreṣ ʾᵃšer nāṯan", es:"la tierra que (él) dio", an:["הָאָרֶץ — artículo + sust. fem. sg. absoluto","אֲשֶׁר — relativo","נָתַן — verbo 3ª masc. sg. «dio»"]}
+ ]}
+];
+
+/* Ejercicios: mc = opción múltiple, ord = ordenar palabras, rv = traducir y revelar */
+const LEVELS = [
+ { id:"n1", name:"Nivel 1", title:"Reconocer pronombres", diff:"Fácil", pill:"p-lima", topic:"pro", items:[
+  {t:"mc", he:"מִי־אַתָּה", q:"Identifica los pronombres:", o:["מִי interrogativo + אַתָּה 2ª masc. sg.: «¿Quién eres tú?»","מִי relativo + אַתָּה 2ª fem. sg.","מִי demostrativo + אַתָּה 1ª común sg.","מָה interrogativo + אַתְּ 2ª fem. sg."], a:0, x:"מִי pregunta por personas. אַתָּה es «tú» (varón). En la oración nominal pones tú el «eres»."},
+  {t:"mc", he:"זֹאת הַתּוֹרָה", q:"¿Qué es זֹאת y cómo funciona aquí?", o:["Demostrativo fem. sg., predicativo: «Esta es la ley»","Demostrativo masc. sg., atributivo: «este ley»","Pronombre 3ª fem.: «Ella es la ley»","Demostrativo fem. sg., atributivo: «esta ley»"], a:0, x:"זֹאת va delante y sin artículo → predicativo. «Esta ley» sería הַתּוֹרָה הַזֹּאת."},
+  {t:"mc", he:"אֲנַחְנוּ עַם", q:"¿Qué pronombre es y cómo se traduce?", o:["1ª común plural: «Nosotros somos un pueblo»","2ª masc. plural: «Vosotros sois un pueblo»","3ª masc. plural: «Ellos son un pueblo»","1ª común singular: «Yo soy un pueblo»"], a:0, x:"אֲנַחְנוּ = nosotros. עַם sin artículo = «un pueblo»."},
+  {t:"mc", he:"מַה־זֶּה", q:"Identifica los pronombres:", o:["מָה interrogativo (cosas) + זֶה demostrativo: «¿Qué es esto?»","מִי interrogativo (personas) + זֶה: «¿Quién es este?»","אֲשֶׁר relativo + זֶה: «lo que es esto»","מָה + הוּא: «¿Qué es aquello?»"], a:0, x:"Tu diapositiva lo escribe מָה־זֶה; en la Biblia aparece como מַה־זֶּה (patach + maqqef + dagesh en la ז). Es la misma palabra."},
+  {t:"mc", q:"¿Cuál es «vosotras»?", o:["אַתֵּן","אַתֶּם","אַתְּ","הֵן"], a:0, x:"אַתֵּן = 2ª fem. pl. · אַתֶּם = vosotros · אַתְּ = tú (mujer) · הֵן = ellas."},
+  {t:"mc", q:"¿Cuál significa «ella»?", o:["הִיא","הוּא","הֵנָּה","אַתְּ"], a:0, x:"הִיא (hireq) = ella; הוּא (shureq) = él."},
+  {t:"mc", q:"¿Cómo se escribe «este hombre» (atributivo)?", o:["הָאִישׁ הַזֶּה","זֶה הָאִישׁ","הָאִישׁ זֶה","הַזֶּה אִישׁ"], a:0, x:"Atributivo: sustantivo con artículo + demostrativo detrás, también con artículo. זֶה הָאִישׁ = «este ES el hombre»."},
+  {t:"mc", he:"הָאִישׁ הַהוּא", q:"¿Qué significa הַהוּא aquí?", o:["«aquel» (demostrativo de lejanía, atributivo)","«él» (sujeto de la oración)","«este»","«que» (relativo)"], a:0, x:"Con artículo y detrás del sustantivo, הוּא funciona como «aquel»."},
+  {t:"mc", q:"¿Qué significa אֲשֶׁר?", o:["que, el cual (relativo invariable)","¿quién?","estos","con"], a:0, x:"אֲשֶׁר introduce una oración relativa y no cambia por género ni número."},
+  {t:"mc", he:"אֵלֶּה הַדְּבָרִים", q:"Traduce:", o:["Estas son las palabras","estas palabras","aquellas palabras","las palabras de estos"], a:0, x:"אֵלֶּה va delante y sin artículo → predicativo. «Estas palabras» sería הַדְּבָרִים הָאֵלֶּה."}
+ ]},
+ { id:"n2", name:"Nivel 2", title:"Cadenas en estado constructo", diff:"Intermedio", pill:"p-miel", topic:"con", items:[
+  {t:"mc", he:"דְּבַר הַמֶּלֶךְ", q:"Análisis gramatical:", o:["דְּבַר masc. sg. constructo + הַמֶּלֶךְ masc. sg. absoluto con artículo: «la palabra del rey»","דְּבַר masc. sg. absoluto + הַמֶּלֶךְ constructo: «el rey de la palabra»","דְּבַר masc. pl. constructo: «las palabras del rey»","Cadena indeterminada: «una palabra de un rey»"], a:0, x:"El artículo de הַמֶּלֶךְ determina toda la cadena. דָּבָר → דְּבַר porque el constructo pierde el acento."},
+  {t:"mc", he:"בְּנֵי אֱלֹהִים", q:"Análisis gramatical:", o:["בְּנֵי masc. pl. constructo (de בָּנִים) + אֱלֹהִים masc. pl. absoluto: «los hijos de Dios»","בְּנֵי masc. sg. constructo: «el hijo de Dios»","בְּנֵי fem. pl. constructo: «las hijas de Dios»","אֱלֹהִים es el constructo: «el Dios de los hijos»"], a:0, x:"◌ֵי al final de la primera palabra = masculino plural constructo."},
+  {t:"mc", he:"סוּסֵי הָעִיר", q:"Análisis gramatical:", o:["סוּסֵי masc. pl. constructo + הָעִיר fem. sg. absoluto con artículo: «los caballos de la ciudad»","סוּסֵי masc. sg.: «el caballo de la ciudad»","סוּסֵי con sufijo: «mis caballos de la ciudad»","Dos absolutos: «los caballos y la ciudad»"], a:0, x:"◌ֵי (tsere-yod) = plural constructo. Ojo: סוּסַי (patach-yod) = «mis caballos»."},
+  {t:"mc", he:"תּוֹרַת מֹשֶׁה", q:"Análisis gramatical:", o:["תּוֹרַת fem. sg. constructo (de תּוֹרָה) + מֹשֶׁה nombre propio: «la ley de Moisés»","תּוֹרַת masc. sg. absoluto: «ley, Moisés»","תּוֹרַת fem. pl. constructo: «las leyes de Moisés»","Cadena indeterminada: «una ley de Moisés»"], a:0, x:"◌ַת = femenino singular constructo. El nombre propio determina la cadena."},
+  {t:"mc", q:"¿Cuál es la forma correcta de «el caballo del rey»?", o:["סוּס הַמֶּלֶךְ","הַסּוּס הַמֶּלֶךְ","הַסּוּס מֶלֶךְ","סוּס מֶלֶךְ"], a:0, x:"El constructo nunca lleva artículo; el artículo del absoluto determina todo. סוּס מֶלֶךְ = «un caballo de un rey»."},
+  {t:"mc", q:"Forma constructa de סוּסָה (yegua):", o:["סוּסַת","סוּסָה","סוּסֵי","סוּסוֹת"], a:0, x:"Femenino singular: ◌ָה → ◌ַת."},
+  {t:"mc", q:"Forma constructa de סוּסִים (caballos):", o:["סוּסֵי","סוּסִים","סוּסַי","סוּסַת"], a:0, x:"Masculino plural: ◌ִים → ◌ֵי. סוּסַי (patach) sería «mis caballos»."},
+  {t:"mc", q:"En una cadena constructa, ¿qué palabra puede llevar el artículo הַ?", o:["Solo la última (el absoluto)","Solo la primera (el constructo)","Las dos","Ninguna"], a:0, x:"Regla estricta: el constructo nunca lleva הַ."},
+  {t:"mc", he:"עַם הָאָרֶץ", q:"¿Por qué la cadena es determinada?", o:["Porque el absoluto הָאָרֶץ lleva artículo","Porque עַם lleva artículo","Porque אֶרֶץ es femenino","No es determinada: «un pueblo de una tierra»"], a:0, x:"La determinación siempre la da la última palabra."},
+  {t:"ord", q:"Ordena: «los hombres del rey»", tiles:["אַנְשֵׁי","הַמֶּלֶךְ","אֲנָשִׁים","מֶלֶךְ"], ans:["אַנְשֵׁי","הַמֶּלֶךְ"], x:"אֲנָשִׁים → אַנְשֵׁי (constructo) y el artículo va en el absoluto: אַנְשֵׁי הַמֶּלֶךְ."},
+  {t:"ord", q:"Ordena: «los hijos de Israel»", tiles:["בָּנִים","יִשְׂרָאֵל","בְּנֵי","הַבָּנִים"], ans:["בְּנֵי","יִשְׂרָאֵל"], x:"בָּנִים → בְּנֵי. El nombre propio determina la cadena: בְּנֵי יִשְׂרָאֵל."},
+  {t:"ord", q:"Ordena: «la ley de Jehová»", tiles:["הַתּוֹרָה","תּוֹרָה","יְהוָה","תּוֹרַת"], ans:["תּוֹרַת","יְהוָה"], x:"תּוֹרָה → תּוֹרַת (◌ָה → ◌ַת): תּוֹרַת יְהוָה."}
+ ]},
+ { id:"n3", name:"Nivel 3", title:"Descomponer sufijos", diff:"Avanzado", pill:"p-rosa", topic:"suf", items:[
+  {t:"mc", he:"סִפְרִי", q:"Descomposición morfológica:", o:["סֵפֶר (masc. sg.) + ◌ִי 1ª común sg.: «mi libro»","סְפָרִים (pl.) + ◌ַי: «mis libros»","סֵפֶר en plural constructo: «libros de»","סֵפֶר + 3ª masc. sg.: «su libro»"], a:0, x:"סֵפֶר es segolado: con sufijo toma la base סִפְר־. La ◌ִי sin yod de plural = «mi»."},
+  {t:"mc", he:"דְּבָרָיו", q:"Descomposición morfológica:", o:["דְּבָרִים (masc. pl.) + ◌ָיו 3ª masc. sg.: «sus palabras (de él)»","דָּבָר (sg.) + ◌וֹ: «su palabra»","דְּבָרִים + 3ª masc. pl.: «sus palabras (de ellos)»","Plural constructo: «palabras de»"], a:0, x:"◌ָיו = poseído plural + «de él». En singular sería דְּבָרוֹ."},
+  {t:"mc", he:"לָנוּ וְלָכֶם", q:"Descomposición morfológica:", o:["לְ + 1ª común pl. · וְ + לְ + 2ª masc. pl.: «a nosotros y a vosotros»","לְ + 1ª común sg. · לְ + 3ª masc. pl.: «a mí y a ellos»","לְ + 3ª masc. sg. · לְ + 2ª fem. pl.","עִם + 1ª común pl.: «con nosotros y vosotros»"], a:0, x:"◌נוּ = nosotros; ◌כֶם = vosotros. וְ = «y»."},
+  {t:"mc", he:"עִמִּי אָנֹכִי", q:"Descomposición morfológica:", o:["עִם + ◌ִי 1ª común sg. («conmigo») + אָנֹכִי pron. 1ª común sg. («yo»)","עַם «pueblo» + ◌ִי («mi pueblo») + אָנֹכִי «yo»","עִם + 2ª masc. sg. + אָנֹכִי","עִמִּי es plural constructo de עַם"], a:0, x:"Fíjate en la vocal: עִמִּי (hireq) = conmigo; עַמִּי (patach) = mi pueblo."},
+  {t:"mc", q:"¿Cuál significa «sus caballos (de él)»?", o:["סוּסָיו","סוּסוֹ","סוּסֵיהֶם","סוּסָם"], a:0, x:"סוּסוֹ = su caballo (de él) · סוּסֵיהֶם = sus caballos (de ellos) · סוּסָם = su caballo (de ellos)."},
+  {t:"mc", he:"סוּסֵינוּ", q:"¿Qué significa?", o:["nuestros caballos","nuestro caballo","sus caballos (de ellos)","mis caballos"], a:0, x:"La י antes de ◌נוּ marca plural. סוּסֵנוּ = nuestro caballo."},
+  {t:"mc", he:"אַרְצָם", q:"¿Qué significa?", o:["su tierra (de ellos)","su tierra (de él)","vuestra tierra","sus tierras"], a:0, x:"אֶרֶץ + ◌ָם (3ª masc. pl.). Sin yod → lo poseído es singular."},
+  {t:"mc", he:"עֵינֶיהָ", q:"¿Qué significa?", o:["sus ojos (de ella)","sus ojos (de él)","tus ojos","su ojo (de ella)"], a:0, x:"עֵינַיִם (dual) + ◌ֶיהָ: plural/dual + «de ella»."},
+  {t:"mc", q:"¿Cuál significa «a él / para él»?", o:["לוֹ","לִי","לָהּ","לָהֶם"], a:0, x:"לִי = a mí · לָהּ = a ella · לָהֶם = a ellos."},
+  {t:"mc", he:"בָּנַי", q:"¿Qué significa?", o:["mis hijos","hijos de","mi hijo","nuestros hijos"], a:0, x:"◌ַי (patach-yod) = «mis» con poseído plural. בְּנֵי (tsere-yod, sin otra base) = «hijos de»."},
+  {t:"mc", he:"עִמָּנוּ אֵל", q:"Traduce:", o:["Dios con nosotros","nuestro pueblo, Dios","Dios es para nosotros","Dios con ellos"], a:0, x:"עִם + ◌ָנוּ = con nosotros (Is 7:14, «Emanuel»)."}
+ ]},
+ { id:"n4", name:"Nivel 4", title:"Traducción integradora", diff:"Examen", pill:"p-line", topic:"ver", items:[
+  {t:"rv", c:0}, {t:"rv", c:1}, {t:"rv", c:2}, {t:"rv", c:3},
+  {t:"rv", c:6}, {t:"rv", c:8}, {t:"rv", c:7}, {t:"rv", c:9}
+ ]}
+];
+
+const TOPICS = {pro:"Pronombres", con:"Estado constructo", suf:"Sufijos", ver:"Traducción", pre:"Preposiciones"};
+const INTV = [0, 10*60e3, 864e5, 3*864e5, 7*864e5, 16*864e5];
+const INTV_LABEL = ["1 min","10 min","1 día","3 días","7 días","16 días"];
+
+/* =========================================================
+   ESTADO (se guarda solo en este navegador)
+   ========================================================= */
+const KEY = "dabar-s3-v1";
+let S = {cards:{}, lv:{}, sim:null, top:{}, days:[], seen:{}, onb:false, last:null};
+try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch(e) {}
+let savedTimer;
+function save(){
+  try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {}
+  const el = document.getElementById("saved"); el.classList.add("on");
+  clearTimeout(savedTimer); savedTimer = setTimeout(()=>el.classList.remove("on"), 1800);
+}
+function today(d=new Date()){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function markDay(){ const t=today(); if(!S.days.includes(t)) S.days.push(t); }
+function tally(topic, ok){ const r=S.top[topic]||(S.top[topic]={ok:0,n:0}); r.n++; if(ok) r.ok++; }
+
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const HEB = /[◌֐-׿יִ-ﭏ]+(?:[\s־\/]+[◌֐-׿יִ-ﭏ]+)*/g;
+const fmt = s => esc(s).replace(HEB, m => `<bdi class="he" lang="he" dir="rtl">${m}</bdi>`);
+const heb = s => `<bdi class="he" lang="he" dir="rtl">${esc(s)}</bdi>`;
+const hl = (s, cls="") => { const [a,b] = s.split("|"); return `<bdi class="he" lang="he" dir="rtl">${esc(a)}<span class="suf ${cls}">${esc(b)}</span></bdi>`; };
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+function toast(msg){ const t=document.createElement("div"); t.className="toast"; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
+const cid = (d,i) => d+"-"+i;
+function cardById(id){ const [d,i]=id.split("-"); const deck=DECKS.find(x=>x.id===d); return {deck, card:deck.cards[+i], id}; }
+
+function deckStats(deck){
+  const now=Date.now(); let nw=0, lr=0, dn=0, due=0, m=0;
+  deck.cards.forEach((c,i)=>{ const st=S.cards[cid(deck.id,i)];
+    if(!st){ nw++; return; }
+    if(st.b>=3) dn++; else lr++;
+    if(st.d<=now) due++;
+    m += Math.min(st.b,3)/3;
+  });
+  return {nw, lr, dn, due, total:deck.cards.length, pct:Math.round(m/deck.cards.length*100)};
+}
+function overall(){
+  let m=0,t=0; DECKS.forEach(d=>{ d.cards.forEach((c,i)=>{ const st=S.cards[cid(d.id,i)]; t++; if(st) m+=Math.min(st.b,3)/3; }); });
+  return Math.round(m/t*100);
+}
+function ring(pct, label, size=108, stroke="var(--tinta)", track="var(--crema)"){
+  const r=42, C=2*Math.PI*r;
+  return `<div class="ring" style="width:${size}px;height:${size}px" role="img" aria-label="${label}: ${pct}%">
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="${r}" fill="none" stroke="${track}" stroke-width="12"/>
+    <circle cx="50" cy="50" r="${r}" fill="none" stroke="${stroke}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${C*pct/100} ${C}"/></svg>
+    <div class="v"><span>${pct}%<small>${label}</small></span></div></div>`;
+}
+const star = `<svg class="star" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" fill="var(--naranja)"/></svg>`;
+
+/* =========================================================
+   VISTAS
+   ========================================================= */
+let route = "inicio";
+let fcS = null;   // sesión de flashcards
+let exS = null;   // sesión de ejercicios
+let thTab = S.thTab || "con";
+let openDeck = null;
+
+function go(r){
+  route = r;
+  if (location.hash.slice(1) !== r) history.replaceState(null, "", "#"+r);
+  document.querySelectorAll(".tab").forEach(b=> b.getAttribute("data-go")===r ? b.setAttribute("aria-current","page") : b.removeAttribute("aria-current"));
+  render(); window.scrollTo(0,0);
+}
+function render(){
+  const v = $("#view");
+  let html = "";
+  if (route==="inicio") html = vHome();
+  else if (route==="teoria") html = vTheory();
+  else if (route==="estudiar") html = fcS ? vCard() : vDecks();
+  else if (route==="practica") html = exS ? vEx() : vLevels();
+  else if (route==="progreso") html = vProgress();
+  v.innerHTML = `<div class="view stack" style="gap:20px">${html}</div>`;
+}
+
+/* ---------- Inicio ---------- */
+function planSteps(){
+  const thDone = ["con","pro","suf","exa"].every(k=>S.seen[k]);
+  const fc = overall();
+  const lvDone = LEVELS.filter(l=>S.lv[l.id]).length;
+  const sim = S.sim ? S.sim.best : 0;
+  return [
+    {t:"Lee la teoría", d:"4 bloques cortos con tablas y trucos", done:thDone, go:"teoria", sub: thDone?"Listo":`${["con","pro","suf","exa"].filter(k=>S.seen[k]).length}/4`},
+    {t:"Memoriza con flashcards", d:"Meta: 60% de dominio en los mazos", done:fc>=60, go:"estudiar", sub:fc+"%"},
+    {t:"Practica los niveles 1 a 4", d:"Los mismos ejercicios de la pizarra, y más", done:lvDone===4, go:"practica", sub:lvDone+"/4"},
+    {t:"Haz el simulacro de examen", d:"Meta: 80% o más", done:sim>=80, go:"sim", sub: S.sim? sim+"%":"—"}
+  ];
+}
+function vHome(){
+  const pct = overall();
+  const last = S.last && DECKS.find(d=>d.id===S.last);
+  const steps = planSteps();
+  return `
+  <section class="hero">
+    ${star}
+    <div class="stack" style="gap:10px;min-width:0">
+      <span class="eyebrow" style="color:var(--tinta)">Examen de mañana</span>
+      <h1>Pronombres, <span class="hl">constructo</span> y sufijos</h1>
+      <div class="meta">
+        <span class="pill p-line tilt">Sesión 3</span>
+        <span class="pill p-verde tilt2">${DECKS.reduce((a,d)=>a+d.cards.length,0)} tarjetas</span>
+      </div>
+    </div>
+    <div class="ringbox">${ring(pct,"dominio")}</div>
+  </section>
+
+  ${last ? `<div class="card miel row" style="justify-content:space-between">
+     <div><span class="cap">Tu último repaso</span><h3>${last.name}</h3><span class="cap">${deckStats(last).due} tarjetas por repasar</span></div>
+     <button class="btn" data-act="study" data-deck="${last.id}" data-mode="smart">Continuar</button></div>` : ""}
+
+  <section class="card stack">
+    <div class="row" style="justify-content:space-between"><h2>Plan para hoy</h2><span class="cap">${steps.filter(s=>s.done).length} de 4</span></div>
+    <div class="plan">
+      ${steps.map((s,i)=>`<button class="step ${s.done?"done":""}" data-plan="${s.go}" style="text-align:left;border:0">
+        <span class="n">${s.done?"✓":i+1}</span>
+        <span><b>${s.t}</b><span class="cap">${s.d}</span></span>
+        <span class="num">${s.sub}</span></button>`).join("")}
+    </div>
+  </section>
+
+  <section class="stack">
+    <div class="row" style="justify-content:space-between"><h2>Mis mazos</h2><button class="link" data-act="study" data-deck="all" data-mode="smart">Repasar todo mezclado</button></div>
+    ${DECKS.map(deckCard).join("")}
+  </section>`;
+}
+function deckCard(d){
+  const s = deckStats(d), open = openDeck===d.id;
+  return `<article class="deck">
+    <button class="deck-h" data-act="toggleDeck" data-deck="${d.id}" aria-expanded="${open}" style="background:none;border:0;padding:0;text-align:left">
+      <span class="deck-badge" style="background:${d.color}">${d.letter}</span>
+      <span style="min-width:0"><h3>${d.name}</h3>
+        <span class="counts"><span class="c-new">${s.nw} nuevas</span><span class="c-learn">${s.lr} aprendiendo</span><span class="c-done">${s.dn} dominadas</span></span></span>
+      <span class="num" aria-hidden="true">${open?"−":"+"}</span>
+    </button>
+    <div class="bar" aria-label="Dominio ${s.pct}%"><i style="width:${s.pct}%"></i></div>
+    ${open?`<div class="cap">${s.due} pendientes de repaso · ${s.total} tarjetas · dominio ${s.pct}%</div>`:""}
+    <div class="deck-actions">
+      <button class="btn" data-act="study" data-deck="${d.id}" data-mode="smart">Estudiar</button>
+      <button class="btn ghost" data-act="study" data-deck="${d.id}" data-mode="all">Repaso intensivo</button>
+    </div>
+  </article>`;
+}
+
+/* ---------- Teoría ---------- */
+const TH_TABS = [["con","Constructo"],["pro","Pronombres"],["suf","Sufijos"],["exa","Método de examen"]];
+function vTheory(){
+  S.seen[thTab]=true; S.thTab=thTab; save();
+  const body = {con:thCon, pro:thPro, suf:thSuf, exa:thExa}[thTab]();
+  return `<div class="stack" style="gap:6px"><span class="eyebrow">Teoría</span><h1>Lo esencial de la sesión</h1></div>
+  <div class="seg" role="tablist">${TH_TABS.map(([k,n])=>`<button role="tab" aria-selected="${k===thTab}" data-th="${k}">${S.seen[k]&&k!==thTab?'<span class="tick">✓</span>':""}${n}</button>`).join("")}</div>
+  ${body}
+  <div class="row" style="justify-content:space-between">
+    <span class="cap">Cuando termines, practica este bloque.</span>
+    <button class="btn miel" data-act="${thTab==="exa"?"level":"study"}" data-deck="${thTab==="exa"?"ver":thTab}" data-level="n4" data-mode="smart">${thTab==="exa"?"Ir al Nivel 4":"Flashcards de este bloque"}</button>
+  </div>`;
+}
+function thCon(){
+  return `
+  <section class="card t-sec">
+    <span class="pill p-azul tilt" style="justify-self:start">Bloque 1</span>
+    <h2>La cadena de «de»</h2>
+    <p>El hebreo no tiene una palabra para «de». Pone dos sustantivos juntos y cambia la forma del primero. Esa unión se llama <b>cadena constructa</b> (o genitiva).</p>
+    <div class="readdir">se lee ← de derecha a izquierda</div>
+    <div class="chain">
+      <div class="link-box c"><span class="he">דְּבַר</span><b>Constructo</b><span class="cap">«la palabra de»<br>lo poseído · pierde el acento</span></div>
+      <span class="arrow" aria-hidden="true">←</span>
+      <div class="link-box a"><span class="he">יְהוָה</span><b>Absoluto</b><span class="cap">«Jehová»<br>el poseedor · conserva su forma</span></div>
+    </div>
+    <p class="muted">Como en el tren de la clase: los vagones (constructos) van primero y la locomotora (absoluto) va al final y «arrastra» a toda la cadena. Puede haber varios constructos seguidos, pero solo un absoluto, siempre el último.</p>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>Tres reglas que no fallan</h2>
+    <div class="rules">
+      <div class="rule"><span class="pill p-verde">Regla 1</span><span>El constructo <b>nunca</b> lleva artículo הַ. ${fmt("Bien: דְּבַר הַמֶּלֶךְ · Mal: הַדְּבַר הַמֶּלֶךְ")}</span></div>
+      <div class="rule"><span class="pill p-verde">Regla 2</span><span>Toda la cadena es <b>determinada</b> («el/la») si el absoluto lleva הַ, es nombre propio o tiene sufijo. Si no, es indeterminada: ${fmt("סוּס מֶלֶךְ")} = «un caballo de un rey».</span></div>
+      <div class="rule"><span class="pill p-verde">Regla 3</span><span>El constructo pierde el acento principal, así que sus vocales largas se <b>abrevian</b>: ${fmt("דָּבָר → דְּבַר")}.</span></div>
+    </div>
+  </section>
+
+  <section class="t-sec">
+    <h2>Cómo cambia la terminación</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Tipo</th><th>Absoluto</th><th>Constructo</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td>Masc. sg.</td><td>${heb("דָּבָר")}</td><td>${heb("דְּבַר")}</td><td>${fmt("דְּבַר הַמֶּלֶךְ")}<br><span class="cap">la palabra del rey</span></td></tr>
+        <tr><td>Fem. sg. ◌ָה → ◌ַת</td><td>${heb("סוּסָה")}</td><td>${hl("סוּסַ|ת")}</td><td>${fmt("סוּסַת הַמֶּלֶךְ")}<br><span class="cap">la yegua del rey</span></td></tr>
+        <tr><td>Masc. pl. ◌ִים → ◌ֵי</td><td>${heb("סוּסִים")}</td><td>${hl("סוּסֵ|י")}</td><td>${fmt("סוּסֵי הַמֶּלֶךְ")}<br><span class="cap">los caballos del rey</span></td></tr>
+        <tr><td>Dual ◌ַיִם → ◌ֵי</td><td>${heb("סוּסַיִם")}</td><td>${hl("סוּסֵ|י")}</td><td>${fmt("סוּסֵי הַמֶּלֶךְ")}<br><span class="cap">dos caballos del rey</span></td></tr>
+        <tr><td>Fem. pl. ◌וֹת (igual)</td><td>${heb("בָּנוֹת")}</td><td>${hl("בְּנ|וֹת")}</td><td>${fmt("בְּנוֹת הָאָרֶץ")}<br><span class="cap">las hijas de la tierra</span></td></tr>
+        <tr><td>Irregulares</td><td>${heb("בַּיִת · אֲנָשִׁים")}</td><td>${heb("בֵּית · אַנְשֵׁי")}</td><td>${fmt("בֵּית אֱלֹהִים")}<br><span class="cap">la casa de Dios</span></td></tr>
+      </tbody></table></div>
+  </section>
+
+  <section class="t-sec">
+    <h2>Ejemplos del examen, con análisis</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Cadena</th><th>Análisis (género · número · estado)</th><th>Traducción</th></tr></thead>
+      <tbody>
+        ${DECKS[0].cards.slice(0,8).map(c=>`<tr><td>${heb(c.f)}</td><td>${c.an.slice(0,2).map(fmt).join("<br>")}</td><td>${esc(c.es)}</td></tr>`).join("")}
+      </tbody></table></div>
+    <div class="card rosa sm"><b>Truco rápido.</b> Si la primera palabra termina en ${fmt("◌ֵי")} o ${fmt("◌ַת")} y va seguida de otro sustantivo, casi seguro es un constructo. Traduce «el/los … de …».</div>
+  </section>`;
+}
+function thPro(){
+  const P = [["1ª común","yo","אֲנִי / אָנֹכִי","nosotros/as","אֲנַחְנוּ"],["2ª masc.","tú","אַתָּה","vosotros","אַתֶּם"],["2ª fem.","tú","אַתְּ","vosotras","אַתֵּן"],["3ª masc.","él","הוּא","ellos","הֵם / הֵמָּה"],["3ª fem.","ella","הִיא","ellas","הֵן / הֵנָּה"]];
+  return `
+  <section class="t-sec">
+    <span class="pill p-lila tilt" style="justify-self:start">Bloque 2</span>
+    <h2>Pronombres personales</h2>
+    <p>Funcionan como sujeto. Si no hay verbo, forman una <b>oración nominal</b> y tú añades «es/son»: ${fmt("אֲנִי הַמֶּלֶךְ")} = «Yo soy el rey».</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Persona</th><th>Singular</th><th></th><th>Plural</th><th></th></tr></thead>
+      <tbody>${P.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${heb(r[2])}</td><td>${r[3]}</td><td>${heb(r[4])}</td></tr>`).join("")}</tbody>
+    </table></div>
+    <div class="card rosa sm">Para distinguir: ${fmt("הוּא")} (él) lleva <b>u</b>; ${fmt("הִיא")} (ella) lleva <b>i</b>. ${fmt("אַתָּה")} (tú, varón) termina en ה; ${fmt("אַתְּ")} (tú, mujer) es corto.</div>
+  </section>
+
+  <section class="t-sec">
+    <h2>Demostrativos</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th></th><th>Cerca (este/esta)</th><th>Lejos (aquel/aquella)</th></tr></thead>
+      <tbody>
+        <tr><td>Masc. sg.</td><td>${heb("זֶה")}</td><td>${heb("הוּא")}</td></tr>
+        <tr><td>Fem. sg.</td><td>${heb("זֹאת")}</td><td>${heb("הִיא")}</td></tr>
+        <tr><td>Masc. pl.</td><td>${heb("אֵלֶּה")}</td><td>${heb("הֵם / הֵמָּה")}</td></tr>
+        <tr><td>Fem. pl.</td><td>${heb("אֵלֶּה")}</td><td>${heb("הֵן / הֵנָּה")}</td></tr>
+      </tbody></table></div>
+    <div class="levels">
+      <div class="card miel stack"><span class="pill p-verde" style="justify-self:start">Atributivo</span><p class="he" style="font-size:2em;text-align:center">הָאִישׁ הַזֶּה</p><p><b>«este hombre»</b><br><span class="muted">Artículo en los dos y el demostrativo <b>detrás</b>.</span></p></div>
+      <div class="card lima stack"><span class="pill p-azul" style="justify-self:start">Predicativo</span><p class="he" style="font-size:2em;text-align:center">זֶה הָאִישׁ</p><p><b>«este es el hombre»</b><br><span class="muted">Demostrativo <b>delante</b> y <b>sin</b> artículo: forma una oración.</span></p></div>
+    </div>
+  </section>
+
+  <section class="t-sec">
+    <h2>Interrogativos y relativo</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Forma</th><th>Significado</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td>${heb("מִי")}</td><td>¿quién? (personas)</td><td>${fmt("מִי־אַתָּה")} ¿Quién eres tú?</td></tr>
+        <tr><td>${heb("מָה / מַה־")}</td><td>¿qué? (cosas)</td><td>${fmt("מַה־זֶּה")} ¿Qué es esto?</td></tr>
+        <tr><td>${heb("אֲשֶׁר")}</td><td>que, el cual (invariable)</td><td>${fmt("הָאִישׁ אֲשֶׁר שָׁמַר")} el hombre que guardó</td></tr>
+      </tbody></table></div>
+    <p class="cap">Tu diapositiva escribe ${fmt("מָה־זֶה")}. En el texto bíblico aparece ${fmt("מַה־זֶּה")}: con maqqef, la vocal se abrevia a patach y la consonante siguiente se duplica.</p>
+  </section>`;
+}
+function thSuf(){
+  const sg = [["1ª común","mi","סוּסִ|י","nuestro","סוּסֵ|נוּ"],["2ª masc.","tu","סוּסְ|ךָ","vuestro","סוּסְ|כֶם"],["2ª fem.","tu","סוּסֵ|ךְ","vuestro","סוּסְ|כֶן"],["3ª masc.","su (de él)","סוּס|וֹ","su (de ellos)","סוּסָ|ם"],["3ª fem.","su (de ella)","סוּסָ|הּ","su (de ellas)","סוּסָ|ן"]];
+  const pl = [["1ª común","mis","סוּסַ|י","nuestros","סוּסֵ|ינוּ"],["2ª masc.","tus","סוּסֶ|יךָ","vuestros","סוּסֵ|יכֶם"],["2ª fem.","tus","סוּסַ|יִךְ","vuestros","סוּסֵ|יכֶן"],["3ª masc.","sus (de él)","סוּסָ|יו","sus (de ellos)","סוּסֵ|יהֶם"],["3ª fem.","sus (de ella)","סוּסֶ|יהָ","sus (de ellas)","סוּסֵ|יהֶן"]];
+  return `
+  <section class="t-sec">
+    <span class="pill p-verde tilt" style="justify-self:start">Bloque 3</span>
+    <h2>Sufijos pronominales</h2>
+    <p>El posesivo («mi», «tu», «su») no es una palabra aparte: es una terminación pegada al sustantivo. Un sustantivo con sufijo es <b>determinado</b> («mi caballo», nunca «un caballo mío»).</p>
+    <h3>Sobre un sustantivo singular: ${fmt("סוּס")} caballo</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Persona</th><th>Singular</th><th></th><th>Plural</th><th></th></tr></thead>
+      <tbody>${sg.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${hl(r[2])}</td><td>${r[3]}</td><td>${hl(r[4])}</td></tr>`).join("")}</tbody>
+    </table></div>
+    <h3>Sobre un sustantivo plural: ${fmt("סוּסִים")} caballos</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Persona</th><th>Singular</th><th></th><th>Plural</th><th></th></tr></thead>
+      <tbody>${pl.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${hl(r[2],"y")}</td><td>${r[3]}</td><td>${hl(r[4],"y")}</td></tr>`).join("")}</tbody>
+    </table></div>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>La pista de la י</h2>
+    <p>Si ves una <b>י antes del sufijo</b>, lo poseído es plural.</p>
+    <div class="levels">
+      <div class="card sm" style="background:var(--crema)"><p style="text-align:center">${hl("סוּס|וֹ")}</p><p style="text-align:center"><b>su caballo</b></p></div>
+      <div class="card sm" style="background:var(--crema)"><p style="text-align:center">${hl("סוּסָ|יו","y")}</p><p style="text-align:center"><b>sus caballos</b></p></div>
+      <div class="card sm" style="background:var(--crema)"><p style="text-align:center">${hl("סוּסֵ|נוּ")}</p><p style="text-align:center"><b>nuestro caballo</b></p></div>
+      <div class="card sm" style="background:var(--crema)"><p style="text-align:center">${hl("סוּסֵ|ינוּ","y")}</p><p style="text-align:center"><b>nuestros caballos</b></p></div>
+    </div>
+    <p class="muted">Excepción: ${fmt("סוּסַי")} «mis caballos» lleva patach + י. No lo confundas con ${fmt("סוּסֵי")} (tsere + י), que es el plural constructo «caballos de».</p>
+  </section>
+
+  <section class="t-sec">
+    <h2>Sufijos en preposiciones</h2>
+    <p>Con preposiciones, el sufijo hace de pronombre: ${fmt("לִי")} «a mí», ${fmt("עִמָּנוּ")} «con nosotros».</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Persona</th><th>${fmt("לְ")} a / para</th><th></th><th>${fmt("עִם")} con</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>1ª sg.</td><td>${heb("לִי")}</td><td>a mí</td><td>${heb("עִמִּי")}</td><td>conmigo</td></tr>
+        <tr><td>2ª masc. sg.</td><td>${heb("לְךָ")}</td><td>a ti</td><td>${heb("עִמְּךָ")}</td><td>contigo</td></tr>
+        <tr><td>3ª masc. sg.</td><td>${heb("לוֹ")}</td><td>a él</td><td>${heb("עִמּוֹ")}</td><td>con él</td></tr>
+        <tr><td>3ª fem. sg.</td><td>${heb("לָהּ")}</td><td>a ella</td><td>${heb("עִמָּהּ")}</td><td>con ella</td></tr>
+        <tr><td>1ª pl.</td><td>${heb("לָנוּ")}</td><td>a nosotros</td><td>${heb("עִמָּנוּ")}</td><td>con nosotros</td></tr>
+        <tr><td>2ª masc. pl.</td><td>${heb("לָכֶם")}</td><td>a vosotros</td><td>${heb("עִמָּכֶם")}</td><td>con vosotros</td></tr>
+        <tr><td>3ª masc. pl.</td><td>${heb("לָהֶם")}</td><td>a ellos</td><td>${heb("עִמָּהֶם")}</td><td>con ellos</td></tr>
+      </tbody></table></div>
+    <div class="card rosa sm">${fmt("עִמִּי")} (hireq) = conmigo · ${fmt("עַמִּי")} (patach) = mi pueblo. La vocal de la primera letra lo decide.</div>
+  </section>`;
+}
+function thExa(){
+  const steps = [
+    ["Lee de derecha a izquierda","Separa las palabras y marca las que tienen maqqef (־): van unidas."],
+    ["Busca pronombres","אֲנִי, אַתָּה, הוּא… son el sujeto. זֶה/זֹאת/אֵלֶּה sin artículo y delante = «este es…»."],
+    ["Busca cadenas constructas","Primera palabra sin artículo + terminación ◌ֵי o ◌ַת + otro sustantivo → «el … de …»."],
+    ["Separa los sufijos","◌ִי mi · ◌ְךָ tu · ◌וֹ su · ◌ֵנוּ nuestro · ◌ָם su (de ellos). Con י delante: plural."],
+    ["Analiza cada sustantivo","Género, número y estado (absoluto o constructo). Es lo que pide el profesor."],
+    ["Traduce","Si no hay verbo, añade «es/son». Pule el español al final."]
+  ];
+  const v = DECKS[4].cards[0];
+  return `
+  <section class="card t-sec">
+    <span class="pill p-line tilt" style="justify-self:start">Para mañana</span>
+    <h2>Método para traducir un versículo</h2>
+    <div class="plan">${steps.map((s,i)=>`<div class="step" style="grid-template-columns:36px 1fr"><span class="n">${i+1}</span><span><b>${s[0]}</b><span class="cap" style="font-size:14px">${fmt(s[1])}</span></span></div>`).join("")}</div>
+  </section>
+  <section class="card miel t-sec">
+    <h2>Ejemplo resuelto · ${v.ref}</h2>
+    <p class="he" style="font-size:2.2em;text-align:center">${esc(v.f)}</p>
+    <p class="cap" style="text-align:center;font-style:italic">${esc(v.tr)}</p>
+    <div class="parts">${v.an.map(a=>{const [w,...r]=a.split(" — ");return `<div class="part">${heb(w)}<span>${fmt(r.join(" — "))}</span></div>`;}).join("")}</div>
+    <p style="font-family:var(--display);font-weight:800;font-size:22px;text-align:center">«${esc(v.es)}»</p>
+  </section>`;
+}
+
+/* ---------- Flashcards ---------- */
+function vDecks(){
+  return `<div class="stack" style="gap:6px"><span class="eyebrow">Flashcards</span><h1>Elige un mazo</h1>
+  <p class="muted">«Estudiar» te da las nuevas y las que tocan repasar. «Repaso intensivo» pasa por todo el mazo; úsalo esta noche antes del examen.</p></div>
+  <div class="deck"><div class="deck-h"><span class="deck-badge" style="background:var(--tinta)">ש</span><span><h3>Todo mezclado</h3><span class="cap">${DECKS.reduce((a,d)=>a+d.cards.length,0)} tarjetas de los 5 mazos</span></span><span></span></div>
+  <div class="deck-actions"><button class="btn" data-act="study" data-deck="all" data-mode="smart">Estudiar</button><button class="btn ghost" data-act="study" data-deck="all" data-mode="all">Repaso intensivo</button></div></div>
+  ${DECKS.map(deckCard).join("")}`;
+}
+function startStudy(deckId, mode){
+  const decks = deckId==="all" ? DECKS : [DECKS.find(d=>d.id===deckId)];
+  let ids = []; decks.forEach(d=>d.cards.forEach((c,i)=>ids.push(cid(d.id,i))));
+  const now = Date.now();
+  if (mode==="smart"){
+    const due = ids.filter(id=>S.cards[id] && S.cards[id].d<=now);
+    const fresh = ids.filter(id=>!S.cards[id]);
+    let pick = shuffle(due).concat(fresh).slice(0,25);
+    if (!pick.length){ toast("Nada pendiente: modo repaso intensivo"); pick = ids; mode="all"; }
+    ids = mode==="all" ? shuffle(ids) : pick;
+  } else ids = shuffle(ids);
+  if (deckId!=="all"){ S.last = deckId; save(); }
+  fcS = {deck:deckId, mode, q:ids, i:0, flip:false, ok:0, again:0, total:ids.length};
+  route="estudiar"; go("estudiar");
+}
+function vCard(){
+  if (fcS.i >= fcS.q.length) return vCardDone();
+  const {deck, card, id} = cardById(fcS.q[fcS.i]);
+  const st = S.cards[id] || {b:0};
+  const done = fcS.i, tot = fcS.q.length;
+  const front = card.f
+    ? `<div class="front ${card.f.length>14?"long":""}" lang="he">${esc(card.f)}</div>`
+    : `<div class="q">${fmt(card.q)}</div>`;
+  const back = fcS.flip ? `
+    ${card.tr?`<div class="tr">${esc(card.tr)}</div>`:""}
+    <div class="es">${fmt(card.es)}</div>
+    ${card.ref?`<span class="pill p-miel tag">${esc(card.ref)}</span>`:""}
+    ${card.an?`<div class="an">${card.an.map(a=>`<div>${fmt(a)}</div>`).join("")}</div>`:""}
+    ${card.tip?`<div class="tip"><b>Recuerda:</b> ${fmt(card.tip)}</div>`:""}` : "";
+  const nb = b => Math.min(b,5);
+  return `
+  <div class="fc-top">
+    <button class="iconbtn" data-act="exitStudy" aria-label="Salir">✕</button>
+    <div class="bar"><i style="width:${done/tot*100}%"></i></div>
+    <span class="num cap">${done+1}/${tot}</span>
+  </div>
+  <div class="fc-stage"><div class="fc ${fcS.flip?"flip":""}" id="fc">
+    <span class="pill tag" style="background:${deck.color};color:var(--crema)">${deck.short}</span>
+    ${front}${back}
+  </div></div>
+  ${fcS.flip ? `
+    <div class="rate">
+      <button class="r1" data-rate="0">Otra vez<small>${INTV_LABEL[0]}</small></button>
+      <button class="r2" data-rate="1">Bien<small>${INTV_LABEL[nb((st.b||0)+1)]}</small></button>
+      <button class="r3" data-rate="2">Fácil<small>${INTV_LABEL[nb((st.b||0)+2)]}</small></button>
+    </div>
+    <p class="rate-help">Otra vez = no la sabía (vuelve en esta sesión) · Bien = la sabía · Fácil = sin pensar</p>`
+  : `<button class="btn block" data-act="flip" style="min-height:54px">Mostrar respuesta</button>
+     <p class="rate-help">Di la respuesta en voz alta antes de voltear. Atajo: barra espaciadora.</p>`}`;
+}
+function rate(r){
+  const id = fcS.q[fcS.i]; const now = Date.now();
+  const st = S.cards[id] || {b:0, d:0, n:0, l:0};
+  st.n++;
+  if (r===0){ st.b=0; st.l++; st.d=now+INTV[0]; fcS.again++;
+    const pos = Math.min(fcS.q.length, fcS.i+4); fcS.q.splice(pos,0,id); }
+  else { st.b = Math.min(5, st.b + (r===1?1:2)); st.d = now + INTV[st.b]; fcS.ok++; }
+  S.cards[id]=st;
+  const t = id.split("-")[0]; tally(t==="ver"?"ver":t, r>0);
+  markDay(); save();
+  fcS.i++; fcS.flip=false; render();
+}
+function vCardDone(){
+  const name = fcS.deck==="all" ? "Todo mezclado" : DECKS.find(d=>d.id===fcS.deck).name;
+  return `<section class="hero" style="grid-template-columns:1fr">${star}
+    <span class="eyebrow" style="color:var(--tinta)">Sesión terminada</span>
+    <h1>${esc(name)}</h1>
+    <div class="row"><span class="pill p-verde tilt">${fcS.ok} acertadas</span><span class="pill p-line tilt2">${fcS.again} para repetir</span></div>
+  </section>
+  <div class="card stack"><p>Dominio general: <b>${overall()}%</b>. Las tarjetas marcadas «Otra vez» volverán primero la próxima vez.</p>
+  <div class="row"><button class="btn" data-act="study" data-deck="${fcS.deck}" data-mode="all">Repetir el mazo</button><button class="btn ghost" data-act="exitStudy">Volver a los mazos</button><button class="btn miel" data-go-r="practica">Ir a práctica</button></div></div>`;
+}
+
+/* ---------- Práctica ---------- */
+function vLevels(){
+  const sim = S.sim;
+  return `<div class="stack" style="gap:6px"><span class="eyebrow">Práctica helicoidal</span><h1>De lo fácil al examen</h1>
+  <p class="muted">Los ejercicios de la pizarra, con su solución explicada, y más preguntas del mismo tipo.</p></div>
+  <div class="levels">${LEVELS.map(l=>{ const r=S.lv[l.id];
+    return `<button class="level" data-act="level" data-level="${l.id}">
+      <div class="row"><span class="eyebrow">${l.name}</span><span class="pill ${l.pill}">${l.diff}</span></div>
+      <h3>${l.title}</h3>
+      <span class="cap">${l.items.length} ejercicios · ${r?`mejor: <b class="num">${r.best}%</b>`:"sin intentar"}</span>
+      <div class="bar"><i style="width:${r?r.best:0}%"></i></div>
+    </button>`;}).join("")}</div>
+  <section class="hero" style="grid-template-columns:1fr auto">
+    <div class="stack" style="gap:8px;min-width:0"><span class="eyebrow" style="color:var(--tinta)">Simulacro</span>
+      <h2 style="font-family:var(--display);font-weight:800;font-size:28px;line-height:1.1">Examen de prueba</h2>
+      <p>14 preguntas al azar de los cuatro niveles, con traducción de versículos al final.</p>
+      <div class="row"><button class="btn" data-act="sim">Empezar simulacro</button>${sim?`<span class="pill p-miel">Mejor: ${sim.best}%</span>`:""}</div></div>
+  </section>`;
+}
+function startLevel(id){
+  const L = LEVELS.find(l=>l.id===id);
+  const items = (L.id==="n4" ? L.items.slice() : shuffle(L.items)).map(x=>Object.assign({topic:L.topic},x));
+  exS = {kind:"level", id, title:L.name+" · "+L.title, items, i:0, done:false, score:0, wrong:[], pick:null, built:[]};
+  go("practica");
+}
+function startSim(){
+  const pool = [];
+  LEVELS.slice(0,3).forEach(L=>L.items.forEach(x=>pool.push(Object.assign({topic:L.topic},x))));
+  const items = shuffle(pool).slice(0,12).concat(shuffle(LEVELS[3].items).slice(0,2).map(x=>Object.assign({topic:"ver"},x)));
+  exS = {kind:"sim", id:"sim", title:"Simulacro de examen", items, i:0, done:false, score:0, wrong:[], pick:null, built:[]};
+  go("practica");
+}
+function vEx(){
+  if (exS.i >= exS.items.length) return vExDone();
+  const it = exS.items[exS.i], n = exS.items.length;
+  let body = "";
+  if (it.t==="mc"){
+    if (!it._o){ const ord = shuffle(it.o.map((o,k)=>k)); it._o = ord; }
+    body = `${it.he?`<div class="big" lang="he">${esc(it.he)}</div>`:""}
+      <p class="prompt">${fmt(it.q)}</p>
+      <div class="opts">${it._o.map((k,j)=>{
+        let cls=""; if(exS.done){ if(k===it.a) cls="ok"; else if(k===exS.pick) cls="bad"; }
+        return `<button class="opt ${cls}" data-opt="${k}" ${exS.done?"disabled":""}><span class="k">${"ABCD"[j]}</span><span>${fmt(it.o[k])}</span></button>`; }).join("")}</div>`;
+  } else if (it.t==="ord"){
+    if (!it._t) it._t = shuffle(it.tiles);
+    body = `<p class="prompt">${fmt(it.q)}</p>
+      <div class="readdir">se escribe ← de derecha a izquierda</div>
+      <div class="built" id="built">${exS.built.map((w,k)=>`<button class="tile" data-unb="${k}" ${exS.done?"disabled":""}>${esc(w)}</button>`).join("")}</div>
+      <div class="tiles">${it._t.map((w,k)=>`<button class="tile ${exS.built.includes(w)?"used":""}" data-tile="${k}" ${exS.done||exS.built.includes(w)?"disabled":""}>${esc(w)}</button>`).join("")}</div>
+      ${exS.done?"":`<div class="row" style="justify-content:center"><button class="btn ghost" data-act="clearB">Borrar</button><button class="btn" data-act="checkB" ${exS.built.length?"":"disabled"}>Comprobar</button></div>`}`;
+  } else if (it.t==="rv"){
+    const c = DECKS[4].cards[it.c];
+    body = `<p class="prompt">Traduce al español e identifica cada elemento.</p>
+      <div class="big" lang="he">${esc(c.f)}</div>
+      ${c.ref?`<span class="pill p-miel" style="justify-self:start">${esc(c.ref)}</span>`:""}
+      ${exS.reveal ? `<div class="card sm stack"><span class="cap" style="font-style:italic">${esc(c.tr)}</span>
+          <p style="font-family:var(--display);font-weight:800;font-size:22px">«${esc(c.es)}»</p>
+          <div class="parts">${c.an.map(a=>{const [w,...r]=a.split(" — ");return `<div class="part">${heb(w)}<span>${fmt(r.join(" — "))}</span></div>`;}).join("")}</div></div>
+          ${exS.done?"":`<p class="prompt" style="font-size:16px">¿Tu traducción y tu análisis coincidían?</p>
+          <div class="row"><button class="btn" data-self="1">Sí, lo tenía</button><button class="btn ghost" data-self="0">No del todo</button></div>`}`
+        : `<p class="muted">Escríbela en tu cuaderno o dila en voz alta. Luego compara.</p><button class="btn block" data-act="reveal">Ver traducción y análisis</button>`}`;
+  }
+  let fb = "";
+  if (exS.done){
+    const ok = exS.lastOk;
+    const msg = ok ? ["Correcto.","Exacto.","Bien visto."][exS.i%3] : ["Casi.","Revisa esto.","Aquí está la clave."][exS.i%3];
+    const x = it.t==="rv" ? (ok?"Sigue así: este tipo de versículo es el que pide el profesor.":"Repasa el análisis palabra por palabra y vuelve a intentarlo luego.") : it.x;
+    const sol = it.t==="ord" && !ok ? `<span>Respuesta: ${heb(it.ans.join(" "))}</span>` : "";
+    fb = `<div class="feedback ${ok?"ok":"bad"}"><b>${msg}</b>${sol}<span>${fmt(x)}</span></div>
+      <button class="btn block" data-act="next">${exS.i+1<n?"Siguiente":"Ver resultado"}</button>`;
+  }
+  return `<div class="fc-top"><button class="iconbtn" data-act="exitEx" aria-label="Salir">✕</button>
+    <div class="bar"><i style="width:${exS.i/n*100}%"></i></div><span class="num cap">${exS.i+1}/${n}</span></div>
+    <div class="row" style="justify-content:space-between"><span class="eyebrow">${esc(exS.title)}</span><span class="pill p-line" style="font-size:13px;padding:2px 12px">${TOPICS[it.topic]}</span></div>
+    <section class="ex">${body}${fb}</section>`;
+}
+function answer(ok){
+  const it = exS.items[exS.i];
+  exS.done = true; exS.lastOk = ok;
+  if (ok) exS.score++; else exS.wrong.push(it);
+  tally(it.topic, ok); markDay(); save(); render();
+}
+function next(){ exS.i++; exS.done=false; exS.pick=null; exS.built=[]; exS.reveal=false; render(); window.scrollTo(0,0); }
+function vExDone(){
+  const pct = Math.round(exS.score/exS.items.length*100);
+  if (!exS.recorded){ exS.recorded = true;
+  if (exS.kind==="level"){ const r=S.lv[exS.id]||{best:0,tries:0}; r.best=Math.max(r.best,pct); r.tries++; S.lv[exS.id]=r; }
+  else { const r=S.sim||{best:0,tries:0}; r.best=Math.max(r.best,pct); r.tries++; r.lastPct=pct; S.sim=r; }
+  save(); }
+  const label = pct>=90?"Listo para el examen":pct>=70?"Vas bien":"Repasa y vuelve";
+  const missed = exS.wrong.map(it=>{
+    if (it.t==="rv"){ const c=DECKS[4].cards[it.c]; return `<div class="miss">${heb(c.f)}<span>«${esc(c.es)}»</span></div>`; }
+    if (it.t==="ord") return `<div class="miss"><b>${fmt(it.q)}</b>${heb(it.ans.join(" "))}<span class="cap">${fmt(it.x)}</span></div>`;
+    return `<div class="miss"><b>${it.he?heb(it.he)+" · ":""}${fmt(it.q)}</b><span>${fmt(it.o[it.a])}</span><span class="cap">${fmt(it.x)}</span></div>`;
+  }).join("");
+  const again = exS.kind==="sim" ? `data-act="sim"` : `data-act="level" data-level="${exS.id}"`;
+  const res = `<section class="hero">${star}
+    <div class="stack" style="gap:8px"><span class="eyebrow" style="color:var(--tinta)">${esc(exS.title)}</span>
+      <div class="score">${pct}%</div><span class="pill p-verde tilt" style="justify-self:start">${label}</span>
+      <span>${exS.score} de ${exS.items.length} correctas</span></div>
+    <div class="ringbox">${ring(pct,"acierto")}</div></section>
+    ${missed?`<section class="stack"><h2>Para repasar</h2>${missed}</section>`:`<div class="card lima"><b>Sin errores.</b> Prueba el siguiente nivel o el simulacro.</div>`}
+    <div class="row"><button class="btn" ${again}>Intentar de nuevo</button><button class="btn ghost" data-act="exitEx">Volver a niveles</button></div>`;
+  return res;
+}
+
+/* ---------- Progreso ---------- */
+function vProgress(){
+  const pct = overall();
+  const nCards = Object.keys(S.cards).length, nTot = DECKS.reduce((a,d)=>a+d.cards.length,0);
+  const rev = Object.values(S.cards).reduce((a,c)=>a+c.n,0);
+  const days = []; for(let k=6;k>=0;k--){ const d=new Date(); d.setDate(d.getDate()-k); days.push(d); }
+  const wd = ["D","L","M","M","J","V","S"];
+  let streak=0; { const d=new Date(); while(S.days.includes(today(d))){ streak++; d.setDate(d.getDate()-1);} }
+  const topics = Object.entries(TOPICS).map(([k,n])=>{ const r=S.top[k]; return {k,n,pct:r&&r.n?Math.round(r.ok/r.n*100):null, n2:r?r.n:0}; });
+  const tried = topics.filter(t=>t.pct!==null && t.n2>=3).sort((a,b)=>a.pct-b.pct);
+  const weak = tried[0];
+  return `<div class="stack" style="gap:6px"><span class="eyebrow">Progreso</span><h1>Cómo vas</h1></div>
+  <section class="hero">${star}
+    <div class="stack" style="gap:8px"><span class="eyebrow" style="color:var(--tinta)">Dominio de la sesión</span>
+      <h2 style="font-family:var(--display);font-weight:800;font-size:28px;line-height:1.1">${pct>=80?"Muy bien preparado":pct>=50?"A medio camino":"Recién empiezas"}</h2>
+      <span>${weak?`Tu tema más débil: <b>${weak.n}</b> (${weak.pct}%).`:"Responde unas preguntas para ver tu tema más débil."}</span></div>
+    <div class="ringbox">${ring(pct,"dominio")}</div></section>
+
+  <div class="tiles3">
+    <div class="card"><span class="num">${nCards}<span class="cap">/${nTot}</span></span><span class="cap">tarjetas vistas</span></div>
+    <div class="card miel"><span class="num">${rev}</span><span class="cap">repasos</span></div>
+    <div class="card lima"><span class="num">${streak}</span><span class="cap">días seguidos</span></div>
+  </div>
+
+  <section class="card stack"><h3>Esta semana</h3>
+    <div class="week">${days.map(d=>`<div><i class="${S.days.includes(today(d))?"on":""}"></i>${wd[d.getDay()]}</div>`).join("")}</div></section>
+
+  <section class="card crema stack"><h3>Dominio por mazo</h3>
+    ${DECKS.map(d=>{const s=deckStats(d); return `<div class="statrow"><span>${d.name}</span><span class="num">${s.pct}%</span><div class="bar"><i style="width:${s.pct}%;background:${d.color}"></i></div></div>`;}).join("")}</section>
+
+  <section class="card crema stack"><h3>Acierto por tema</h3>
+    ${topics.map(t=>`<div class="statrow"><span>${t.n} <span class="cap">${t.n2} respuestas</span></span><span class="num">${t.pct===null?"—":t.pct+"%"}</span><div class="bar"><i style="width:${t.pct||0}%"></i></div></div>`).join("")}</section>
+
+  <section class="card crema stack"><h3>Niveles de práctica</h3>
+    ${LEVELS.map(l=>{const r=S.lv[l.id];return `<div class="statrow"><span>${l.name} · ${l.title}</span><span class="num">${r?r.best+"%":"—"}</span></div>`;}).join("")}
+    <div class="statrow"><span><b>Simulacro</b></span><span class="num">${S.sim?S.sim.best+"%":"—"}</span></div>
+  </section>
+
+  <section class="stack">
+    <p class="cap">Tu progreso se guarda automáticamente en este navegador. Si cambias de dispositivo, empieza de cero.</p>
+    ${S._confirmReset?`<div class="card rosa row" style="justify-content:space-between"><span>¿Borrar todo el progreso? No se puede deshacer.</span><div class="row"><button class="btn" data-act="resetYes">Sí, borrar</button><button class="btn ghost" data-act="resetNo">Cancelar</button></div></div>`
+      :`<button class="link" data-act="reset" style="justify-self:start">Reiniciar progreso</button>`}
+  </section>`;
+}
+
+/* ---------- Guía inicial ---------- */
+const COACH = [
+  ["Bienvenido a la Sesión 3","Esta app tiene todo lo de tu clase: estado constructo, pronombres y sufijos. El «Plan para hoy» del inicio te dice qué hacer y en qué orden."],
+  ["Flashcards con repaso espaciado","Mira el hebreo, responde en voz alta y voltea. Luego elige: «Otra vez» si no la sabías (vuelve enseguida), «Bien» si la sabías, «Fácil» si fue inmediata. Las difíciles se repiten más."],
+  ["Práctica y simulacro","Cuatro niveles como en la pizarra, cada respuesta con su explicación. Al final, un simulacro de examen. Todo se guarda solo: verás «Guardado» arriba."]
+];
+let coachI = 0;
+function showCoach(){
+  coachI = 0;
+  const o = document.createElement("div"); o.className="overlay"; o.id="coach"; o.setAttribute("role","dialog"); o.setAttribute("aria-modal","true");
+  document.body.appendChild(o); drawCoach();
+}
+function drawCoach(){
+  const o = $("#coach"); const [t,d] = COACH[coachI];
+  o.innerHTML = `<div class="coach"><div class="dots">${COACH.map((_,k)=>`<i class="${k===coachI?"on":""}"></i>`).join("")}</div>
+    <span class="pill p-miel tilt" style="justify-self:start">Paso ${coachI+1}</span>
+    <h2>${t}</h2><p>${d}</p>
+    <div class="row" style="justify-content:space-between"><button class="link" data-coach="skip">Saltar</button>
+    <button class="btn" data-coach="next">${coachI<COACH.length-1?"Siguiente":"Empezar"}</button></div></div>`;
+  o.querySelector("[data-coach=next]").focus();
+}
+function closeCoach(){ const o=$("#coach"); if(o) o.remove(); S.onb=true; save(); }
+
+/* =========================================================
+   EVENTOS
+   ========================================================= */
+document.addEventListener("click", e=>{
+  const t = e.target.closest("button"); if (!t) return;
+  const d = t.dataset;
+  if (d.coach){ if (d.coach==="skip"||coachI>=COACH.length-1) closeCoach(); else { coachI++; drawCoach(); } return; }
+  if (d.go){ if (d.go!=="estudiar") fcS=null; if (d.go!=="practica") exS=null; if (d.go==="estudiar") fcS=null; if (d.go==="practica") exS=null; go(d.go); return; }
+  if (d.goR){ fcS=null; exS=null; go(d.goR); return; }
+  if (d.plan){ if (d.plan==="sim") startSim(); else { fcS=null; exS=null; go(d.plan); } return; }
+  if (d.th){ thTab=d.th; render(); return; }
+  if (d.rate){ rate(+d.rate); return; }
+  if (d.opt!==undefined && exS && !exS.done){ exS.pick=+d.opt; answer(+d.opt===exS.items[exS.i].a); return; }
+  if (d.tile!==undefined && exS && !exS.done){ const it=exS.items[exS.i]; exS.built.push(it._t[+d.tile]); render(); return; }
+  if (d.unb!==undefined && exS && !exS.done){ exS.built.splice(+d.unb,1); render(); return; }
+  if (d.self!==undefined){ answer(d.self==="1"); return; }
+  switch(d.act){
+    case "study": startStudy(d.deck, d.mode); break;
+    case "toggleDeck": openDeck = openDeck===d.deck?null:d.deck; render(); break;
+    case "flip": fcS.flip=true; render(); break;
+    case "exitStudy": fcS=null; go("estudiar"); break;
+    case "level": if (d.level && (d.act==="level")) startLevel(d.level); break;
+    case "sim": startSim(); break;
+    case "exitEx": exS=null; go("practica"); break;
+    case "next": next(); break;
+    case "reveal": exS.reveal=true; render(); break;
+    case "clearB": exS.built=[]; render(); break;
+    case "checkB": { const it=exS.items[exS.i]; answer(exS.built.join(" ")===it.ans.join(" ")); break; }
+    case "reset": S._confirmReset=true; render(); break;
+    case "resetNo": S._confirmReset=false; render(); break;
+    case "resetYes": S={cards:{},lv:{},sim:null,top:{},days:[],seen:{},onb:true,last:null}; save(); toast("Progreso reiniciado"); go("inicio"); break;
+  }
+});
+document.addEventListener("keydown", e=>{
+  if ($("#coach")) { if (e.key==="Escape") closeCoach(); return; }
+  if (route==="estudiar" && fcS && fcS.i<fcS.q.length){
+    if (!fcS.flip && (e.key===" "||e.key==="Enter")){ e.preventDefault(); fcS.flip=true; render(); }
+    else if (fcS.flip && ["1","2","3"].includes(e.key)) rate(+e.key-1);
+  }
+});
+$("#helpBtn").addEventListener("click", showCoach);
+window.addEventListener("hashchange", ()=>{ const h=location.hash.slice(1); if (["inicio","teoria","estudiar","practica","progreso"].includes(h) && h!==route){ fcS=null; exS=null; go(h); } });
+
+/* Inicio */
+(function(){
+  const h = location.hash.slice(1);
+  go(["inicio","teoria","estudiar","practica","progreso"].includes(h)?h:"inicio");
+  if (!S.onb) showCoach();
+})();
+</script>
