@@ -1,4 +1,4 @@
-<title>Dabar · Sesión 3</title>
+<title>Dabar Padilla</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Hebreo I, Sesión 3: estado constructo, pronombres y sufijos pronominales. Teoría, flashcards con repaso espaciado, práctica por niveles y simulacro.">
 <link rel="manifest" href="manifest.webmanifest">
@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Dabar">
+<meta name="apple-mobile-web-app-title" content="Dabar Padilla">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#fffdf4">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -176,6 +176,7 @@ td .he{font-size:1.45em}
 @media (max-width:520px){.levels{grid-template-columns:1fr}}
 .level{border:var(--trazo) solid var(--tinta);border-radius:var(--r-lg);padding:18px;background:var(--crema);text-align:left;display:grid;gap:8px;align-content:start}
 .level .row{justify-content:space-between}
+.level.wide{grid-column:1/-1;background:var(--miel)}
 .level .pill{font-size:13px;padding:3px 12px}
 .ex{display:grid;gap:16px}
 .ex .prompt{font-size:19px;font-weight:650;line-height:1.35}
@@ -247,7 +248,7 @@ td .he{font-size:1.45em}
 
 <header class="top">
   <div class="wrap">
-    <div class="logo">Dabar<small>Hebreo I · Sesión 3</small></div>
+    <div class="logo">Dabar Padilla<small>Hebreo I · Sesión 3</small></div>
     <div class="spacer"></div>
     <span class="saved" id="saved"><i></i>Guardado</span>
     <button class="iconbtn" id="helpBtn" aria-label="Cómo usar la app">?</button>
@@ -336,7 +337,14 @@ const DECKS = [
   {f:"דְּבָרָיו", tr:"dᵉḇārāyw", es:"sus palabras (de él)", an:["דְּבָרִים — masc. pl. + ◌ָיו 3ª masc. sg."]},
   {f:"עֵינֶיהָ", tr:"ʿêneyhā", es:"sus ojos (de ella)", an:["עֵינַיִם — fem. dual + ◌ֶיהָ 3ª fem. sg."]},
   {f:"יָדֵינוּ", tr:"yādênû", es:"nuestras manos", an:["יָדַיִם — fem. dual + ◌ֵינוּ 1ª común pl."]},
-  {f:"סִפְרִי", tr:"sip̄rî", es:"mi libro", an:["סֵפֶר — masc. sg. segolado (base סִפְר־) + ◌ִי 1ª común sg."]}
+  {f:"סִפְרִי", tr:"sip̄rî", es:"mi libro", an:["סֵפֶר — masc. sg. segolado (base סִפְר־) + ◌ִי 1ª común sg."]},
+  {f:"סוּסְכֶן", tr:"sûsᵉḵen", es:"vuestro caballo (de vosotras)", an:["סוּס + ◌ְכֶן 2ª fem. pl."]},
+  {f:"סוּסָן", tr:"sûsān", es:"su caballo (de ellas)", an:["סוּס + ◌ָן 3ª fem. pl."]},
+  {f:"סוּסַיִךְ", tr:"sûsayiḵ", es:"tus caballos (mujer)", an:["סוּסִים + ◌ַיִךְ 2ª fem. sg."]},
+  {f:"סוּסֵיכֶם", tr:"sûsêḵem", es:"vuestros caballos", an:["סוּסִים + ◌ֵיכֶם 2ª masc. pl."]},
+  {f:"סוּסֵיהֶן", tr:"sûsêhen", es:"sus caballos (de ellas)", an:["סוּסִים + ◌ֵיהֶן 3ª fem. pl."]},
+  {f:"דְּבַרְכֶם", tr:"dᵉḇarᵉḵem", es:"vuestra palabra", an:["דָּבָר — masc. sg. en forma constructa (דְּבַר) + ◌ְכֶם 2ª masc. pl."], tip:"Con sufijos «pesados» (◌כֶם, ◌כֶן) la base toma la forma del constructo."},
+  {f:"דִּבְרֵיהֶם", tr:"diḇrêhem", es:"sus palabras (de ellos)", an:["דְּבָרִים — masc. pl. en forma constructa (דִּבְרֵי) + ◌הֶם 3ª masc. pl."], tip:"Plural constructo דִּבְרֵי + הֶם: «las palabras de ellos»."}
  ]},
  { id:"pre", name:"Preposiciones con sufijo", short:"Preposiciones", color:"var(--naranja)", letter:"ל", cards:[
   {f:"לִי", tr:"lî", es:"a mí / para mí", an:["לְ + 1ª común sg."]},
@@ -346,6 +354,9 @@ const DECKS = [
   {f:"לָנוּ", tr:"lānû", es:"a nosotros / para nosotros", an:["לְ + 1ª común pl."]},
   {f:"לָכֶם", tr:"lāḵem", es:"a vosotros / para vosotros", an:["לְ + 2ª masc. pl."]},
   {f:"לָהֶם", tr:"lāhem", es:"a ellos / para ellos", an:["לְ + 3ª masc. pl."]},
+  {f:"לָךְ", tr:"lāḵ", es:"a ti / para ti (mujer)", an:["לְ + 2ª fem. sg."], tip:"Preposición ◌ָךְ (qamets) · sustantivo ◌ֵךְ (tsere): סוּסֵךְ"},
+  {f:"לָכֶן", tr:"lāḵen", es:"a vosotras / para vosotras", an:["לְ + 2ª fem. pl."]},
+  {f:"לָהֶן", tr:"lāhen", es:"a ellas / para ellas", an:["לְ + 3ª fem. pl."], tip:"Preposición: forma completa ◌הֶן · sustantivo singular: corta ◌ָן (סוּסָן)"},
   {f:"עִמִּי", tr:"ʿimmî", es:"conmigo", an:["עִם + 1ª común sg. (la מ se duplica)"], tip:"עִמִּי (hireq) = conmigo · עַמִּי (patach) = mi pueblo"},
   {f:"עִמְּךָ", tr:"ʿimmᵉḵā", es:"contigo (varón)", an:["עִם + 2ª masc. sg."]},
   {f:"עִמּוֹ", tr:"ʿimmô", es:"con él", an:["עִם + 3ª masc. sg."]},
@@ -367,6 +378,34 @@ const DECKS = [
   {f:"זֹאת הָאָרֶץ הַטּוֹבָה", tr:"zōʾṯ hāʾāreṣ haṭṭôḇāh", es:"Esta es la buena tierra", an:["זֹאת — demostrativo fem. sg., predicativo","הָאָרֶץ — artículo + sust. fem. sg. absoluto","הַטּוֹבָה — adjetivo fem. sg. con artículo, atributivo"]},
   {f:"יְהוָה לִי", tr:"YHWH lî", es:"Jehová está conmigo (es por mí)", ref:"Sal 118:6", an:["יְהוָה — nombre propio","לִי — לְ + 1ª común sg."]},
   {f:"הָאָרֶץ אֲשֶׁר נָתַן", tr:"hāʾāreṣ ʾᵃšer nāṯan", es:"la tierra que (él) dio", an:["הָאָרֶץ — artículo + sust. fem. sg. absoluto","אֲשֶׁר — relativo","נָתַן — verbo 3ª masc. sg. «dio»"]}
+ ]},
+ { id:"pat", name:"Terminaciones (tu cuaderno)", short:"Terminaciones", color:"var(--lila)", letter:"כ", cards:[
+  {"f": "◌ִי", "tr": "-î", "es": "mi · a mí (1ª común sg.)", "an": ["Sust. singular: סוּסִי «mi caballo»", "Preposición: לִי «a mí»"], "tip": "Es la י final de אֲנִי."},
+  {"f": "◌ְךָ", "tr": "-ᵉḵā", "es": "tu · a ti (2ª masc. sg.)", "an": ["Sust. singular: סוּסְךָ «tu caballo»", "Preposición: לְךָ «a ti»"], "tip": "La ת de אַתָּה se vuelve כ."},
+  {"f": "◌ָךְ", "tr": "-āḵ", "es": "a ti, mujer (2ª fem. sg., preposición)", "an": ["Preposición: לָךְ «a ti»"], "tip": "Con qamets: preposición. Con tsere (◌ֵךְ): sustantivo."},
+  {"f": "◌ֵךְ", "tr": "-ēḵ", "es": "tu, de mujer (2ª fem. sg., sustantivo)", "an": ["Sust. singular: סוּסֵךְ «tu caballo»"]},
+  {"f": "◌וֹ", "tr": "-ô", "es": "su (de él) · a él (3ª masc. sg.)", "an": ["Sust. singular: סוּסוֹ «su caballo»", "Preposición: לוֹ «a él»"], "tip": "Es la ו de הוּא."},
+  {"f": "◌ָהּ", "tr": "-āh", "es": "su (de ella) · a ella (3ª fem. sg.)", "an": ["Sust. singular: סוּסָהּ «su caballo»", "Preposición: לָהּ «a ella»"], "tip": "Es la ה de הִיא; el punto (mappiq) hace que suene."},
+  {"f": "◌ֵנוּ", "tr": "-ēnû", "es": "nuestro (1ª común pl., sustantivo)", "an": ["Sust. singular: סוּסֵנוּ «nuestro caballo»"], "tip": "Es la cola de אֲנַחְנוּ."},
+  {"f": "◌ָנוּ", "tr": "-ānû", "es": "a nosotros (1ª común pl., preposición)", "an": ["Preposición: לָנוּ «a nosotros», עִמָּנוּ «con nosotros»"], "tip": "Misma cola ◌נוּ; la qamets marca preposición."},
+  {"f": "◌ְכֶם", "tr": "-ᵉḵem", "es": "vuestro (2ª masc. pl., sustantivo)", "an": ["Sust. singular: סוּסְכֶם «vuestro caballo»", "דְּבַרְכֶם «vuestra palabra»"], "tip": "אַתֶּם → ◌כֶם (la ת se vuelve כ)."},
+  {"f": "◌ָכֶם", "tr": "-āḵem", "es": "a vosotros (2ª masc. pl., preposición)", "an": ["Preposición: לָכֶם «a vosotros»"]},
+  {"f": "◌ְכֶן", "tr": "-ᵉḵen", "es": "vuestro, de vosotras (2ª fem. pl., sustantivo)", "an": ["Sust. singular: סוּסְכֶן"], "tip": "אַתֵּן → ◌כֶן"},
+  {"f": "◌ָכֶן", "tr": "-āḵen", "es": "a vosotras (2ª fem. pl., preposición)", "an": ["Preposición: לָכֶן"]},
+  {"f": "◌ָם", "tr": "-ām", "es": "su (de ellos) (3ª masc. pl., sustantivo singular)", "an": ["סוּסָם «su caballo»", "אַרְצָם «su tierra»"], "tip": "Forma corta de הֵם."},
+  {"f": "◌ָהֶם", "tr": "-āhem", "es": "a ellos (3ª masc. pl., preposición)", "an": ["לָהֶם «a ellos»", "עִמָּהֶם «con ellos»"], "tip": "Forma completa: הֵם entero."},
+  {"f": "◌ָן", "tr": "-ān", "es": "su (de ellas) (3ª fem. pl., sustantivo singular)", "an": ["סוּסָן «su caballo»"], "tip": "Forma corta de הֵן."},
+  {"f": "◌ָהֶן", "tr": "-āhen", "es": "a ellas (3ª fem. pl., preposición)", "an": ["לָהֶן «a ellas»"]},
+  {"f": "◌ַי", "tr": "-ay", "es": "mis (1ª común sg., sustantivo plural)", "an": ["סוּסַי «mis caballos»", "בָּנַי «mis hijos»"], "tip": "Patach + י = «mis». Tsere + י (◌ֵי) = plural constructo «… de»."},
+  {"f": "◌ֶיךָ", "tr": "-eyḵā", "es": "tus, de varón (2ª masc. sg., sustantivo plural)", "an": ["סוּסֶיךָ «tus caballos»"]},
+  {"f": "◌ַיִךְ", "tr": "-ayiḵ", "es": "tus, de mujer (2ª fem. sg., sustantivo plural)", "an": ["סוּסַיִךְ «tus caballos»"]},
+  {"f": "◌ָיו", "tr": "-āyw", "es": "sus (de él) (3ª masc. sg., sustantivo plural)", "an": ["סוּסָיו «sus caballos»", "דְּבָרָיו «sus palabras»"], "tip": "Compara: סוּסוֹ (uno) · סוּסָיו (varios)."},
+  {"f": "◌ֶיהָ", "tr": "-eyhā", "es": "sus (de ella) (3ª fem. sg., sustantivo plural)", "an": ["סוּסֶיהָ «sus caballos»", "עֵינֶיהָ «sus ojos»"]},
+  {"f": "◌ֵינוּ", "tr": "-ênû", "es": "nuestros (1ª común pl., sustantivo plural)", "an": ["סוּסֵינוּ «nuestros caballos»", "יָדֵינוּ «nuestras manos»"], "tip": "◌ֵי del plural constructo + נוּ."},
+  {"f": "◌ֵיכֶם", "tr": "-êḵem", "es": "vuestros (2ª masc. pl., sustantivo plural)", "an": ["סוּסֵיכֶם «vuestros caballos»"], "tip": "◌ֵי + כֶם"},
+  {"f": "◌ֵיכֶן", "tr": "-êḵen", "es": "vuestros, de vosotras (2ª fem. pl., sustantivo plural)", "an": ["סוּסֵיכֶן"], "tip": "◌ֵי + כֶן"},
+  {"f": "◌ֵיהֶם", "tr": "-êhem", "es": "sus (de ellos) (3ª masc. pl., sustantivo plural)", "an": ["סוּסֵיהֶם «sus caballos»", "דִּבְרֵיהֶם «sus palabras»"], "tip": "◌ֵי + הֶם: «los caballos de ellos»."},
+  {"f": "◌ֵיהֶן", "tr": "-êhen", "es": "sus (de ellas) (3ª fem. pl., sustantivo plural)", "an": ["סוּסֵיהֶן"], "tip": "◌ֵי + הֶן"}
  ]}
 ];
 
@@ -414,10 +453,26 @@ const LEVELS = [
  { id:"n4", name:"Nivel 4", title:"Traducción integradora", diff:"Examen", pill:"p-line", topic:"ver", items:[
   {t:"rv", c:0}, {t:"rv", c:1}, {t:"rv", c:2}, {t:"rv", c:3},
   {t:"rv", c:6}, {t:"rv", c:8}, {t:"rv", c:7}, {t:"rv", c:9}
+ ]},
+ { id:"n5", name:"Nivel 5", title:"Puente: une las tres tablas", diff:"Conecta", pill:"p-azul", topic:"pat", items:[
+  {t:"mc", q:"¿Qué pronombre independiente está «escondido» en el sufijo ◌נוּ?", o:["אֲנַחְנוּ","אֲנִי","הוּא","אַתֶּם"], a:0, x:"Cada sufijo es la cola de un pronombre: אֲנַחְנוּ → ◌נוּ, אֲנִי → ◌ִי, הוּא → ◌וֹ, הֵם → ◌הֶם / ◌ָם."},
+  {t:"mc", q:"En los sufijos de 2ª persona, la ת de אַתָּה / אַתֶּם se convierte en…", o:["כ","ה","נ","ם"], a:0, x:"אַתָּה → ◌ךָ · אַתְּ → ◌ךְ · אַתֶּם → ◌כֶם · אַתֵּן → ◌כֶן."},
+  {t:"mc", q:"1ª común plural en las tres bases (sust. singular · preposición · sust. plural):", o:["סוּסֵנוּ · לָנוּ · סוּסֵינוּ","סוּסֵינוּ · לָנוּ · סוּסֵנוּ","סוּסֵנוּ · לָהֶם · סוּסֵינוּ","סוּסָנוּ · לֵנוּ · סוּסַי"], a:0, x:"La cola ◌נוּ no cambia. Cambia el conector: tsere con sustantivo, qamets con preposición, ֵי con plural."},
+  {t:"mc", he:"לָכֶם", q:"¿Preposición o sustantivo? ¿Qué significa?", o:["Preposición לְ + 2ª masc. pl.: «a vosotros»","Sustantivo + 2ª masc. pl.: «vuestro»","Preposición + 3ª masc. pl.: «a ellos»","Sustantivo plural: «vuestros»"], a:0, x:"ל con qamets + ◌כֶם. «Vuestro caballo» sería סוּסְכֶם; «a ellos», לָהֶם."},
+  {t:"mc", he:"סוּסֵיהֶם", q:"¿De dónde viene la ֵי antes de ◌הֶם?", o:["Es la ֵי del plural constructo (סוּסֵי): lo poseído es plural","Es el sufijo «mi» de 1ª persona","Indica que el poseedor es femenino","Es una vocal de unión sin significado"], a:0, x:"סוּסֵי «caballos de» + הֶם «ellos» = «los caballos de ellos», es decir, sus caballos."},
+  {t:"mc", he:"סוּסוֹ", q:"¿A qué cadena constructa equivale?", o:["סוּס + הוּא: «el caballo de él»","הַסּוּס + הוּא: «el caballo es él»","סוּסִים + הוּא: «los caballos de él»","סוּס + הִיא: «el caballo de ella»"], a:0, x:"El sufijo hace de absoluto: סוּס הַמֶּלֶךְ «el caballo del rey» → סוּסוֹ «el caballo de él»."},
+  {t:"mc", q:"¿Por qué nunca verás הַסּוּסוֹ (artículo + sufijo)?", o:["Porque el sufijo ya hace de absoluto y determina la palabra, como en una cadena constructa","Porque הַ solo va con verbos","Porque los sufijos solo van en plural","Sí es correcto: significa «el su caballo»"], a:0, x:"Es la misma regla del constructo: lo poseído nunca lleva הַ."},
+  {t:"mc", q:"Tu cuaderno escribe «ākh». ¿Qué forma es?", o:["לָךְ: «a ti» (mujer), preposición 2ª fem. sg.","לְךָ: «a ti» (varón)","סוּסֵךְ: «tu caballo» (mujer)","לָהּ: «a ella»"], a:0, x:"kh = ḵ en Kelley. Con qamets (◌ָךְ) es preposición; con sustantivo es ◌ֵךְ (ēkh)."},
+  {t:"mc", he:"לָהֶן", q:"¿Qué significa?", o:["a ellas","a ellos","su (de ellas)","a vosotras"], a:0, x:"La preposición lleva la 3ª plural completa (◌הֶן). En sustantivo singular se acorta: סוּסָן «su caballo (de ellas)»."},
+  {t:"mc", q:"«Sus caballos (de ella)» se escribe:", o:["סוּסֶיהָ","סוּסָהּ","סוּסֵיהֶן","סוּסַיִךְ"], a:0, x:"Plural (י) + ◌הָ de ella. סוּסָהּ = su caballo (uno) · סוּסֵיהֶן = de ellas · סוּסַיִךְ = tus caballos (mujer)."},
+  {t:"mc", he:"דִּבְרֵיהֶם", q:"Descomposición:", o:["דְּבָרִים en forma constructa (דִּבְרֵי) + ◌הֶם: «sus palabras (de ellos)»","דָּבָר + ◌הֶם: «su palabra (de ellos)»","Dos palabras: «las palabras son ellos»","דְּבָרִים + 1ª pl.: «nuestras palabras»"], a:0, x:"Con sufijos pesados (◌כֶם, ◌כֶן, ◌הֶם, ◌הֶן) la base toma la forma del constructo: דְּבָרִים → דִּבְרֵי."},
+  {t:"mc", q:"En español, ¿qué corresponde a לוֹ y qué a סוּסוֹ?", o:["לוֹ = «le, a él» (complemento) · סוּסוֹ = «su» (posesivo)","לוֹ = «su» · סוּסוֹ = «le, a él»","Los dos son posesivos","Los dos son complementos"], a:0, x:"Como en tu cuaderno: preposiciones = me, te, le, nos, os, les; sustantivos = mi, tu, su, nuestro, vuestro."},
+  {t:"ord", q:"Une las piezas: «sus caballos (de ellos)»", tiles:["סוּסֵי","הֶם","סוּס","ם"], ans:["סוּסֵי","הֶם"], join:"", x:"סוּסֵי (plural constructo) + הֶם = סוּסֵיהֶם."},
+  {t:"ord", q:"Une las piezas: «a vosotros»", tiles:["לָ","כֶם","לְ","ךָ"], ans:["לָ","כֶם"], join:"", x:"לְ + ◌כֶם → לָכֶם: la shewa de la preposición se vuelve qamets."}
  ]}
 ];
 
-const TOPICS = {pro:"Pronombres", con:"Estado constructo", suf:"Sufijos", ver:"Traducción", pre:"Preposiciones"};
+const TOPICS = {pro:"Pronombres", con:"Estado constructo", suf:"Sufijos", pre:"Preposiciones", pat:"Terminaciones", ver:"Traducción"};
 const INTV = [0, 10*60e3, 864e5, 3*864e5, 7*864e5, 16*864e5];
 const INTV_LABEL = ["1 min","10 min","1 día","3 días","7 días","16 días"];
 
@@ -442,7 +497,7 @@ function tally(topic, ok){ const r=S.top[topic]||(S.top[topic]={ok:0,n:0}); r.n+
    ========================================================= */
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-const HEB = /[◌֐-׿יִ-ﭏ]+(?:[\s־\/]+[◌֐-׿יִ-ﭏ]+)*/g;
+const HEB = /[◌֐-׿יִ-ﭏ]+(?:[\s־\/]+[◌֐-׿יִ-ﭏ]+)*/g;
 const fmt = s => esc(s).replace(HEB, m => `<bdi class="he" lang="he" dir="rtl">${m}</bdi>`);
 const heb = s => `<bdi class="he" lang="he" dir="rtl">${esc(s)}</bdi>`;
 const hl = (s, cls="") => { const [a,b] = s.split("|"); return `<bdi class="he" lang="he" dir="rtl">${esc(a)}<span class="suf ${cls}">${esc(b)}</span></bdi>`; };
@@ -502,14 +557,15 @@ function render(){
 
 /* ---------- Inicio ---------- */
 function planSteps(){
-  const thDone = ["con","pro","suf","exa"].every(k=>S.seen[k]);
+  const TH = ["con","pro","suf","map","exa"];
+  const thDone = TH.every(k=>S.seen[k]);
   const fc = overall();
   const lvDone = LEVELS.filter(l=>S.lv[l.id]).length;
   const sim = S.sim ? S.sim.best : 0;
   return [
-    {t:"Lee la teoría", d:"4 bloques cortos con tablas y trucos", done:thDone, go:"teoria", sub: thDone?"Listo":`${["con","pro","suf","exa"].filter(k=>S.seen[k]).length}/4`},
+    {t:"Lee la teoría", d:"5 bloques: incluye «Conectar todo», tus tablas del cuaderno unidas", done:thDone, go:"teoria", sub: thDone?"Listo":`${TH.filter(k=>S.seen[k]).length}/5`},
     {t:"Memoriza con flashcards", d:"Meta: 60% de dominio en los mazos", done:fc>=60, go:"estudiar", sub:fc+"%"},
-    {t:"Practica los niveles 1 a 4", d:"Los mismos ejercicios de la pizarra, y más", done:lvDone===4, go:"practica", sub:lvDone+"/4"},
+    {t:"Practica los niveles 1 a 5", d:"La pizarra y el puente entre tus tres tablas", done:lvDone===LEVELS.length, go:"practica", sub:lvDone+"/"+LEVELS.length},
     {t:"Haz el simulacro de examen", d:"Meta: 80% o más", done:sim>=80, go:"sim", sub: S.sim? sim+"%":"—"}
   ];
 }
@@ -569,16 +625,19 @@ function deckCard(d){
 }
 
 /* ---------- Teoría ---------- */
-const TH_TABS = [["con","Constructo"],["pro","Pronombres"],["suf","Sufijos"],["exa","Método de examen"]];
+const TH_TABS = [["con","Constructo"],["pro","Pronombres"],["suf","Sufijos"],["map","Conectar todo"],["exa","Método de examen"]];
 function vTheory(){
   S.seen[thTab]=true; S.thTab=thTab; save();
-  const body = {con:thCon, pro:thPro, suf:thSuf, exa:thExa}[thTab]();
+  const body = {con:thCon, pro:thPro, suf:thSuf, map:thMap, exa:thExa}[thTab]();
+  const cta = thTab==="exa" ? `<button class="btn miel" data-act="level" data-level="n4">Ir al Nivel 4</button>`
+    : thTab==="map" ? `<span class="row"><button class="btn miel" data-act="study" data-deck="pat" data-mode="smart">Flashcards de terminaciones</button><button class="btn ghost" data-act="level" data-level="n5">Nivel 5</button></span>`
+    : `<button class="btn miel" data-act="study" data-deck="${thTab}" data-mode="smart">Flashcards de este bloque</button>`;
   return `<div class="stack" style="gap:6px"><span class="eyebrow">Teoría</span><h1>Lo esencial de la sesión</h1></div>
   <div class="seg" role="tablist">${TH_TABS.map(([k,n])=>`<button role="tab" aria-selected="${k===thTab}" data-th="${k}">${S.seen[k]&&k!==thTab?'<span class="tick">✓</span>':""}${n}</button>`).join("")}</div>
   ${body}
   <div class="row" style="justify-content:space-between">
     <span class="cap">Cuando termines, practica este bloque.</span>
-    <button class="btn miel" data-act="${thTab==="exa"?"level":"study"}" data-deck="${thTab==="exa"?"ver":thTab}" data-level="n4" data-mode="smart">${thTab==="exa"?"Ir al Nivel 4":"Flashcards de este bloque"}</button>
+    ${cta}
   </div>`;
 }
 function thCon(){
@@ -711,6 +770,7 @@ function thSuf(){
       <tbody>
         <tr><td>1ª sg.</td><td>${heb("לִי")}</td><td>a mí</td><td>${heb("עִמִּי")}</td><td>conmigo</td></tr>
         <tr><td>2ª masc. sg.</td><td>${heb("לְךָ")}</td><td>a ti</td><td>${heb("עִמְּךָ")}</td><td>contigo</td></tr>
+        <tr><td>2ª fem. sg.</td><td>${heb("לָךְ")}</td><td>a ti</td><td>${heb("עִמָּךְ")}</td><td>contigo</td></tr>
         <tr><td>3ª masc. sg.</td><td>${heb("לוֹ")}</td><td>a él</td><td>${heb("עִמּוֹ")}</td><td>con él</td></tr>
         <tr><td>3ª fem. sg.</td><td>${heb("לָהּ")}</td><td>a ella</td><td>${heb("עִמָּהּ")}</td><td>con ella</td></tr>
         <tr><td>1ª pl.</td><td>${heb("לָנוּ")}</td><td>a nosotros</td><td>${heb("עִמָּנוּ")}</td><td>con nosotros</td></tr>
@@ -718,6 +778,78 @@ function thSuf(){
         <tr><td>3ª masc. pl.</td><td>${heb("לָהֶם")}</td><td>a ellos</td><td>${heb("עִמָּהֶם")}</td><td>con ellos</td></tr>
       </tbody></table></div>
     <div class="card rosa sm">${fmt("עִמִּי")} (hireq) = conmigo · ${fmt("עַמִּי")} (patach) = mi pueblo. La vocal de la primera letra lo decide.</div>
+  </section>`;
+}
+function thMap(){
+  const P = [
+    ["אֲנִי","י","la י final"],["אַתָּה","ךָ","ת → כ"],["אַתְּ","ךְ","ת → כ"],["הוּא","וֹ","la ו"],["הִיא","הּ","la ה"],
+    ["אֲנַחְנוּ","נוּ","la cola נוּ"],["אַתֶּם","כֶם","ת → כ + ם"],["אַתֵּן","כֶן","ת → כ + ן"],["הֵם","הֶם / ם","entero o solo ם"],["הֵן","הֶן / ן","entero o solo ן"]];
+  const R = [
+    ["1cs","me, a mí","לִ|י","mi","סוּסִ|י","mis","סוּסַ|י"],
+    ["2ms","te, a ti","לְ|ךָ","tu","סוּסְ|ךָ","tus","סוּסֶ|יךָ"],
+    ["2fs","te, a ti","לָ|ךְ","tu","סוּסֵ|ךְ","tus","סוּסַ|יִךְ"],
+    ["3ms","le, a él","ל|וֹ","su (de él)","סוּס|וֹ","sus (de él)","סוּסָ|יו"],
+    ["3fs","la, a ella","לָ|הּ","su (de ella)","סוּסָ|הּ","sus (de ella)","סוּסֶ|יהָ"],
+    ["1cp","nos, a nosotros","לָ|נוּ","nuestro","סוּסֵ|נוּ","nuestros","סוּסֵ|ינוּ"],
+    ["2mp","os, a vosotros","לָ|כֶם","vuestro","סוּסְ|כֶם","vuestros","סוּסֵ|יכֶם"],
+    ["2fp","os, a vosotras","לָ|כֶן","vuestro","סוּסְ|כֶן","vuestros","סוּסֵ|יכֶן"],
+    ["3mp","los, a ellos","לָ|הֶם","su (de ellos)","סוּסָ|ם","sus (de ellos)","סוּסֵ|יהֶם"],
+    ["3fp","las, a ellas","לָ|הֶן","su (de ellas)","סוּסָ|ן","sus (de ellas)","סוּסֵ|יהֶן"]];
+  const steps = [
+    ["Aprende 10 colas, no 30 terminaciones","Salen de los pronombres que ya sabes (tabla 1)."],
+    ["Aprende 3 conectores","Sustantivo singular: directo. Preposición: qamets. Sustantivo plural: ֵי / ַי."],
+    ["Lee la tabla grande por filas","Una persona en sus tres bases. Así el patrón se repite y lo fijas."],
+    ["Flashcards «Terminaciones»","26 terminaciones sueltas: di persona, número y dónde aparece."],
+    ["Nivel 5 y simulacro","Ejercicios que te obligan a cruzar las tablas."]];
+  return `
+  <section class="card t-sec">
+    <span class="pill p-azul tilt" style="justify-self:start">Tu cuaderno, unido</span>
+    <h2>Tres tablas, una sola familia</h2>
+    <p>En tu cuaderno copiaste tres listas: preposiciones, sustantivos singulares y sustantivos plurales. Parecen 30 terminaciones distintas, pero son <b>las mismas 10 colas</b> con un conector diferente. Aprende las colas una vez y deduce el resto.</p>
+    <div class="plan">${steps.map((s,i)=>`<div class="step" style="grid-template-columns:36px 1fr"><span class="n">${i+1}</span><span><b>${s[0]}</b><span class="cap" style="font-size:14px">${fmt(s[1])}</span></span></div>`).join("")}</div>
+  </section>
+
+  <section class="t-sec">
+    <h2>1 · Cada sufijo es la cola de un pronombre</h2>
+    <p>Mira el final de cada pronombre independiente: esa es la terminación.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Pronombre</th><th>Cola</th><th>Pista</th></tr></thead>
+      <tbody>${P.map(r=>`<tr><td>${heb(r[0])}</td><td>${heb(r[1])}</td><td>${fmt(r[2])}</td></tr>`).join("")}</tbody>
+    </table></div>
+    <div class="card rosa sm"><b>Recuerda:</b> en 2ª persona, la ת de «tú» se vuelve כ en el sufijo: ${fmt("אַתָּה → ◌ךָ")}, ${fmt("אַתֶּם → ◌כֶם")}.</div>
+  </section>
+
+  <section class="t-sec">
+    <h2>2 · Los tres conectores</h2>
+    <div class="levels">
+      <div class="card sm stack"><span class="pill p-verde" style="justify-self:start">Sustantivo singular</span><p>La cola va directa, con su vocal: ${hl("סוּס|וֹ")} ${hl("סוּסֵ|נוּ")} ${hl("סוּסָ|ם")}</p><p class="cap">En español: mi, tu, su (posesivo).</p></div>
+      <div class="card sm stack"><span class="pill p-azul" style="justify-self:start">Preposición</span><p>Casi igual, con <b>qamets</b> y la 3ª plural completa: ${hl("לָ|נוּ")} ${hl("לָ|כֶם")} ${hl("לָ|הֶם")}</p><p class="cap">En español: me, te, le, nos, os, les.</p></div>
+      <div class="card sm stack" style="grid-column:1/-1"><span class="pill p-lila" style="justify-self:start">Sustantivo plural</span><p>Siempre aparece una <b>י</b>: es la misma ${fmt("◌ֵי")} del plural constructo. ${fmt("סוּסֵי")} «caballos de» + ${fmt("הֶם")} = ${hl("סוּסֵ|יהֶם","y")} «los caballos de ellos».</p><p class="cap">En español: mis, tus, sus.</p></div>
+    </div>
+  </section>
+
+  <section class="t-sec">
+    <h2>3 · La tabla grande, por filas</h2>
+    <p class="muted">Lee una fila completa en voz alta: «1cp: <i>lānû</i> a nosotros, <i>sûsēnû</i> nuestro caballo, <i>sûsênû</i> nuestros caballos».</p>
+    <div class="tbl-wrap"><table style="min-width:620px">
+      <thead><tr><th>Persona</th><th>Preposición ${fmt("לְ")}</th><th>Sust. singular ${fmt("סוּס")}</th><th>Sust. plural ${fmt("סוּסִים")}</th></tr></thead>
+      <tbody>${R.map(r=>`<tr><td><b>${r[0]}</b></td><td>${hl(r[2])}<br><span class="cap">${r[1]}</span></td><td>${hl(r[4])}<br><span class="cap">${r[3]}</span></td><td>${hl(r[6],"y")}<br><span class="cap">${r[5]}</span></td></tr>`).join("")}</tbody>
+    </table></div>
+    <p class="cap">Tu cuaderno escribe «kh» (ekhā, ākhem); la app usa ḵ, el sistema de Kelley (ᵉḵā, āḵem). Es el mismo sonido.</p>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>4 · El sufijo es un absoluto</h2>
+    <p>Aquí se une con el Bloque 1. Un sustantivo con sufijo funciona igual que una cadena constructa: el sufijo ocupa el lugar del absoluto.</p>
+    <div class="levels">
+      <div class="card sm stack" style="background:var(--crema)"><p style="text-align:center">${heb("סוּס הַמֶּלֶךְ")}</p><p style="text-align:center">el caballo <b>del rey</b></p></div>
+      <div class="card sm stack" style="background:var(--crema)"><p style="text-align:center">${hl("סוּס|וֹ")}</p><p style="text-align:center">el caballo <b>de él</b></p></div>
+    </div>
+    <div class="rules">
+      <div class="rule"><span class="pill p-verde">Por eso</span><span>Nunca lleva artículo: ${fmt("הַסּוּסוֹ")} no existe.</span></div>
+      <div class="rule"><span class="pill p-verde">Por eso</span><span>Siempre es determinado: «su caballo», nunca «un caballo suyo».</span></div>
+      <div class="rule"><span class="pill p-verde">Por eso</span><span>Con las colas pesadas (${fmt("כֶם · כֶן · הֶם · הֶן")}) la base toma la forma del constructo: ${fmt("דָּבָר → דְּבַרְכֶם")} «vuestra palabra», ${fmt("דְּבָרִים → דִּבְרֵיהֶם")} «sus palabras».</span></div>
+    </div>
   </section>`;
 }
 function thExa(){
@@ -832,7 +964,7 @@ function vLevels(){
   return `<div class="stack" style="gap:6px"><span class="eyebrow">Práctica helicoidal</span><h1>De lo fácil al examen</h1>
   <p class="muted">Los ejercicios de la pizarra, con su solución explicada, y más preguntas del mismo tipo.</p></div>
   <div class="levels">${LEVELS.map(l=>{ const r=S.lv[l.id];
-    return `<button class="level" data-act="level" data-level="${l.id}">
+    return `<button class="level ${l.id==="n5"?"wide":""}" data-act="level" data-level="${l.id}">
       <div class="row"><span class="eyebrow">${l.name}</span><span class="pill ${l.pill}">${l.diff}</span></div>
       <h3>${l.title}</h3>
       <span class="cap">${l.items.length} ejercicios · ${r?`mejor: <b class="num">${r.best}%</b>`:"sin intentar"}</span>
@@ -841,7 +973,7 @@ function vLevels(){
   <section class="hero" style="grid-template-columns:1fr auto">
     <div class="stack" style="gap:8px;min-width:0"><span class="eyebrow" style="color:var(--tinta)">Simulacro</span>
       <h2 style="font-family:var(--display);font-weight:800;font-size:28px;line-height:1.1">Examen de prueba</h2>
-      <p>14 preguntas al azar de los cuatro niveles, con traducción de versículos al final.</p>
+      <p>14 preguntas al azar de los cinco niveles, con traducción de versículos al final.</p>
       <div class="row"><button class="btn" data-act="sim">Empezar simulacro</button>${sim?`<span class="pill p-miel">Mejor: ${sim.best}%</span>`:""}</div></div>
   </section>`;
 }
@@ -853,8 +985,9 @@ function startLevel(id){
 }
 function startSim(){
   const pool = [];
-  LEVELS.slice(0,3).forEach(L=>L.items.forEach(x=>pool.push(Object.assign({topic:L.topic},x))));
-  const items = shuffle(pool).slice(0,12).concat(shuffle(LEVELS[3].items).slice(0,2).map(x=>Object.assign({topic:"ver"},x)));
+  LEVELS.filter(L=>L.id!=="n4").forEach(L=>L.items.forEach(x=>pool.push(Object.assign({topic:L.topic},x))));
+  const n4 = LEVELS.find(L=>L.id==="n4");
+  const items = shuffle(pool).slice(0,12).concat(shuffle(n4.items).slice(0,2).map(x=>Object.assign({topic:"ver"},x)));
   exS = {kind:"sim", id:"sim", title:"Simulacro de examen", items, i:0, done:false, score:0, wrong:[], pick:null, built:[]};
   go("practica");
 }
@@ -893,7 +1026,7 @@ function vEx(){
     const ok = exS.lastOk;
     const msg = ok ? ["Correcto.","Exacto.","Bien visto."][exS.i%3] : ["Casi.","Revisa esto.","Aquí está la clave."][exS.i%3];
     const x = it.t==="rv" ? (ok?"Sigue así: este tipo de versículo es el que pide el profesor.":"Repasa el análisis palabra por palabra y vuelve a intentarlo luego.") : it.x;
-    const sol = it.t==="ord" && !ok ? `<span>Respuesta: ${heb(it.ans.join(" "))}</span>` : "";
+    const sol = it.t==="ord" && !ok ? `<span>Respuesta: ${heb(it.ans.join(it.join??" "))}</span>` : "";
     fb = `<div class="feedback ${ok?"ok":"bad"}"><b>${msg}</b>${sol}<span>${fmt(x)}</span></div>
       <button class="btn block" data-act="next">${exS.i+1<n?"Siguiente":"Ver resultado"}</button>`;
   }
@@ -918,7 +1051,7 @@ function vExDone(){
   const label = pct>=90?"Listo para el examen":pct>=70?"Vas bien":"Repasa y vuelve";
   const missed = exS.wrong.map(it=>{
     if (it.t==="rv"){ const c=DECKS[4].cards[it.c]; return `<div class="miss">${heb(c.f)}<span>«${esc(c.es)}»</span></div>`; }
-    if (it.t==="ord") return `<div class="miss"><b>${fmt(it.q)}</b>${heb(it.ans.join(" "))}<span class="cap">${fmt(it.x)}</span></div>`;
+    if (it.t==="ord") return `<div class="miss"><b>${fmt(it.q)}</b>${heb(it.ans.join(it.join??" "))}<span class="cap">${fmt(it.x)}</span></div>`;
     return `<div class="miss"><b>${it.he?heb(it.he)+" · ":""}${fmt(it.q)}</b><span>${fmt(it.o[it.a])}</span><span class="cap">${fmt(it.x)}</span></div>`;
   }).join("");
   const again = exS.kind==="sim" ? `data-act="sim"` : `data-act="level" data-level="${exS.id}"`;
@@ -1027,7 +1160,7 @@ document.addEventListener("click", e=>{
     case "next": next(); break;
     case "reveal": exS.reveal=true; render(); break;
     case "clearB": exS.built=[]; render(); break;
-    case "checkB": { const it=exS.items[exS.i]; answer(exS.built.join(" ")===it.ans.join(" ")); break; }
+    case "checkB": { const it=exS.items[exS.i]; const j=it.join??" "; answer(exS.built.join(j)===it.ans.join(j)); break; }
     case "reset": S._confirmReset=true; render(); break;
     case "resetNo": S._confirmReset=false; render(); break;
     case "resetYes": S={cards:{},lv:{},sim:null,top:{},days:[],seen:{},onb:true,last:null}; save(); toast("Progreso reiniciado"); go("inicio"); break;
