@@ -127,6 +127,12 @@ p{margin:0}
 .deck-actions .btn{min-height:40px;padding:8px 16px;font-size:15px}
 
 /* Segmented tabs */
+.secbar{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--cielo-claro);border-radius:var(--r-pill);padding:5px}
+.secbar button{border:0;background:transparent;border-radius:var(--r-pill);padding:8px 12px;font-weight:700;font-size:15px;display:grid;gap:0;line-height:1.15;color:var(--tinta)}
+.secbar button small{font-size:11.5px;font-weight:600;color:var(--tinta-suave);letter-spacing:.03em}
+.secbar button[aria-selected="true"]{background:var(--tinta);color:var(--crema)}
+.secbar button[aria-selected="true"] small{color:var(--miel)}
+.p-tinta{background:var(--tinta);color:var(--crema)}
 .seg{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none}
 .seg::-webkit-scrollbar{display:none}
 .seg button{flex:none;border:var(--trazo) solid var(--tinta);background:var(--crema);border-radius:var(--r-pill);padding:8px 16px;font-weight:600;font-size:15px;display:inline-flex;gap:6px;align-items:center}
@@ -256,7 +262,7 @@ td .he{font-size:1.45em}
 
 <header class="top">
   <div class="wrap">
-    <div class="logo">Dabar Padilla<small>Hebreo I · Sesión 3</small></div>
+    <div class="logo">Dabar Padilla<small>Hebreo I</small></div>
     <div class="spacer"></div>
     <span class="saved" id="saved"><i></i>Guardado</span>
     <button class="iconbtn" id="helpBtn" aria-label="Cómo usar la app">?</button>
@@ -283,7 +289,7 @@ td .he{font-size:1.45em}
 const DECKS = [
  { id:"con", name:"Estado constructo", short:"Constructo", color:"var(--azul-oscuro)", letter:"ד", cards:[
   {f:"דְּבַר יְהוָה", tr:"dᵉḇar YHWH", es:"la palabra de Jehová", an:["דְּבַר — sust. masc. sg. constructo (de דָּבָר)","יְהוָה — nombre propio, absoluto","Cadena determinada por el nombre propio"]},
-  {f:"בֵּית אֱלֹהִים", tr:"bêṯ ʾᵉlōhîm", es:"la casa de Dios", an:["בֵּית — sust. masc. sg. constructo (de בַּיִת)","אֱלֹהִים — sust. masc. pl. absoluto (Dios)"], tip:"בַּיִת → בֵּית: el diptongo ַיִ se contrae a ֵי en constructo."},
+  {f:"בֵּית אֱלֹהִים", tr:"bêṯ ʾᵉlōhîm", es:"la casa de Dios", an:["בֵּית — sust. masc. sg. constructo (de בַּיִת)","אֱלֹהִים — sust. masc. pl. absoluto (Dios)"], tip:"בַּיִת → בֵּית: el diptongo ◌ַיִ se contrae a ◌ֵי en constructo."},
   {f:"תּוֹרַת יְהוָה", tr:"tôraṯ YHWH", es:"la ley de Jehová", an:["תּוֹרַת — sust. fem. sg. constructo (de תּוֹרָה)","יְהוָה — nombre propio, absoluto"], tip:"Femenino singular: ◌ָה → ◌ַת"},
   {f:"עַם הָאָרֶץ", tr:"ʿam hāʾāreṣ", es:"el pueblo de la tierra", an:["עַם — sust. masc. sg. constructo","הָאָרֶץ — artículo + sust. fem. sg. absoluto","El artículo del absoluto determina toda la cadena"]},
   {f:"בְּנֵי יִשְׂרָאֵל", tr:"bᵉnê yiśrāʾēl", es:"los hijos de Israel", an:["בְּנֵי — sust. masc. pl. constructo (de בָּנִים)","יִשְׂרָאֵל — nombre propio, absoluto"], tip:"Masculino plural: ◌ִים → ◌ֵי"},
@@ -328,8 +334,8 @@ const DECKS = [
   {f:"סוּסוֹ", tr:"sûsô", es:"su caballo (de él)", an:["סוּס + ◌וֹ 3ª masc. sg."]},
   {f:"סוּסָהּ", tr:"sûsāh", es:"su caballo (de ella)", an:["סוּס + ◌ָהּ 3ª fem. sg. (mappiq en la ה)"]},
   {f:"סוּסֵנוּ", tr:"sûsēnû", es:"nuestro caballo", an:["סוּס + ◌ֵנוּ 1ª común pl."]},
-  {f:"סוּסְכֶם", tr:"sûsᵉḵem", es:"vuestro caballo (de vosotros)", an:["סוּס + ◌ְכֶם 2ª masc. pl."]},
-  {f:"סוּסָם", tr:"sûsām", es:"su caballo (de ellos)", an:["סוּס + ◌ָם 3ª masc. pl."]},
+  {f:"סוּסְכֶם", tr:"sûsᵉḵem", es:"vuestro caballo (de vosotros)", an:["סוּס + ◌ְכֶם 2ª masc. pl."], tip:"Sin י porque el caballo es UNO. Con י: סוּסֵיכֶם «vuestros caballos»."},
+  {f:"סוּסָם", tr:"sûsām", es:"su caballo (de ellos)", an:["סוּס + ◌ָם 3ª masc. pl."], tip:"Sin י porque el caballo es UNO. Con י: סוּסֵיהֶם «sus caballos (de ellos)»."},
   {f:"סוּסַי", tr:"sûsay", es:"mis caballos", an:["סוּסִים — masc. pl. + ◌ַי 1ª común sg."], tip:"La י antes del sufijo marca que lo poseído es PLURAL."},
   {f:"סוּסֶיךָ", tr:"sûseyḵā", es:"tus caballos (varón)", an:["סוּסִים + ◌ֶיךָ 2ª masc. sg."]},
   {f:"סוּסָיו", tr:"sûsāyw", es:"sus caballos (de él)", an:["סוּסִים + ◌ָיו 3ª masc. sg."], tip:"Compara: סוּסוֹ = su caballo · סוּסָיו = sus caballos"},
@@ -346,8 +352,8 @@ const DECKS = [
   {f:"עֵינֶיהָ", tr:"ʿêneyhā", es:"sus ojos (de ella)", an:["עֵינַיִם — fem. dual + ◌ֶיהָ 3ª fem. sg."]},
   {f:"יָדֵינוּ", tr:"yādênû", es:"nuestras manos", an:["יָדַיִם — fem. dual + ◌ֵינוּ 1ª común pl."]},
   {f:"סִפְרִי", tr:"sip̄rî", es:"mi libro", an:["סֵפֶר — masc. sg. segolado (base סִפְר־) + ◌ִי 1ª común sg."]},
-  {f:"סוּסְכֶן", tr:"sûsᵉḵen", es:"vuestro caballo (de vosotras)", an:["סוּס + ◌ְכֶן 2ª fem. pl."]},
-  {f:"סוּסָן", tr:"sûsān", es:"su caballo (de ellas)", an:["סוּס + ◌ָן 3ª fem. pl."]},
+  {f:"סוּסְכֶן", tr:"sûsᵉḵen", es:"vuestro caballo (de vosotras)", an:["סוּס + ◌ְכֶן 2ª fem. pl."], tip:"Sin י porque el caballo es UNO. Con י: סוּסֵיכֶן «vuestros caballos». La י cuenta lo poseído, no a los dueños."},
+  {f:"סוּסָן", tr:"sûsān", es:"su caballo (de ellas)", an:["סוּס + ◌ָן 3ª fem. pl."], tip:"Sin י porque el caballo es UNO. Con י: סוּסֵיהֶן «sus caballos (de ellas)»."},
   {f:"סוּסַיִךְ", tr:"sûsayiḵ", es:"tus caballos (mujer)", an:["סוּסִים + ◌ַיִךְ 2ª fem. sg."]},
   {f:"סוּסֵיכֶם", tr:"sûsêḵem", es:"vuestros caballos", an:["סוּסִים + ◌ֵיכֶם 2ª masc. pl."]},
   {f:"סוּסֵיהֶן", tr:"sûsêhen", es:"sus caballos (de ellas)", an:["סוּסִים + ◌ֵיהֶן 3ª fem. pl."]},
@@ -465,9 +471,9 @@ const LEVELS = [
  { id:"n5", name:"Nivel 5", title:"Puente: une las tres tablas", diff:"Conecta", pill:"p-azul", topic:"pat", items:[
   {t:"mc", q:"¿Qué pronombre independiente está «escondido» en el sufijo ◌נוּ?", o:["אֲנַחְנוּ","אֲנִי","הוּא","אַתֶּם"], a:0, x:"Cada sufijo es la cola de un pronombre: אֲנַחְנוּ → ◌נוּ, אֲנִי → ◌ִי, הוּא → ◌וֹ, הֵם → ◌הֶם / ◌ָם."},
   {t:"mc", q:"En los sufijos de 2ª persona, la ת de אַתָּה / אַתֶּם se convierte en…", o:["כ","ה","נ","ם"], a:0, x:"אַתָּה → ◌ךָ · אַתְּ → ◌ךְ · אַתֶּם → ◌כֶם · אַתֵּן → ◌כֶן."},
-  {t:"mc", q:"1ª común plural en las tres bases (sust. singular · preposición · sust. plural):", o:["סוּסֵנוּ · לָנוּ · סוּסֵינוּ","סוּסֵינוּ · לָנוּ · סוּסֵנוּ","סוּסֵנוּ · לָהֶם · סוּסֵינוּ","סוּסָנוּ · לֵנוּ · סוּסַי"], a:0, x:"La cola ◌נוּ no cambia. Cambia el conector: tsere con sustantivo, qamets con preposición, ֵי con plural."},
+  {t:"mc", q:"1ª común plural en las tres bases (sust. singular · preposición · sust. plural):", o:["סוּסֵנוּ · לָנוּ · סוּסֵינוּ","סוּסֵינוּ · לָנוּ · סוּסֵנוּ","סוּסֵנוּ · לָהֶם · סוּסֵינוּ","סוּסָנוּ · לֵנוּ · סוּסַי"], a:0, x:"La cola ◌נוּ no cambia. Cambia el conector: tsere con sustantivo, qamets con preposición, ◌ֵי con plural."},
   {t:"mc", he:"לָכֶם", q:"¿Preposición o sustantivo? ¿Qué significa?", o:["Preposición לְ + 2ª masc. pl.: «a vosotros»","Sustantivo + 2ª masc. pl.: «vuestro»","Preposición + 3ª masc. pl.: «a ellos»","Sustantivo plural: «vuestros»"], a:0, x:"ל con qamets + ◌כֶם. «Vuestro caballo» sería סוּסְכֶם; «a ellos», לָהֶם."},
-  {t:"mc", he:"סוּסֵיהֶם", q:"¿De dónde viene la ֵי antes de ◌הֶם?", o:["Es la ֵי del plural constructo (סוּסֵי): lo poseído es plural","Es el sufijo «mi» de 1ª persona","Indica que el poseedor es femenino","Es una vocal de unión sin significado"], a:0, x:"סוּסֵי «caballos de» + הֶם «ellos» = «los caballos de ellos», es decir, sus caballos."},
+  {t:"mc", he:"סוּסֵיהֶם", q:"¿De dónde viene la ◌ֵי antes de ◌הֶם?", o:["Es la ◌ֵי del plural constructo (סוּסֵי): lo poseído es plural","Es el sufijo «mi» de 1ª persona","Indica que el poseedor es femenino","Es una vocal de unión sin significado"], a:0, x:"סוּסֵי «caballos de» + הֶם «ellos» = «los caballos de ellos», es decir, sus caballos."},
   {t:"mc", he:"סוּסוֹ", q:"¿A qué cadena constructa equivale?", o:["סוּס + הוּא: «el caballo de él»","הַסּוּס + הוּא: «el caballo es él»","סוּסִים + הוּא: «los caballos de él»","סוּס + הִיא: «el caballo de ella»"], a:0, x:"El sufijo hace de absoluto: סוּס הַמֶּלֶךְ «el caballo del rey» → סוּסוֹ «el caballo de él»."},
   {t:"mc", q:"¿Por qué nunca verás הַסּוּסוֹ (artículo + sufijo)?", o:["Porque el sufijo ya hace de absoluto y determina la palabra, como en una cadena constructa","Porque הַ solo va con verbos","Porque los sufijos solo van en plural","Sí es correcto: significa «el su caballo»"], a:0, x:"Es la misma regla del constructo: lo poseído nunca lleva הַ."},
   {t:"mc", q:"Tu cuaderno escribe «ākh». ¿Qué forma es?", o:["לָךְ: «a ti» (mujer), preposición 2ª fem. sg.","לְךָ: «a ti» (varón)","סוּסֵךְ: «tu caballo» (mujer)","לָהּ: «a ella»"], a:0, x:"kh = ḵ en Kelley. Con qamets (◌ָךְ) es preposición; con sustantivo es ◌ֵךְ (ēkh)."},
@@ -480,7 +486,209 @@ const LEVELS = [
  ]}
 ];
 
-const TOPICS = {pro:"Pronombres", con:"Estado constructo", suf:"Sufijos", pre:"Preposiciones", pat:"Terminaciones", ver:"Traducción"};
+/* =========================================================
+   SECCIÓN 1 · AÑADIDOS: partículas con sufijo y tu examen
+   ========================================================= */
+DECKS.push(
+ { id:"par", name:"Partículas con sufijo (examen)", short:"Partículas", color:"var(--tinta)", letter:"ע", cards:[
+  {f:"אֵלַי", tr:"ʾēlay", es:"a mí, hacia mí", an:["אֶל — preposición «a, hacia» + 1ª común sg."], tip:"אֶל usa los sufijos «con י», pero no es plural ni sustantivo."},
+  {f:"אֵלֶיךָ", tr:"ʾēleyḵā", es:"a ti (varón)", an:["אֶל — preposición + 2ª masc. sg."]},
+  {f:"אֵלָיו", tr:"ʾēlāyw", es:"a él", an:["אֶל — preposición + 3ª masc. sg."], tip:"Termina igual que סוּסָיו, pero aquí la י no indica plural."},
+  {f:"אֲלֵיהֶם", tr:"ʾᵃlêhem", es:"a ellos", an:["אֶל — preposición + 3ª masc. pl."], tip:"וַיֹּאמֶר אֲלֵיהֶם = «y les dijo»."},
+  {f:"עָלַי", tr:"ʿālay", es:"sobre mí", an:["עַל — preposición «sobre» + 1ª común sg."]},
+  {f:"עָלֶיךָ", tr:"ʿāleyḵā", es:"sobre ti (varón)", an:["עַל — preposición + 2ª masc. sg."], tip:"ךָ final = tú (varón), como en לְךָ y סוּסְךָ."},
+  {f:"עָלָיו", tr:"ʿālāyw", es:"sobre él", an:["עַל — preposición + 3ª masc. sg."]},
+  {f:"עֲלֵיהֶם", tr:"ʿᵃlêhem", es:"sobre ellos", an:["עַל — preposición + 3ª masc. pl."]},
+  {f:"אֹתִי", tr:"ʾōṯî", es:"me, a mí (objeto directo)", an:["אֵת — marcador de objeto directo + 1ª común sg."], tip:"Con ḥolem (o) = Objeto."},
+  {f:"אֹתוֹ", tr:"ʾōṯô", es:"lo, a él (objeto directo)", an:["אֵת — marcador de objeto directo + 3ª masc. sg."], tip:"אֹתוֹ = lo · אִתּוֹ = con él"},
+  {f:"אֹתָם", tr:"ʾōṯām", es:"los, a ellos (objeto directo)", an:["אֵת — marcador de objeto directo + 3ª masc. pl."]},
+  {f:"אִתִּי", tr:"ʾittî", es:"conmigo", an:["אֵת — preposición «con» + 1ª común sg."], tip:"i + letra doble = «con», igual que עִמִּי."},
+  {f:"אִתּוֹ", tr:"ʾittô", es:"con él", an:["אֵת — preposición «con» + 3ª masc. sg."], tip:"Se parece a עִמּוֹ: las dos significan «con él»."},
+  {f:"אִתָּם", tr:"ʾittām", es:"con ellos", an:["אֵת — preposición «con» + 3ª masc. pl."]},
+  {f:"אֵינֶנּוּ", tr:"ʾênennû", es:"él no está, ya no existe", ref:"Gn 5:24", an:["אֵין — partícula negativa «no hay» + 3ª masc. sg."]},
+  {f:"אֵינָם", tr:"ʾênām", es:"ellos no están", an:["אֵין — partícula negativa + 3ª masc. pl."]},
+  {f:"הִנְנִי", tr:"hinᵉnî", es:"heme aquí, aquí estoy", ref:"Is 6:8", an:["הִנֵּה — partícula «he aquí» + 1ª común sg. (נִי)"]},
+  {f:"הִנְּךָ", tr:"hinnᵉḵā", es:"he aquí tú, aquí estás", an:["הִנֵּה — partícula + 2ª masc. sg."]}
+ ]}
+);
+LEVELS.push(
+ { id:"n6", name:"Nivel 6", title:"Tu examen real, explicado", diff:"Repaso", pill:"p-tinta", topic:"par", items:[
+  {t:"mc", he:"דְּבָרָיו", q:"¿Cuál es el análisis correcto?", o:["Sustantivo plural + sufijo 3.ª masc. singular","Sustantivo singular + sufijo 3.ª masc. singular","Sustantivo plural + sufijo 3.ª masc. plural","Sustantivo singular + sufijo 3.ª fem. singular"], a:0, x:"La י dice que hay varias palabras; la ו final (de הוּא) dice que el dueño es él. «De ellos» sería דִּבְרֵיהֶם."},
+  {t:"mc", he:"סוּסֵיכֶם", q:"Esta forma corresponde a:", o:["Vuestros caballos, 2.ª masculina plural","Vuestro caballo, masculino singular","Sus caballos, 3.ª masculina plural","Nuestros caballos, 1.ª común plural"], a:0, x:"◌ֵי (varios caballos) + כֶם (de אַתֶּם, vosotros)."},
+  {t:"mc", q:"¿Qué diferencia morfológica hay entre דְּבָרוֹ y דְּבָרָיו?", o:["El número del sustantivo base","La persona del sufijo pronominal","El género del sufijo pronominal","La clase gramatical de la base"], a:0, x:"Mismo dueño (él). Solo cambia la י: una palabra o varias."},
+  {t:"mc", he:"בֵּיתָהּ", q:"Esta forma expresa:", o:["Su casa, de ella","Su casa, de él","Vuestra casa, de ellas","Nuestras casas"], a:0, x:"הּ con mappiq = de ella (de הִיא). «De él» sería בֵּיתוֹ."},
+  {t:"mc", he:"אֲלֵיהֶם", q:"¿Cuál es el análisis correcto?", o:["Preposición + sufijo 3.ª masc. plural","Partícula negativa + sufijo 3.ª masc. plural","Sustantivo plural + sufijo 3.ª masc. plural","Preposición + sufijo 3.ª fem. plural"], a:0, x:"אֶל «a, hacia» siempre lleva la י antes del sufijo, pero no es plural. הֶם = ellos."},
+  {t:"mc", he:"עָלֶיךָ", q:"Contiene un sufijo de:", o:["2.ª persona masculina singular","2.ª persona femenina singular","3.ª persona masculina singular","2.ª persona masculina plural"], a:0, x:"עַל + ךָ (tú, varón). Mujer sería עָלַיִךְ; él, עָלָיו; vosotros, עֲלֵיכֶם."},
+  {t:"mc", he:"אֹתָם", q:"¿Qué interpretación corresponde?", o:["A ellos: marcador acusativo sufijado","Con ellos: preposición עִם sufijada","A ellas: marcador acusativo sufijado","Sobre ellos: preposición עַל sufijada"], a:0, x:"ḥolem (o) = marcador de objeto; ם = ellos."},
+  {t:"mc", q:"¿Qué diferencia funcional hay entre אֹתוֹ y אִתּוֹ?", o:["La primera es objeto directo; la segunda indica compañía","La primera indica compañía; la segunda objeto directo","Ambas indican posesión nominal","Ambas son preposiciones de lugar"], a:0, x:"o → Objeto («lo»). i + letra doble → «con él», como עִמּוֹ."},
+  {t:"mc", he:"הִנְנִי", q:"El sufijo pronominal corresponde a:", o:["1.ª persona común singular","3.ª persona masculina singular","2.ª persona masculina singular","1.ª persona común plural"], a:0, x:"נִי = yo, me (de אֲנִי): «heme aquí»."},
+  {t:"mc", q:"¿Qué forma es una partícula negativa con sufijo de 3.ª masc. plural?", o:["אֵינָם","אֹתָם","עֲלֵיהֶם","לָהֶם"], a:0, x:"אֵין «no hay» + ם. Las otras: objeto, «sobre ellos», «a ellos»."}
+ ]}
+);
+
+/* =========================================================
+   SECCIÓN 2 · EL VERBO
+   Paradigma מָשַׁל «gobernar, reinar» (Kelley y Boskamp)
+   ========================================================= */
+DECKS.push(
+ { id:"vqp", name:"Qal perfecto (qatal)", short:"Perfecto", color:"var(--azul-oscuro)", letter:"ק", cards:[
+  {f:"מָשַׁל", tr:"māšal", es:"él gobernó", an:["Qal perfecto 3ª masc. sg.","Sin sufijo: es la forma de diccionario"], tip:"El verbo se cita en 3ª masc. sg. del perfecto, no en infinitivo."},
+  {f:"מָשְׁלָה", tr:"māšᵉlāh", es:"ella gobernó", an:["Qal perfecto 3ª fem. sg. · sufijo ◌ָה"], tip:"◌ָה es la misma terminación femenina de סוּסָה."},
+  {f:"מָשַׁלְתָּ", tr:"māšaltā", es:"tú gobernaste (varón)", an:["Qal perfecto 2ª masc. sg. · sufijo תָּ ← אַתָּה"]},
+  {f:"מָשַׁלְתְּ", tr:"māšalt", es:"tú gobernaste (mujer)", an:["Qal perfecto 2ª fem. sg. · sufijo תְּ ← אַתְּ"]},
+  {f:"מָשַׁלְתִּי", tr:"māšaltî", es:"yo goberné", an:["Qal perfecto 1ª común sg. · sufijo תִּי ← אָנֹכִי"], tip:"El «yo» también lleva ת: mira la vocal final (◌ִי)."},
+  {f:"מָשְׁלוּ", tr:"māšᵉlû", es:"ellos / ellas gobernaron", an:["Qal perfecto 3ª común pl. · sufijo וּ"]},
+  {f:"מְשַׁלְתֶּם", tr:"mᵉšaltem", es:"vosotros gobernasteis", an:["Qal perfecto 2ª masc. pl. · sufijo תֶּם ← אַתֶּם"], tip:"El sufijo pesado se lleva el acento: מָ se reduce a מְ."},
+  {f:"מְשַׁלְתֶּן", tr:"mᵉšalten", es:"vosotras gobernasteis", an:["Qal perfecto 2ª fem. pl. · sufijo תֶּן ← אַתֵּן"]},
+  {f:"מָשַׁלְנוּ", tr:"māšalnû", es:"nosotros gobernamos", an:["Qal perfecto 1ª común pl. · sufijo נוּ ← אֲנַחְנוּ"], tip:"Misma cola que סוּסֵנוּ «nuestro caballo»: en verbo es «nosotros»."},
+  {f:"שָׁמַרְתִּי", tr:"šāmartî", es:"yo guardé", an:["שָׁמַר «guardar» · Qal perfecto 1ª común sg."]},
+  {f:"זָכַרְנוּ", tr:"zāḵarnû", es:"nosotros recordamos", an:["זָכַר «recordar» · Qal perfecto 1ª común pl."]},
+  {f:"כָּתַבְתָּ", tr:"kāṯaḇtā", es:"tú escribiste (varón)", an:["כָּתַב «escribir» · Qal perfecto 2ª masc. sg."]},
+  {f:"פָּקְדָה", tr:"pāqᵉḏāh", es:"ella visitó", an:["פָּקַד «visitar» · Qal perfecto 3ª fem. sg."]},
+  {q:"¿De dónde vienen los sufijos del perfecto?", es:"De los pronombres personales", an:["תָּ ← אַתָּה · תְּ ← אַתְּ · תִּי ← אָנֹכִי","תֶּם ← אַתֶּם · תֶּן ← אַתֵּן · נוּ ← אֲנַחְנוּ"], tip:"Kelley: los sufijos del perfecto son restos de los pronombres."}
+ ]},
+ { id:"vqi", name:"Qal imperfecto (yiqtol)", short:"Imperfecto", color:"var(--verde-oscuro)", letter:"י", cards:[
+  {f:"יִמְשֹׁל", tr:"yimšōl", es:"él gobernará", an:["Qal imperfecto 3ª masc. sg. · prefijo יִ"]},
+  {f:"תִּמְשֹׁל", tr:"timšōl", es:"ella gobernará / tú (varón) gobernarás", an:["Qal imperfecto 3ª fem. sg. o 2ª masc. sg.","Las dos formas son iguales: decide el contexto"]},
+  {f:"תִּמְשְׁלִי", tr:"timšᵉlî", es:"tú (mujer) gobernarás", an:["Qal imperfecto 2ª fem. sg. · prefijo תִּ + sufijo ◌ִי"], tip:"◌ִי es el único sufijo del singular."},
+  {f:"אֶמְשֹׁל", tr:"ʾemšōl", es:"yo gobernaré", an:["Qal imperfecto 1ª común sg. · prefijo אֶ ← אֲנִי"], tip:"La א es gutural: toma segol en vez de ḥireq."},
+  {f:"יִמְשְׁלוּ", tr:"yimšᵉlû", es:"ellos gobernarán", an:["Qal imperfecto 3ª masc. pl. · יִ + וּ"]},
+  {f:"תִּמְשֹׁלְנָה", tr:"timšōlnāh", es:"ellas / vosotras gobernaréis", an:["Qal imperfecto 3ª fem. pl. o 2ª fem. pl. · תִּ + נָה"]},
+  {f:"תִּמְשְׁלוּ", tr:"timšᵉlû", es:"vosotros gobernaréis", an:["Qal imperfecto 2ª masc. pl. · תִּ + וּ"]},
+  {f:"נִמְשֹׁל", tr:"nimšōl", es:"nosotros gobernaremos", an:["Qal imperfecto 1ª común pl. · prefijo נִ ← אֲנַחְנוּ"], tip:"No lo confundas con נִמְשַׁל (Nifal «fue gobernado»): la vocal final decide."},
+  {f:"יִשְׁמֹר", tr:"yišmōr", es:"él guardará", an:["שָׁמַר · Qal imperfecto 3ª masc. sg."]},
+  {f:"אֶזְכֹּר", tr:"ʾezkōr", es:"yo recordaré", an:["זָכַר · Qal imperfecto 1ª común sg."]},
+  {f:"יִמְלֹךְ", tr:"yimlōḵ", es:"reinará", ref:"Ex 15:18", an:["מָלַךְ · Qal imperfecto 3ª masc. sg."]},
+  {q:"Las 4 letras de los prefijos del imperfecto", es:"א · י · ת · נ", an:["א = yo (אֲנִי)","ת = tú, ella, vosotros/as, ellas","י = él, ellos","נ = nosotros (אֲנַחְנוּ)"], tip:"Se recuerdan con la palabra אֵיתָן (ʾêṯān)."}
+ ]},
+ { id:"vqo", name:"Imperativo, infinitivo y participio", short:"Otras formas", color:"var(--lila-oscuro)", letter:"צ", cards:[
+  {f:"מְשֹׁל", tr:"mᵉšōl", es:"¡gobierna! (a un varón)", an:["Qal imperativo 2ª masc. sg.","También es el infinitivo constructo «gobernar»"], tip:"Imperativo = imperfecto תִּמְשֹׁל sin la ת."},
+  {f:"מִשְׁלִי", tr:"mišlî", es:"¡gobierna! (a una mujer)", an:["Qal imperativo 2ª fem. sg."]},
+  {f:"מִשְׁלוּ", tr:"mišlû", es:"¡gobernad!", an:["Qal imperativo 2ª masc. pl."], tip:"«Gobernaron» sería מָשְׁלוּ (con qamets)."},
+  {f:"זָכְרָה", tr:"zoḵrāh", es:"¡acuérdate!", ref:"Ne 13:14", an:["Qal imperativo 2ª masc. sg., forma larga (enfática)"]},
+  {f:"לִמְשֹׁל", tr:"limšōl", es:"para gobernar", an:["לְ + Qal infinitivo constructo"], tip:"El infinitivo constructo acepta preposiciones y sufijos, como un sustantivo."},
+  {f:"מָשׁוֹל", tr:"māšôl", es:"gobernar (infinitivo absoluto)", an:["Qal infinitivo absoluto · no lleva sufijos"], tip:"Delante del verbo lo refuerza: «ciertamente gobernará»."},
+  {f:"מֹשֵׁל", tr:"mōšēl", es:"el que gobierna, gobernante", an:["Qal participio activo masc. sg."], tip:"ḥolem tras la 1ª radical + tsere = participio activo."},
+  {f:"מֹשֶׁלֶת", tr:"mōšeleṯ", es:"la que gobierna", an:["Qal participio activo fem. sg."]},
+  {f:"מֹשְׁלִים", tr:"mōšᵉlîm", es:"los que gobiernan, gobernantes", an:["Qal participio activo masc. pl."], tip:"El participio usa las terminaciones de la Sección 1: ◌ִים, ◌וֹת."},
+  {f:"בָּרוּךְ", tr:"bārûḵ", es:"bendito", an:["Qal participio pasivo masc. sg. (ברך)"], tip:"qamets + shureq (◌ָ…וּ) = participio pasivo."},
+  {f:"וַיִּמְשֹׁל", tr:"wayyimšōl", es:"y gobernó", an:["wayyiqtol (waw consecutiva + imperfecto) 3ª masc. sg."], tip:"וַ + dagesh + imperfecto = narración en pasado."},
+  {f:"וַיֹּאמֶר", tr:"wayyōʾmer", es:"y dijo", an:["wayyiqtol Qal 3ª masc. sg. de אָמַר"], tip:"Una de las formas más comunes del Antiguo Testamento."},
+  {f:"וּמָשַׁלְתָּ", tr:"ûmāšaltā", es:"y gobernarás", an:["weqatal: וְ + perfecto 2ª masc. sg."], tip:"וְ + perfecto en secuencia = futuro."}
+ ]},
+ { id:"vbn", name:"Las 7 voces (binyanim)", short:"7 voces", color:"var(--naranja)", letter:"ז", cards:[
+  {f:"נִמְשַׁל", tr:"nimšal", es:"fue gobernado", an:["Nifal perfecto 3ª masc. sg.","Pista: נִ al inicio"], tip:"Nifal = pasivo (a veces reflexivo) del Qal."},
+  {f:"יִמָּשֵׁל", tr:"yimmāšēl", es:"será gobernado", an:["Nifal imperfecto 3ª masc. sg.","La נ se asimila: dagesh en la 1ª radical (מּ)"]},
+  {f:"מִשֵּׁל", tr:"miššēl", es:"gobernó (intensivo)", an:["Piel perfecto 3ª masc. sg.","Pista: dagesh en la 2ª radical (שּׁ)"], tip:"Forma de paradigma: muestra el molde Piel."},
+  {f:"יְמַשֵּׁל", tr:"yᵉmaššēl", es:"gobernará (intensivo)", an:["Piel imperfecto 3ª masc. sg.","Prefijo con shewa + patach + dagesh"]},
+  {f:"מֻשַּׁל", tr:"muššal", es:"fue gobernado (intensivo pasivo)", an:["Pual perfecto 3ª masc. sg.","Pista: qibbuts (u) + dagesh"]},
+  {f:"הִתְמַשֵּׁל", tr:"hiṯmaššēl", es:"se gobernó a sí mismo", an:["Hitpael perfecto 3ª masc. sg.","Pista: הִתְ + dagesh"]},
+  {f:"הִמְשִׁיל", tr:"himšîl", es:"hizo gobernar, dio dominio", an:["Hifil perfecto 3ª masc. sg.","Pista: הִ + ◌ִי en la 2ª sílaba"], tip:"Sal 8:7 תַּמְשִׁילֵהוּ «le hiciste señorear»."},
+  {f:"יַמְשִׁיל", tr:"yamšîl", es:"hará gobernar", an:["Hifil imperfecto 3ª masc. sg.","Prefijo con patach + ◌ִי"]},
+  {f:"הָמְשַׁל", tr:"homšal", es:"fue hecho gobernar", an:["Hofal perfecto 3ª masc. sg.","Pista: הָ con qamets ḥatuf (o)"]},
+  {f:"לָמַד → לִמֵּד", tr:"lāmaḏ → limmēḏ", es:"aprendió → enseñó", an:["Qal: aprender","Piel: hacer aprender = enseñar"], tip:"El Piel duplica la מ."},
+  {f:"מָלַךְ → הִמְלִיךְ", tr:"mālaḵ → himlîḵ", es:"reinó → hizo rey", an:["Qal: reinó","Hifil: hizo reinar, coronó"]},
+  {f:"הָמְלַךְ", tr:"homlaḵ", es:"fue hecho rey", ref:"Dn 9:1", an:["Hofal perfecto 3ª masc. sg. de מלך"]},
+  {f:"קָדַשׁ → קִדֵּשׁ", tr:"qāḏaš → qiddēš", es:"era santo → santificó", ref:"Gn 2:3", an:["Qal: estado («ser santo»)","Piel factitivo: «hacer santo»"]},
+  {f:"הִתְקַדֵּשׁ", tr:"hiṯqaddēš", es:"se santificó (a sí mismo)", an:["Hitpael perfecto 3ª masc. sg. de קדשׁ"]},
+  {f:"זָכַר → נִזְכַּר", tr:"zāḵar → nizkar", es:"recordó → fue recordado", an:["Qal: activo","Nifal: pasivo"]},
+  {f:"הִזְכִּיר", tr:"hizkîr", es:"hizo recordar, mencionó", an:["Hifil perfecto 3ª masc. sg. de זכר"]},
+  {f:"שָׁבַר → נִשְׁבַּר", tr:"šāḇar → nišbar", es:"quebró → fue quebrado", an:["Qal → Nifal"]},
+  {f:"שִׁבֵּר", tr:"šibbēr", es:"despedazó", an:["Piel perfecto 3ª masc. sg. de שׁבר: intensivo"]},
+  {f:"דִּבֶּר", tr:"dibber", es:"habló", an:["Piel perfecto 3ª masc. sg. de דבר"], tip:"Se usa casi solo en Piel. Relaciónalo con דָּבָר «palabra»."},
+  {f:"הִתְהַלֵּךְ", tr:"hiṯhallēḵ", es:"anduvo, caminó de un lado a otro", ref:"Gn 5:24", an:["Hitpael perfecto 3ª masc. sg. de הלך"]},
+  {q:"Las 7 voces en 3 preguntas", es:"¿Prefijo? ¿Letra doble? ¿Vocal u/o?", an:["נִ = Nifal · הִתְ = Hitpael · הִ…ִי = Hifil · הָ (o) = Hofal","Dagesh en la 2ª radical = Piel, Pual, Hitpael","u / o en la 1ª sílaba = pasivo (Pual, Hofal)"]}
+ ]},
+ { id:"vvs", name:"Versículos con verbos", short:"Versículos", color:"var(--coral)", letter:"ת", cards:[
+  {f:"בְּרֵאשִׁית בָּרָא אֱלֹהִים", tr:"bᵉrēʾšîṯ bārāʾ ʾᵉlōhîm", es:"En el principio creó Dios", ref:"Gn 1:1", an:["בְּרֵאשִׁית — prep. בְּ «en» + רֵאשִׁית sust. fem. sg. absoluto «principio»","בָּרָא — Qal perfecto 3ª masc. sg. «creó»","אֱלֹהִים — sust. masc. pl. absoluto «Dios» (sujeto)"], tip:"אֱלֹהִים es plural, pero el verbo está en singular: un solo Dios."},
+  {f:"וַיִּבְרָא אֱלֹהִים אֶת־הָאָדָם בְּצַלְמוֹ", tr:"wayyiḇrāʾ ʾᵉlōhîm ʾeṯ-hāʾāḏām bᵉṣalmô", es:"Y creó Dios al hombre a su imagen", ref:"Gn 1:27", an:["וַיִּבְרָא — wayyiqtol Qal 3ª masc. sg. «y creó»","אֱלֹהִים — sust. masc. pl. absoluto (sujeto)","אֶת — marcador de objeto directo","הָאָדָם — artículo + sust. masc. sg. absoluto «el hombre»","בְּצַלְמוֹ — בְּ + צֶלֶם (sust. masc. sg.) + 3ª masc. sg. «a su imagen»"]},
+  {f:"וַיְבָרֶךְ אֱלֹהִים אֶת־יוֹם הַשְּׁבִיעִי וַיְקַדֵּשׁ אֹתוֹ", tr:"wayᵉḇāreḵ ʾᵉlōhîm ʾeṯ-yôm haššᵉḇîʿî wayᵉqaddēš ʾōṯô", es:"Y bendijo Dios el día séptimo, y lo santificó", ref:"Gn 2:3", an:["וַיְבָרֶךְ — wayyiqtol Piel 3ª masc. sg. de ברך «y bendijo» (la ר no admite dagesh)","אֱלֹהִים — sust. masc. pl. absoluto (sujeto)","אֶת — marcador de objeto directo","יוֹם — sust. masc. sg. «día» (sin artículo ante un adjetivo con artículo)","הַשְּׁבִיעִי — artículo + adjetivo ordinal masc. sg. «el séptimo»","וַיְקַדֵּשׁ — wayyiqtol Piel 3ª masc. sg. de קדשׁ «y santificó»","אֹתוֹ — marcador de objeto + 3ª masc. sg. «lo»"], tip:"Piel de «ser santo» = «hacer santo». Es el mismo אֹתוֹ de tu examen."},
+  {f:"כִּי לֹא הִמְטִיר יְהוָה אֱלֹהִים עַל־הָאָרֶץ", tr:"kî lōʾ himṭîr YHWH ʾᵉlōhîm ʿal-hāʾāreṣ", es:"porque Jehová Dios aún no había hecho llover sobre la tierra", ref:"Gn 2:5", an:["כִּי — conjunción «porque»","לֹא — negación «no»","הִמְטִיר — Hifil perfecto 3ª masc. sg. de מטר «hizo llover»","יְהוָה אֱלֹהִים — nombre propio + sust. masc. pl. absoluto «Jehová Dios»","עַל־הָאָרֶץ — prep. «sobre» + artículo + sust. fem. sg. absoluto"], tip:"Hifil = causativo: «hacer que llueva»."},
+  {f:"וַיִּתְהַלֵּךְ חֲנוֹךְ אֶת־הָאֱלֹהִים וְאֵינֶנּוּ כִּי־לָקַח אֹתוֹ אֱלֹהִים", tr:"wayyiṯhallēḵ ḥᵃnôḵ ʾeṯ-hāʾᵉlōhîm wᵉʾênennû kî-lāqaḥ ʾōṯô ʾᵉlōhîm", es:"Caminó, pues, Enoc con Dios, y desapareció, porque le llevó Dios", ref:"Gn 5:24", an:["וַיִּתְהַלֵּךְ — wayyiqtol Hitpael 3ª masc. sg. de הלך «y anduvo»","חֲנוֹךְ — nombre propio «Enoc»","אֶת — preposición «con» (aquí no marca objeto)","הָאֱלֹהִים — artículo + sust. masc. pl. absoluto «Dios»","וְאֵינֶנּוּ — וְ + אֵין + 3ª masc. sg. «y ya no estaba»","כִּי — conjunción «porque»","לָקַח — Qal perfecto 3ª masc. sg. «tomó»","אֹתוֹ — marcador de objeto + 3ª masc. sg. «lo»","אֱלֹהִים — sust. masc. pl. absoluto (sujeto)"], tip:"Aquí están los dos אֵת de tu examen: «con» Dios y «lo» tomó."},
+  {f:"וְנִבְרְכוּ בְךָ כֹּל מִשְׁפְּחֹת הָאֲדָמָה", tr:"wᵉniḇrᵉḵû ḇᵉḵā kōl mišpᵉḥōṯ hāʾᵃḏāmāh", es:"y serán benditas en ti todas las familias de la tierra", ref:"Gn 12:3", an:["וְנִבְרְכוּ — weqatal Nifal 3ª común pl. de ברך «y serán benditas»","בְךָ — prep. בְּ + 2ª masc. sg. «en ti»","כֹּל — sust. masc. sg. constructo «todas»","מִשְׁפְּחֹת — sust. fem. pl. constructo «familias de»","הָאֲדָמָה — artículo + sust. fem. sg. absoluto «la tierra»"], tip:"נִ = Nifal (pasivo). Y וְ + perfecto en secuencia = futuro."},
+  {f:"יְהוָה יִמְלֹךְ לְעֹלָם וָעֶד", tr:"YHWH yimlōḵ lᵉʿōlām wāʿeḏ", es:"Jehová reinará eternamente y para siempre", ref:"Ex 15:18", an:["יְהוָה — nombre propio (sujeto)","יִמְלֹךְ — Qal imperfecto 3ª masc. sg. de מָלַךְ «reinará»","לְעֹלָם — prep. לְ + sust. masc. sg. absoluto «para siempre»","וָעֶד — וָ «y» + עַד «perpetuidad»"]},
+  {f:"זָכוֹר אֶת־יוֹם הַשַּׁבָּת לְקַדְּשׁוֹ", tr:"zāḵôr ʾeṯ-yôm haššabbāṯ lᵉqaddᵉšô", es:"Acuérdate del día de reposo para santificarlo", ref:"Ex 20:8", an:["זָכוֹר — Qal infinitivo absoluto de זכר con valor de orden «¡acuérdate!»","אֶת — marcador de objeto directo","יוֹם — sust. masc. sg. constructo «el día de»","הַשַּׁבָּת — artículo + sust. sg. absoluto «el sábado» (género común, suele ser fem.)","לְקַדְּשׁוֹ — לְ + Piel infinitivo constructo de קדשׁ + 3ª masc. sg. «para santificarlo»"], tip:"Un infinitivo absoluto al inicio de la frase puede ser una orden."},
+  {f:"כֹּל אֲשֶׁר־דִּבֶּר יְהוָה נַעֲשֶׂה וְנִשְׁמָע", tr:"kōl ʾᵃšer-dibber YHWH naʿᵃśeh wᵉnišmāʿ", es:"Haremos todo lo que Jehová ha dicho, y obedeceremos", ref:"Ex 24:7", an:["כֹּל — sust. masc. sg. absoluto «todo»","אֲשֶׁר — pronombre relativo «que, lo que»","דִּבֶּר — Piel perfecto 3ª masc. sg. «habló, dijo»","יְהוָה — nombre propio (sujeto)","נַעֲשֶׂה — Qal imperfecto 1ª común pl. de עשׂה «haremos»","וְנִשְׁמָע — וְ + Qal imperfecto 1ª común pl. de שׁמע «y obedeceremos»"], tip:"La נ al inicio = «nosotros» (de אֲנַחְנוּ)."},
+  {f:"בְּלִבִּי צָפַנְתִּי אִמְרָתֶךָ", tr:"bᵉlibbî ṣāp̄antî ʾimrāṯeḵā", es:"En mi corazón he guardado tu palabra", ref:"Sal 119:11", an:["בְּלִבִּי — בְּ + לֵב (sust. masc. sg.) + 1ª común sg. «en mi corazón»","צָפַנְתִּי — Qal perfecto 1ª común sg. de צפן «he guardado»","אִמְרָתֶךָ — אִמְרָה (sust. fem. sg., base אִמְרַת־) + 2ª masc. sg. «tu palabra»"], tip:"Une las dos secciones: sufijos en sustantivos (◌ִי, ךָ) y sufijo del perfecto (תִּי = yo)."},
+  {f:"זָכְרָה־לִּי אֱלֹהַי", tr:"zoḵrāh-llî ʾᵉlōhay", es:"Acuérdate de mí, oh Dios mío", ref:"Ne 13:14", an:["זָכְרָה — Qal imperativo 2ª masc. sg. (forma larga, enfática) de זכר","לִּי — prep. לְ + 1ª común sg.","אֱלֹהַי — sust. masc. pl. + 1ª común sg. «mi Dios»"], tip:"El imperativo es el imperfecto תִּזְכֹּר sin la ת."},
+  {f:"זָכְרֵנִי נָא", tr:"zoḵrēnî nāʾ", es:"Acuérdate ahora de mí", ref:"Jue 16:28", an:["זָכְרֵנִי — Qal imperativo 2ª masc. sg. + sufijo 1ª común sg. נִי «acuérdate de mí»","נָא — partícula de ruego «te ruego, ahora»"], tip:"El sufijo נִי es el mismo de הִנְנִי."},
+  {f:"אֲשֶׁר הָמְלַךְ עַל מַלְכוּת כַּשְׂדִּים", tr:"ʾᵃšer homlaḵ ʿal malḵûṯ kaśdîm", es:"que fue puesto por rey sobre el reino de los caldeos", ref:"Dn 9:1", an:["אֲשֶׁר — pronombre relativo «que»","הָמְלַךְ — Hofal perfecto 3ª masc. sg. de מלך «fue hecho rey»","עַל — preposición «sobre»","מַלְכוּת — sust. fem. sg. constructo «reino de»","כַּשְׂדִּים — gentilicio masc. pl. absoluto «caldeos»"], tip:"Hofal = pasivo del Hifil: no se hizo rey, lo hicieron rey."}
+ ]}
+);
+
+LEVELS.push(
+ { id:"v1", name:"Nivel 1", title:"Perfecto: ¿quién lo hizo?", diff:"Fácil", pill:"p-lima", topic:"vqp", items:[
+  {t:"mc", he:"מָשַׁלְתִּי", q:"¿Quién realiza la acción?", o:["Yo (1ª común sg.)","Tú, varón (2ª masc. sg.)","Nosotros (1ª común pl.)","Ella (3ª fem. sg.)"], a:0, x:"תִּי viene de אָנֹכִי: «yo goberné»."},
+  {t:"mc", he:"מָשַׁלְתָּ", q:"¿Quién realiza la acción?", o:["Tú, varón (2ª masc. sg.)","Yo (1ª común sg.)","Tú, mujer (2ª fem. sg.)","Vosotros (2ª masc. pl.)"], a:0, x:"תָּ con qamets ← אַתָּה."},
+  {t:"mc", he:"מָשְׁלוּ", q:"¿Quién realiza la acción?", o:["Ellos / ellas (3ª común pl.)","Vosotros (2ª masc. pl.)","Nosotros (1ª común pl.)","Él (3ª masc. sg.)"], a:0, x:"וּ final sin ת = 3ª plural."},
+  {t:"mc", he:"מְשַׁלְתֶּם", q:"¿Quién realiza la acción?", o:["Vosotros (2ª masc. pl.)","Ellos (3ª común pl.)","Vosotras (2ª fem. pl.)","Nosotros (1ª común pl.)"], a:0, x:"תֶּם ← אַתֶּם. Con ן final sería vosotras."},
+  {t:"mc", he:"שָׁמַרְנוּ", q:"¿Qué significa?", o:["Nosotros guardamos","Nuestro guardián","Ellos guardaron","Yo guardé"], a:0, x:"נוּ ← אֲנַחְנוּ. En un verbo es «nosotros»; en un sustantivo, «nuestro»."},
+  {t:"mc", he:"כָּתְבָה", q:"¿Qué significa?", o:["Ella escribió","Él escribió","Tú escribiste","Escribieron"], a:0, x:"◌ָה al final de un perfecto = 3ª fem. sg. La vocal de la ת se reduce a shewa."},
+  {t:"mc", q:"¿Qué forma significa «tú (mujer) guardaste»?", o:["שָׁמַרְתְּ","שָׁמַרְתָּ","שָׁמַרְתִּי","שָׁמְרָה"], a:0, x:"תְּ con shewa ← אַתְּ."},
+  {t:"mc", q:"La forma de diccionario de un verbo hebreo es…", o:["Qal perfecto 3ª masc. sg. («él guardó»)","El infinitivo («guardar»)","El imperativo («¡guarda!»)","El participio («guardando»)"], a:0, x:"La raíz se cita como Qal perfecto 3ª masc. sg. (Kelley)."},
+  {t:"mc", q:"El perfecto expresa normalmente…", o:["Una acción completa (casi siempre se traduce en pasado)","Una acción incompleta (futuro)","Una orden","Una acción en curso (gerundio)"], a:0, x:"Perfecto = completo. El contexto decide el tiempo en español."},
+  {t:"ord", q:"Arma: «yo guardé»", tiles:["שָׁמַרְ","תִּי","תָּ","נוּ"], ans:["שָׁמַרְ","תִּי"], join:"", x:"שָׁמַרְ + תִּי = שָׁמַרְתִּי."}
+ ]},
+ { id:"v2", name:"Nivel 2", title:"Imperfecto: los prefijos", diff:"Intermedio", pill:"p-miel", topic:"vqi", items:[
+  {t:"mc", he:"יִמְשֹׁל", q:"¿Qué significa?", o:["Él gobernará","Ellos gobernarán","Yo gobernaré","Gobernante"], a:0, x:"י sin sufijo = él."},
+  {t:"mc", he:"אֶמְשֹׁל", q:"¿Qué significa?", o:["Yo gobernaré","Nosotros gobernaremos","Él gobernará","Tú gobernarás"], a:0, x:"א ← אֲנִי."},
+  {t:"mc", he:"נִמְשֹׁל", q:"¿Qué significa?", o:["Nosotros gobernaremos","Fue gobernado (Nifal)","Yo gobernaré","Ellos gobernarán"], a:0, x:"נ + ḥolem = Qal imperfecto 1ª pl. El Nifal perfecto sería נִמְשַׁל (patach)."},
+  {t:"mc", he:"יִמְשְׁלוּ", q:"¿Qué significa?", o:["Ellos gobernarán","Él gobernará","Vosotros gobernaréis","Gobernaron"], a:0, x:"י + וּ = ellos. Con ת + וּ sería vosotros."},
+  {t:"mc", he:"תִּמְשְׁלִי", q:"¿Qué significa?", o:["Tú (mujer) gobernarás","Tú (varón) gobernarás","Ella gobernará","Mi gobierno"], a:0, x:"ת + sufijo ◌ִי = 2ª fem. sg., el único sufijo del singular."},
+  {t:"mc", he:"תִּמְשֹׁל", q:"¿Qué dos traducciones son posibles?", o:["«Ella gobernará» o «tú (varón) gobernarás»","«Ella gobernó» o «tú gobernaste»","«Vosotros gobernaréis» o «ellas gobernarán»","Solo «tú gobernarás»"], a:0, x:"3ª fem. sg. y 2ª masc. sg. son idénticas: decide el contexto."},
+  {t:"mc", he:"תִּמְשֹׁלְנָה", q:"¿Qué significa?", o:["Ellas gobernarán / vosotras gobernaréis","Vosotros gobernaréis","Ella gobernará","Nosotras gobernaremos"], a:0, x:"◌נָה al final = femenino plural."},
+  {t:"mc", q:"¿Qué palabra ayuda a recordar los 4 prefijos del imperfecto?", o:["אֵיתָן (א־י־ת־נ)","בגדכפת","אֵין","הִנֵּה"], a:0, x:"א yo · י él/ellos · ת tú/ella/vosotros · נ nosotros."},
+  {t:"mc", he:"יְהוָה יִמְלֹךְ", q:"Traduce:", o:["Jehová reinará","Jehová reinó","Jehová es rey","Jehová hizo reinar"], a:0, x:"Ex 15:18: Qal imperfecto 3ª masc. sg."},
+  {t:"ord", q:"Arma: «nosotros guardaremos»", tiles:["נִ","שְׁמֹר","אֶ","יִ"], ans:["נִ","שְׁמֹר"], join:"", x:"נִ + שְׁמֹר = נִשְׁמֹר."}
+ ]},
+ { id:"v3", name:"Nivel 3", title:"Imperativo, infinitivo y participio", diff:"Intermedio", pill:"p-azul", topic:"vqo", items:[
+  {t:"mc", he:"מְשֹׁל", q:"¿Qué forma es?", o:["Imperativo 2ª masc. sg. «¡gobierna!» (o infinitivo constructo)","Perfecto 3ª masc. sg.","Participio «gobernante»","Imperfecto 3ª masc. sg."], a:0, x:"= תִּמְשֹׁל sin la ת. El infinitivo constructo tiene la misma forma."},
+  {t:"mc", he:"מֹשֵׁל", q:"¿Qué forma es?", o:["Participio activo: «el que gobierna»","Perfecto: «gobernó»","Imperativo","Participio pasivo"], a:0, x:"ḥolem tras la 1ª radical + tsere = participio activo Qal."},
+  {t:"mc", he:"מֹשְׁלִים", q:"¿Qué significa?", o:["«Gobernantes» (participio masc. pl.)","«Gobernaron»","«¡Gobernad!»","«Nuestros gobernantes»"], a:0, x:"El participio toma las terminaciones de los sustantivos: ◌ִים masc. pl."},
+  {t:"mc", he:"בָּרוּךְ", q:"¿Qué forma es?", o:["Participio pasivo: «bendito»","Imperativo: «¡bendice!»","Perfecto: «bendijo»","Piel: «bendijo mucho»"], a:0, x:"qamets + shureq (◌ָ…וּ) = participio pasivo Qal."},
+  {t:"mc", he:"וַיִּמְשֹׁל", q:"¿Qué significa?", o:["«Y gobernó» (wayyiqtol, pasado narrativo)","«Y gobernará»","«Para gobernar»","«Nosotros gobernaremos»"], a:0, x:"וַ + dagesh en el prefijo + imperfecto = narración en pasado."},
+  {t:"mc", he:"לִמְשֹׁל", q:"¿Qué significa?", o:["«Para gobernar» (לְ + infinitivo constructo)","«A él gobernó»","«Gobernaré»","«Gobernante»"], a:0, x:"El infinitivo constructo admite preposiciones, como un sustantivo."},
+  {t:"mc", he:"זָכוֹר", q:"En Ex 20:8, ¿qué forma es?", o:["Infinitivo absoluto con valor de orden: «¡acuérdate!»","Participio pasivo","Perfecto 3ª masc. sg.","Imperfecto 3ª masc. sg."], a:0, x:"qamets + ḥolem-waw = infinitivo absoluto. Al inicio de la frase puede ser una orden."},
+  {t:"mc", he:"מִשְׁלוּ", q:"¿Qué forma es?", o:["Imperativo 2ª masc. pl. «¡gobernad!»","Perfecto 3ª pl. «gobernaron»","Imperfecto 3ª pl.","Participio pl."], a:0, x:"= תִּמְשְׁלוּ sin ת. «Gobernaron» sería מָשְׁלוּ."}
+ ]},
+ { id:"v4", name:"Nivel 4", title:"Detecta la voz (binyan)", diff:"Avanzado", pill:"p-rosa", topic:"vbn", items:[
+  {t:"mc", he:"נִשְׁבַּר", q:"¿Qué voz es?", o:["Nifal: «fue quebrado»","Qal: «quebró»","Piel: «despedazó»","Hifil: «hizo quebrar»"], a:0, x:"נִ al inicio en el perfecto = Nifal."},
+  {t:"mc", he:"שִׁבֵּר", q:"¿Qué voz es?", o:["Piel: «despedazó»","Pual","Qal","Nifal"], a:0, x:"Dagesh en la 2ª radical (בּ) + ḥireq y tsere = Piel."},
+  {t:"mc", he:"הִשְׁבִּיר", q:"¿Qué voz es?", o:["Hifil: «hizo quebrar»","Hitpael","Hofal","Nifal"], a:0, x:"הִ + ◌ִי en la 2ª sílaba = Hifil."},
+  {t:"mc", he:"הִתְקַדֵּשׁ", q:"¿Qué voz es?", o:["Hitpael: «se santificó»","Hifil","Piel","Nifal"], a:0, x:"הִתְ + dagesh = Hitpael (reflexivo)."},
+  {t:"mc", he:"הָמְלַךְ", q:"¿Qué voz es?", o:["Hofal: «fue hecho rey»","Hifil: «hizo rey»","Qal: «reinó»","Nifal"], a:0, x:"הָ con qamets ḥatuf (o) = Hofal, pasivo del Hifil (Dn 9:1)."},
+  {t:"mc", he:"לֻמַּד", q:"¿Qué voz es?", o:["Pual: «fue enseñado»","Piel: «enseñó»","Qal: «aprendió»","Hofal"], a:0, x:"qibbuts (u) + dagesh = Pual."},
+  {t:"mc", he:"יִמָּשֵׁל", q:"¿Qué forma es?", o:["Nifal imperfecto: «será gobernado»","Qal imperfecto: «gobernará»","Piel imperfecto","Hifil imperfecto"], a:0, x:"Prefijo + 1ª radical duplicada (מּ) + qamets = Nifal."},
+  {t:"mc", he:"יַמְשִׁיל", q:"¿Qué forma es?", o:["Hifil imperfecto: «hará gobernar»","Qal imperfecto","Piel imperfecto","Hofal imperfecto"], a:0, x:"Prefijo con patach + ◌ִי = Hifil."},
+  {t:"mc", he:"יְמַשֵּׁל", q:"¿Qué forma es?", o:["Piel imperfecto","Qal imperfecto","Nifal imperfecto","Pual imperfecto"], a:0, x:"Prefijo con shewa + patach + dagesh en la 2ª radical."},
+  {t:"mc", q:"«Enseñar» es «hacer aprender». ¿Qué voz usa לָמַד para «enseñar»?", o:["Piel: לִמֵּד","Nifal: נִלְמַד","Hitpael","Qal"], a:0, x:"El Piel puede ser causativo o factitivo (Kelley 36.2)."},
+  {t:"mc", q:"¿Qué voces son pasivas?", o:["Nifal, Pual y Hofal","Qal, Piel y Hifil","Solo el Hitpael","Piel y Pual"], a:0, x:"Activas: Qal, Piel, Hifil · Pasivas: Nifal, Pual, Hofal · Reflexiva: Hitpael."},
+  {t:"mc", q:"¿Por qué las voces se llaman Nifal, Piel, Hifil…?", o:["Son el verbo פָּעַל «hacer» puesto en cada molde: נִפְעַל, פִּעֵל, הִפְעִיל","Son nombres de gramáticos","Son números en arameo","Son nombres de letras"], a:0, x:"El nombre ya es la fórmula: נִפְעַל → נִמְשַׁל."}
+ ]},
+ { id:"v5", name:"Nivel 5", title:"Versículos con verbos", diff:"Examen", pill:"p-line", topic:"vvs", wide:true, items:[
+  {t:"rv", d:"vvs", c:0}, {t:"rv", d:"vvs", c:6}, {t:"rv", d:"vvs", c:9}, {t:"rv", d:"vvs", c:10},
+  {t:"rv", d:"vvs", c:2}, {t:"rv", d:"vvs", c:7}, {t:"rv", d:"vvs", c:5}, {t:"rv", d:"vvs", c:3},
+  {t:"rv", d:"vvs", c:8}, {t:"rv", d:"vvs", c:12}, {t:"rv", d:"vvs", c:4}
+ ]}
+);
+
+const SECTIONS = [
+ { id:"s1", short:"Sección 1", tab:"Sustantivos", name:"Sustantivos, pronombres y sufijos",
+   hero:["Pronombres, ","constructo"," y sufijos"],
+   decks:["con","pro","suf","pre","pat","par","ver"],
+   levels:["n1","n2","n3","n4","n5","n6"],
+   th:[["con","Constructo","con","n2"],["pro","Pronombres","pro","n1"],["suf","Sufijos","suf","n3"],["map","Conectar todo","pat","n5"],["par","Partículas","par","n6"],["exa","Método de examen","ver","n4"]],
+   rv:"n4" },
+ { id:"s2", short:"Sección 2", tab:"Verbos", name:"El verbo: Qal y las 7 voces",
+   hero:["El verbo: ","Qal"," y las 7 voces"],
+   decks:["vqp","vqi","vqo","vbn","vvs"],
+   levels:["v1","v2","v3","v4","v5"],
+   th:[["vra","El verbo","vqp","v1"],["vqp","Qal perfecto","vqp","v1"],["vqi","Qal imperfecto","vqi","v2"],["vqo","Otras formas","vqo","v3"],["vbn","Las 7 voces","vbn","v4"],["vme","Método","vvs","v5"]],
+   rv:"v5" }
+];
+const TOPICS = {pro:"Pronombres", con:"Estado constructo", suf:"Sufijos", pre:"Preposiciones", pat:"Terminaciones", par:"Partículas", ver:"Traducción",
+  vqp:"Perfecto", vqi:"Imperfecto", vqo:"Imperativo, infinitivo y participio", vbn:"Las 7 voces", vvs:"Traducción con verbos"};
+
 const INTV = [0, 10*60e3, 864e5, 3*864e5, 7*864e5, 16*864e5];
 const INTV_LABEL = ["1 min","10 min","1 día","3 días","7 días","16 días"];
 
@@ -488,7 +696,7 @@ const INTV_LABEL = ["1 min","10 min","1 día","3 días","7 días","16 días"];
    ESTADO (se guarda solo en este navegador)
    ========================================================= */
 const KEY = "dabar-s3-v1";
-let S = {cards:{}, lv:{}, sim:null, top:{}, days:[], seen:{}, onb:false, last:null};
+let S = {cards:{}, lv:{}, sim:null, simBy:{}, top:{}, days:[], seen:{}, onb:false, last:null, sec:"s1", thBy:{}};
 try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch(e) {}
 let savedTimer;
 function save(){
@@ -524,8 +732,20 @@ function deckStats(deck){
   });
   return {nw, lr, dn, due, total:deck.cards.length, pct:Math.round(m/deck.cards.length*100)};
 }
+if (!S.simBy) S.simBy = {};
+if (S.sim && !S.simBy.s1) S.simBy.s1 = S.sim;
+if (!S.thBy) S.thBy = {};
+if (!S.sec) S.sec = "s1";
+const cur = () => SECTIONS.find(x=>x.id===S.sec) || SECTIONS[0];
+const secDecks = () => DECKS.filter(d=>cur().decks.includes(d.id));
+const secLevels = () => LEVELS.filter(l=>cur().levels.includes(l.id));
+const secCards = () => secDecks().reduce((a,d)=>a+d.cards.length,0);
+const rvCard = it => DECKS.find(d=>d.id===(it.d||"ver")).cards[it.c];
+function secBar(){
+  return `<div class="secbar" role="tablist" aria-label="Secciones">${SECTIONS.map(x=>`<button role="tab" aria-selected="${x.id===S.sec}" data-sec="${x.id}"><small>${x.short}</small>${x.tab}</button>`).join("")}</div>`;
+}
 function overall(){
-  let m=0,t=0; DECKS.forEach(d=>{ d.cards.forEach((c,i)=>{ const st=S.cards[cid(d.id,i)]; t++; if(st) m+=Math.min(st.b,3)/3; }); });
+  let m=0,t=0; secDecks().forEach(d=>{ d.cards.forEach((c,i)=>{ const st=S.cards[cid(d.id,i)]; t++; if(st) m+=Math.min(st.b,3)/3; }); });
   return Math.round(m/t*100);
 }
 function ring(pct, label, size=108, stroke="var(--tinta)", track="var(--crema)"){
@@ -543,7 +763,7 @@ const star = `<svg class="star" viewBox="0 0 100 100" aria-hidden="true"><path d
 let route = "inicio";
 let fcS = null;   // sesión de flashcards
 let exS = null;   // sesión de ejercicios
-let thTab = S.thTab || "con";
+let thTab = S.thBy[S.sec] || cur().th[0][0];
 let openDeck = null;
 
 function go(r){
@@ -560,36 +780,40 @@ function render(){
   else if (route==="estudiar") html = fcS ? vCard() : vDecks();
   else if (route==="practica") html = exS ? vEx() : vLevels();
   else if (route==="progreso") html = vProgress();
-  v.innerHTML = `<div class="view stack" style="gap:20px">${html}</div>`;
+  const bar = (fcS && route==="estudiar") || (exS && route==="practica") ? "" : secBar();
+  v.innerHTML = `<div class="view stack" style="gap:20px">${bar}${html}</div>`;
 }
 
 /* ---------- Inicio ---------- */
 function planSteps(){
-  const TH = ["con","pro","suf","map","exa"];
+  const TH = cur().th.map(x=>x[0]);
   const thDone = TH.every(k=>S.seen[k]);
   const fc = overall();
-  const lvDone = LEVELS.filter(l=>S.lv[l.id]).length;
-  const sim = S.sim ? S.sim.best : 0;
+  const L = secLevels();
+  const lvDone = L.filter(l=>S.lv[l.id]).length;
+  const sr = S.simBy[S.sec];
+  const sim = sr ? sr.best : 0;
   return [
-    {t:"Lee la teoría", d:"5 bloques: incluye «Conectar todo», tus tablas del cuaderno unidas", done:thDone, go:"teoria", sub: thDone?"Listo":`${TH.filter(k=>S.seen[k]).length}/5`},
+    {t:"Lee la teoría", d:`${TH.length} bloques cortos, con relaciones entre temas`, done:thDone, go:"teoria", sub: thDone?"Listo":`${TH.filter(k=>S.seen[k]).length}/${TH.length}`},
     {t:"Memoriza con flashcards", d:"Meta: 60% de dominio en los mazos", done:fc>=60, go:"estudiar", sub:fc+"%"},
-    {t:"Practica los niveles 1 a 5", d:"La pizarra y el puente entre tus tres tablas", done:lvDone===LEVELS.length, go:"practica", sub:lvDone+"/"+LEVELS.length},
-    {t:"Haz el simulacro de examen", d:"Meta: 80% o más", done:sim>=80, go:"sim", sub: S.sim? sim+"%":"—"}
+    {t:`Practica los ${L.length} niveles`, d:"De lo fácil al examen, con explicación en cada respuesta", done:lvDone===L.length, go:"practica", sub:lvDone+"/"+L.length},
+    {t:"Haz el simulacro de examen", d:"Meta: 80% o más", done:sim>=80, go:"sim", sub: sr? sim+"%":"—"}
   ];
 }
 function vHome(){
   const pct = overall();
-  const last = S.last && DECKS.find(d=>d.id===S.last);
+  const last = S.last && secDecks().find(d=>d.id===S.last);
+  const sec = cur();
   const steps = planSteps();
   return `
   <section class="hero">
     ${star}
     <div class="stack" style="gap:10px;min-width:0">
-      <span class="eyebrow" style="color:var(--tinta)">Examen de mañana</span>
-      <h1>Pronombres, <span class="hl">constructo</span> y sufijos</h1>
+      <span class="eyebrow" style="color:var(--tinta)">${sec.short} · Hebreo I</span>
+      <h1>${sec.hero[0]}<span class="hl">${sec.hero[1]}</span>${sec.hero[2]}</h1>
       <div class="meta">
-        <span class="pill p-line tilt">Sesión 3</span>
-        <span class="pill p-verde tilt2">${DECKS.reduce((a,d)=>a+d.cards.length,0)} tarjetas</span>
+        <span class="pill p-line tilt">${sec.short}</span>
+        <span class="pill p-verde tilt2">${secCards()} tarjetas</span>
       </div>
     </div>
     <div class="ringbox">${ring(pct,"dominio")}</div>
@@ -611,7 +835,7 @@ function vHome(){
 
   <section class="stack">
     <div class="row" style="justify-content:space-between"><h2>Mis mazos</h2><button class="link" data-act="study" data-deck="all" data-mode="smart">Repasar todo mezclado</button></div>
-    ${DECKS.map(deckCard).join("")}
+    ${secDecks().map(deckCard).join("")}
   </section>`;
 }
 function deckCard(d){
@@ -633,15 +857,18 @@ function deckCard(d){
 }
 
 /* ---------- Teoría ---------- */
-const TH_TABS = [["con","Constructo"],["pro","Pronombres"],["suf","Sufijos"],["map","Conectar todo"],["exa","Método de examen"]];
+const TH_FN = {con:()=>thCon(), pro:()=>thPro(), suf:()=>thSuf(), map:()=>thMap(), par:()=>thPar(), exa:()=>thExa(),
+  vra:()=>thVra(), vqp:()=>thVqp(), vqi:()=>thVqi(), vqo:()=>thVqo(), vbn:()=>thVbn(), vme:()=>thVme()};
 function vTheory(){
-  S.seen[thTab]=true; S.thTab=thTab; save();
-  const body = {con:thCon, pro:thPro, suf:thSuf, map:thMap, exa:thExa}[thTab]();
-  const cta = thTab==="exa" ? `<button class="btn miel" data-act="level" data-level="n4">Ir al Nivel 4</button>`
-    : thTab==="map" ? `<span class="row"><button class="btn miel" data-act="study" data-deck="pat" data-mode="smart">Flashcards de terminaciones</button><button class="btn ghost" data-act="level" data-level="n5">Nivel 5</button></span>`
-    : `<button class="btn miel" data-act="study" data-deck="${thTab}" data-mode="smart">Flashcards de este bloque</button>`;
-  return `<div class="stack" style="gap:6px"><span class="eyebrow">Teoría</span><h1>Lo esencial de la sesión</h1></div>
-  <div class="seg" role="tablist">${TH_TABS.map(([k,n])=>`<button role="tab" aria-selected="${k===thTab}" data-th="${k}">${S.seen[k]&&k!==thTab?'<span class="tick">✓</span>':""}${n}</button>`).join("")}</div>
+  const sec = cur();
+  if (!sec.th.some(x=>x[0]===thTab)) thTab = sec.th[0][0];
+  S.seen[thTab]=true; S.thBy[S.sec]=thTab; save();
+  const tab = sec.th.find(x=>x[0]===thTab);
+  const body = TH_FN[thTab]();
+  const L = LEVELS.find(l=>l.id===tab[3]);
+  const cta = `<span class="row"><button class="btn miel" data-act="study" data-deck="${tab[2]}" data-mode="smart">Flashcards de este bloque</button><button class="btn ghost" data-act="level" data-level="${tab[3]}">${L.name}: ${L.title}</button></span>`;
+  return `<div class="stack" style="gap:6px"><span class="eyebrow">Teoría · ${sec.short}</span><h1>${sec.name}</h1></div>
+  <div class="seg" role="tablist">${sec.th.map(([k,n])=>`<button role="tab" aria-selected="${k===thTab}" data-th="${k}">${S.seen[k]&&k!==thTab?'<span class="tick">✓</span>':""}${n}</button>`).join("")}</div>
   ${body}
   <div class="row" style="justify-content:space-between">
     <span class="cap">Cuando termines, practica este bloque.</span>
@@ -760,7 +987,8 @@ function thSuf(){
 
   <section class="card miel t-sec">
     <h2>La pista de la י</h2>
-    <p>Si ves una <b>י antes del sufijo</b>, lo poseído es plural.</p>
+    <p>En un <b>sustantivo</b>, si ves una <b>י antes del sufijo</b>, lo poseído es plural.</p>
+    <div class="card rosa sm"><b>Excepción (del examen):</b> ${fmt("אֶל")} y ${fmt("עַל")} llevan la י siempre: ${fmt("אֲלֵיהֶם")} es «a ellos», no un plural. Ver la pestaña «Partículas».</div>
     <div class="levels">
       <div class="card sm" style="background:var(--crema)"><p style="text-align:center">${hl("סוּס|וֹ")}</p><p style="text-align:center"><b>su caballo</b></p></div>
       <div class="card sm" style="background:var(--crema)"><p style="text-align:center">${hl("סוּסָ|יו","y")}</p><p style="text-align:center"><b>sus caballos</b></p></div>
@@ -805,7 +1033,7 @@ function thMap(){
     ["3fp","las, a ellas","לָ|הֶן","su (de ellas)","סוּסָ|ן","sus (de ellas)","סוּסֵ|יהֶן"]];
   const steps = [
     ["Aprende 10 colas, no 30 terminaciones","Salen de los pronombres que ya sabes (tabla 1)."],
-    ["Aprende 3 conectores","Sustantivo singular: directo. Preposición: qamets. Sustantivo plural: ֵי / ַי."],
+    ["Aprende 3 conectores","Sustantivo singular: directo. Preposición: qamets. Sustantivo plural: ◌ֵי / ◌ַי."],
     ["Lee la tabla grande por filas","Una persona en sus tres bases. Así el patrón se repite y lo fijas."],
     ["Flashcards «Terminaciones»","26 terminaciones sueltas: di persona, número y dónde aparece."],
     ["Nivel 5 y simulacro","Ejercicios que te obligan a cruzar las tablas."]];
@@ -862,14 +1090,14 @@ function thMap(){
 }
 function thExa(){
   const steps = [
-    ["Lee de derecha a izquierda","Separa las palabras y marca las que tienen maqqef (־): van unidas."],
+    ["Lee de derecha a izquierda","Separa las palabras y marca las que tienen maqqef (◌־): van unidas."],
     ["Busca pronombres","אֲנִי, אַתָּה, הוּא… son el sujeto. זֶה/זֹאת/אֵלֶּה sin artículo y delante = «este es…»."],
     ["Busca cadenas constructas","Primera palabra sin artículo + terminación ◌ֵי o ◌ַת + otro sustantivo → «el … de …»."],
-    ["Separa los sufijos","◌ִי mi · ◌ְךָ tu · ◌וֹ su · ◌ֵנוּ nuestro · ◌ָם su (de ellos). Con י delante: plural."],
+    ["Separa los sufijos","◌ִי mi · ◌ְךָ tu · ◌וֹ su · ◌ֵנוּ nuestro · ◌ָם su (de ellos). En sustantivos, con י delante: plural. En אֶל y עַל la י va siempre."],
     ["Analiza cada sustantivo","Género, número y estado (absoluto o constructo). Es lo que pide el profesor."],
     ["Traduce","Si no hay verbo, añade «es/son». Pule el español al final."]
   ];
-  const v = DECKS[4].cards[0];
+  const v = DECKS.find(d=>d.id==="ver").cards[0];
   return `
   <section class="card t-sec">
     <span class="pill p-line tilt" style="justify-self:start">Para mañana</span>
@@ -885,16 +1113,389 @@ function thExa(){
   </section>`;
 }
 
+/* ---------- Teoría · Sección 1: Partículas ---------- */
+function thPar(){
+  const R = [
+    ["אֵת","objeto directo",["אֹתִי","me"],["אֹתְךָ","te"],["אֹתוֹ","lo"],["אֹתָם","los"],false],
+    ["אֵת","con",["אִתִּי","conmigo"],["אִתְּךָ","contigo"],["אִתּוֹ","con él"],["אִתָּם","con ellos"],false],
+    ["אֵין","no hay",["אֵינֶנִּי","no estoy"],["אֵינְךָ","no estás"],["אֵינֶנּוּ","no está"],["אֵינָם","no están"],false],
+    ["הִנֵּה","he aquí",["הִנְנִי","heme aquí"],["הִנְּךָ","aquí estás"],["הִנּוֹ","aquí está"],["הִנָּם","aquí están"],false],
+    ["אֶל","a, hacia",["אֵלַי","a mí"],["אֵלֶיךָ","a ti"],["אֵלָיו","a él"],["אֲלֵיהֶם","a ellos"],true],
+    ["עַל","sobre",["עָלַי","sobre mí"],["עָלֶיךָ","sobre ti"],["עָלָיו","sobre él"],["עֲלֵיהֶם","sobre ellos"],true]];
+  return `
+  <section class="t-sec">
+    <span class="pill p-tinta tilt" style="justify-self:start">Lo que trajo el examen</span>
+    <h2>Partículas con sufijo</h2>
+    <p>Además de los sustantivos y de ${fmt("לְ")} y ${fmt("עִם")}, otras palabras pequeñas también aceptan sufijos. Son las que más fallaste en el examen, así que están aquí juntas.</p>
+    <div class="tbl-wrap"><table style="min-width:560px">
+      <thead><tr><th>Palabra</th><th>Significa</th><th>Yo</th><th>Tú (m)</th><th>Él</th><th>Ellos</th></tr></thead>
+      <tbody>${R.map(r=>`<tr ${r[6]?'style="background:var(--miel)"':""}><td>${heb(r[0])}</td><td>${r[1]}</td>${[2,3,4,5].map(k=>`<td>${heb(r[k][0])}<br><span class="cap">${r[k][1]}</span></td>`).join("")}</tr>`).join("")}</tbody>
+    </table></div>
+    <p class="cap">Las filas amarillas usan los mismos sufijos que los sustantivos plurales (${fmt("סוּסַי, סוּסֶיךָ, סוּסָיו, סוּסֵיהֶם")}).</p>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>Tres reglas para no fallar</h2>
+    <div class="rules">
+      <div class="rule"><span class="pill p-verde">La yod</span><span>En sustantivos, la ${fmt("י")} antes del sufijo indica plural. En ${fmt("אֶל")} y ${fmt("עַל")} aparece <b>siempre</b> y no indica nada: ignórala y mira solo el final.</span></div>
+      <div class="rule"><span class="pill p-verde">Los dos אֵת</span><span>${fmt("אֹת־")} con <b>o</b> = <b>o</b>bjeto («lo, la, los»). ${fmt("אִתּ־")} con <b>i</b> + letra doble = «con», igual que ${fmt("עִמּ־")}.</span></div>
+      <div class="rule"><span class="pill p-verde">La base</span><span>Si cuatro formas terminan en «ellos», la diferencia está al inicio: ${fmt("אֵינָם")} no están · ${fmt("אֹתָם")} los · ${fmt("עֲלֵיהֶם")} sobre ellos · ${fmt("לָהֶם")} a ellos.</span></div>
+    </div>
+  </section>
+
+  <section class="card t-sec">
+    <h2>Método de 3 preguntas</h2>
+    <div class="plan">
+      <div class="step" style="grid-template-columns:36px 1fr"><span class="n">1</span><span><b>¿Cuál es la base?</b><span class="cap" style="font-size:14px">${fmt("Sustantivo, preposición (לְ, אֶל, עַל, עִם) o partícula (אֵת, אֵין, הִנֵּה).")}</span></span></div>
+      <div class="step" style="grid-template-columns:36px 1fr"><span class="n">2</span><span><b>¿Hay yod antes del sufijo?</b><span class="cap" style="font-size:14px">${fmt("En sustantivos: lo poseído es plural. En אֶל / עַל: ignórala.")}</span></span></div>
+      <div class="step" style="grid-template-columns:36px 1fr"><span class="n">3</span><span><b>¿Cuál es la última letra?</b><span class="cap" style="font-size:14px">${fmt("י / נִי yo · ךָ tú · ךְ tú (f) · ו él · הּ ella · נוּ nosotros · כֶם vosotros · ם / הֶם ellos · ן / הֶן ellas")}</span></span></div>
+    </div>
+  </section>`;
+}
+
+/* ---------- Teoría · Sección 2: El verbo ---------- */
+const VP = [ // Qal perfecto de מָשַׁל: persona, forma con sufijo marcado, traducción, origen
+  ["3ª masc. sg.","מָשַׁל|","él gobernó","—"],
+  ["3ª fem. sg.","מָשְׁלָ|ה","ella gobernó","fem. ◌ָה, como סוּסָה"],
+  ["2ª masc. sg.","מָשַׁלְ|תָּ","tú gobernaste","אַתָּה"],
+  ["2ª fem. sg.","מָשַׁלְ|תְּ","tú (f) gobernaste","אַתְּ"],
+  ["1ª común sg.","מָשַׁלְ|תִּי","yo goberné","אָנֹכִי"],
+  ["3ª común pl.","מָשְׁל|וּ","ellos gobernaron","—"],
+  ["2ª masc. pl.","מְשַׁלְ|תֶּם","vosotros gobernasteis","אַתֶּם"],
+  ["2ª fem. pl.","מְשַׁלְ|תֶּן","vosotras gobernasteis","אַתֵּן"],
+  ["1ª común pl.","מָשַׁלְ|נוּ","nosotros gobernamos","אֲנַחְנוּ"]];
+const VI = [ // Qal imperfecto: persona, prefijo|resto, sufijo
+  ["3ª masc. sg.","יִ|מְשֹׁל","","él gobernará"],
+  ["3ª fem. sg.","תִּ|מְשֹׁל","","ella gobernará"],
+  ["2ª masc. sg.","תִּ|מְשֹׁל","","tú gobernarás"],
+  ["2ª fem. sg.","תִּ|מְשְׁלִ","י","tú (f) gobernarás"],
+  ["1ª común sg.","אֶ|מְשֹׁל","","yo gobernaré"],
+  ["3ª masc. pl.","יִ|מְשְׁל","וּ","ellos gobernarán"],
+  ["3ª fem. pl.","תִּ|מְשֹׁלְ","נָה","ellas gobernarán"],
+  ["2ª masc. pl.","תִּ|מְשְׁל","וּ","vosotros gobernaréis"],
+  ["2ª fem. pl.","תִּ|מְשֹׁלְ","נָה","vosotras gobernaréis"],
+  ["1ª común pl.","נִ|מְשֹׁל","","nosotros gobernaremos"]];
+const BIN = [ // voz, tipo, perf 3ms, impf 3ms, imperativo, inf cs, participio, pista, ejemplo real
+  ["Qal","simple activo","מָשַׁל","יִמְשֹׁל","מְשֹׁל","מְשֹׁל","מֹשֵׁל","sin prefijo ni letra doble","שָׁבַר «quebró»"],
+  ["Nifal","simple pasivo / reflexivo","נִמְשַׁל","יִמָּשֵׁל","הִמָּשֵׁל","הִמָּשֵׁל","נִמְשָׁל","נִ · o letra doble al inicio en el imperfecto","נִשְׁבַּר «fue quebrado»"],
+  ["Piel","intensivo activo","מִשֵּׁל","יְמַשֵּׁל","מַשֵּׁל","מַשֵּׁל","מְמַשֵּׁל","dagesh en la 2ª radical","שִׁבֵּר «despedazó»"],
+  ["Pual","intensivo pasivo","מֻשַּׁל","יְמֻשַּׁל","—","מֻשַּׁל","מְמֻשָּׁל","u (qibbuts) + dagesh","שֻׁבַּר «fue despedazado»"],
+  ["Hitpael","reflexivo","הִתְמַשֵּׁל","יִתְמַשֵּׁל","הִתְמַשֵּׁל","הִתְמַשֵּׁל","מִתְמַשֵּׁל","הִתְ + dagesh","הִתְקַדֵּשׁ «se santificó»"],
+  ["Hifil","causativo activo","הִמְשִׁיל","יַמְשִׁיל","הַמְשֵׁל","הַמְשִׁיל","מַמְשִׁיל","הִ / יַ + ◌ִי en la 2ª sílaba","הִשְׁבִּיר «hizo quebrar»"],
+  ["Hofal","causativo pasivo","הָמְשַׁל","יָמְשַׁל","—","הָמְשַׁל","מָמְשָׁל","הָ / יָ con o (qamets ḥatuf)","הָשְׁבַּר «fue hecho quebrar»"]];
+const FULLP = { // paradigma completo de מָשַׁל en las 7 voces (Boskamp)
+  pers:["3ms","3fs","2ms","2fs","1cs","3cp","2mp","2fp","1cp"],
+  Qal:["מָשַׁל","מָשְׁלָה","מָשַׁלְתָּ","מָשַׁלְתְּ","מָשַׁלְתִּי","מָשְׁלוּ","מְשַׁלְתֶּם","מְשַׁלְתֶּן","מָשַׁלְנוּ"],
+  Nifal:["נִמְשַׁל","נִמְשְׁלָה","נִמְשַׁלְתָּ","נִמְשַׁלְתְּ","נִמְשַׁלְתִּי","נִמְשְׁלוּ","נִמְשַׁלְתֶּם","נִמְשַׁלְתֶּן","נִמְשַׁלְנוּ"],
+  Piel:["מִשֵּׁל","מִשְּׁלָה","מִשַּׁלְתָּ","מִשַּׁלְתְּ","מִשַּׁלְתִּי","מִשְּׁלוּ","מִשַּׁלְתֶּם","מִשַּׁלְתֶּן","מִשַּׁלְנוּ"],
+  Pual:["מֻשַּׁל","מֻשְּׁלָה","מֻשַּׁלְתָּ","מֻשַּׁלְתְּ","מֻשַּׁלְתִּי","מֻשְּׁלוּ","מֻשַּׁלְתֶּם","מֻשַּׁלְתֶּן","מֻשַּׁלְנוּ"],
+  Hitpael:["הִתְמַשֵּׁל","הִתְמַשְּׁלָה","הִתְמַשַּׁלְתָּ","הִתְמַשַּׁלְתְּ","הִתְמַשַּׁלְתִּי","הִתְמַשְּׁלוּ","הִתְמַשַּׁלְתֶּם","הִתְמַשַּׁלְתֶּן","הִתְמַשַּׁלְנוּ"],
+  Hifil:["הִמְשִׁיל","הִמְשִׁילָה","הִמְשַׁלְתָּ","הִמְשַׁלְתְּ","הִמְשַׁלְתִּי","הִמְשִׁילוּ","הִמְשַׁלְתֶּם","הִמְשַׁלְתֶּן","הִמְשַׁלְנוּ"],
+  Hofal:["הָמְשַׁל","הָמְשְׁלָה","הָמְשַׁלְתָּ","הָמְשַׁלְתְּ","הָמְשַׁלְתִּי","הָמְשְׁלוּ","הָמְשַׁלְתֶּם","הָמְשַׁלְתֶּן","הָמְשַׁלְנוּ"]};
+const FULLI = {
+  pers:["3ms","3fs","2ms","2fs","1cs","3mp","3fp","2mp","2fp","1cp"],
+  Qal:["יִמְשֹׁל","תִּמְשֹׁל","תִּמְשֹׁל","תִּמְשְׁלִי","אֶמְשֹׁל","יִמְשְׁלוּ","תִּמְשֹׁלְנָה","תִּמְשְׁלוּ","תִּמְשֹׁלְנָה","נִמְשֹׁל"],
+  Nifal:["יִמָּשֵׁל","תִּמָּשֵׁל","תִּמָּשֵׁל","תִּמָּשְׁלִי","אֶמָּשֵׁל","יִמָּשְׁלוּ","תִּמָּשַׁלְנָה","תִּמָּשְׁלוּ","תִּמָּשַׁלְנָה","נִמָּשֵׁל"],
+  Piel:["יְמַשֵּׁל","תְּמַשֵּׁל","תְּמַשֵּׁל","תְּמַשְּׁלִי","אֲמַשֵּׁל","יְמַשְּׁלוּ","תְּמַשֵּׁלְנָה","תְּמַשְּׁלוּ","תְּמַשֵּׁלְנָה","נְמַשֵּׁל"],
+  Pual:["יְמֻשַּׁל","תְּמֻשַּׁל","תְּמֻשַּׁל","תְּמֻשְּׁלִי","אֲמֻשַּׁל","יְמֻשְּׁלוּ","תְּמֻשַּׁלְנָה","תְּמֻשְּׁלוּ","תְּמֻשַּׁלְנָה","נְמֻשַּׁל"],
+  Hitpael:["יִתְמַשֵּׁל","תִּתְמַשֵּׁל","תִּתְמַשֵּׁל","תִּתְמַשְּׁלִי","אֶתְמַשֵּׁל","יִתְמַשְּׁלוּ","תִּתְמַשֵּׁלְנָה","תִּתְמַשְּׁלוּ","תִּתְמַשֵּׁלְנָה","נִתְמַשֵּׁל"],
+  Hifil:["יַמְשִׁיל","תַּמְשִׁיל","תַּמְשִׁיל","תַּמְשִׁילִי","אַמְשִׁיל","יַמְשִׁילוּ","תַּמְשֵׁלְנָה","תַּמְשִׁילוּ","תַּמְשֵׁלְנָה","נַמְשִׁיל"],
+  Hofal:["יָמְשַׁל","תָּמְשַׁל","תָּמְשַׁל","תָּמְשְׁלִי","אָמְשַׁל","יָמְשְׁלוּ","תָּמְשַׁלְנָה","תָּמְשְׁלוּ","תָּמְשַׁלְנָה","נָמְשַׁל"]};
+const VOICES = ["Qal","Nifal","Piel","Pual","Hitpael","Hifil","Hofal"];
+const fullTable = T => `<div class="tbl-wrap"><table style="min-width:760px">
+  <thead><tr><th>PGN</th>${VOICES.map(v=>`<th>${v}</th>`).join("")}</tr></thead>
+  <tbody>${T.pers.map((p,i)=>`<tr><td><b>${p}</b></td>${VOICES.map(v=>`<td>${heb(T[v][i])}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+
+function thVra(){
+  const fam = [
+    ["מ־ל־ך","reinar",[["מֶלֶךְ","rey · sust. masc. sg."],["מַלְכָּה","reina · sust. fem. sg."],["מַלְכוּת","reino · sust. fem. sg."],["מָלַךְ","reinó · verbo"]]],
+    ["ד־ב־ר","hablar",[["דָּבָר","palabra · sust. masc. sg."],["דִּבֶּר","habló · verbo (Piel)"]]],
+    ["ק־ד־שׁ","santo",[["קֹדֶשׁ","santidad · sust. masc. sg."],["קָדוֹשׁ","santo · adjetivo"],["קִדֵּשׁ","santificó · verbo (Piel)"]]],
+    ["ז־כ־ר","recordar",[["זָכַר","recordó · verbo"],["זִכָּרוֹן","memorial · sust. masc. sg."]]]];
+  return `
+  <section class="card t-sec">
+    <span class="pill p-azul tilt" style="justify-self:start">Bloque 1</span>
+    <h2>Todo empieza en la raíz</h2>
+    <p>Casi toda palabra hebrea sale de una <b>raíz de 3 consonantes</b>. Las vocales y las letras que se añaden deciden si es un sustantivo o un verbo, quién hace la acción y cómo. Ya conoces muchas raíces por la Sección 1:</p>
+    <div class="levels">${fam.map(f=>`<div class="card sm stack" style="background:var(--crema)"><div class="row" style="justify-content:space-between"><span class="he" style="font-size:1.6em">${esc(f[0])}</span><span class="pill p-miel">${f[1]}</span></div>${f[2].map(w=>`<div class="part">${heb(w[0])}<span>${w[1]}</span></div>`).join("")}</div>`).join("")}</div>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>El verbo se cita en pasado</h2>
+    <p>En español buscas «gobernar» (infinitivo). En hebreo, el diccionario trae ${fmt("מָשַׁל")} «<b>él gobernó</b>»: Qal perfecto, 3ª masculina singular. Es la forma más simple, sin prefijos ni sufijos (Kelley 29.5).</p>
+  </section>
+
+  <section class="t-sec">
+    <h2>Dos conjugaciones, dos maneras de ver la acción</h2>
+    <div class="levels">
+      <div class="card sm stack"><span class="pill p-azul" style="justify-self:start">Perfecto · qatal</span><p class="he" style="font-size:2em;text-align:center">מָשַׁלְתִּי</p><p><b>Acción completa.</b> Se forma con <b>sufijos</b>. Casi siempre se traduce en pasado: «goberné».</p></div>
+      <div class="card sm stack"><span class="pill p-verde" style="justify-self:start">Imperfecto · yiqtol</span><p class="he" style="font-size:2em;text-align:center">אֶמְשֹׁל</p><p><b>Acción incompleta.</b> Se forma con <b>prefijos</b> (y a veces sufijos). Se traduce en futuro, presente habitual o deseo: «gobernaré».</p></div>
+    </div>
+    <p class="cap">El tiempo en español lo decide el contexto, no la forma sola (Kelley 29.9).</p>
+  </section>
+
+  <section class="card t-sec">
+    <h2>La fórmula de todo verbo</h2>
+    <div class="chain" style="flex-direction:row-reverse">
+      <div class="link-box c"><b>prefijo</b><span class="cap">¿quién? (imperfecto)</span></div><span class="arrow">+</span>
+      <div class="link-box a"><b>raíz en un molde</b><span class="cap">la voz: Qal, Nifal, Piel…</span></div><span class="arrow">+</span>
+      <div class="link-box c"><b>sufijo</b><span class="cap">¿quién? (perfecto)</span></div>
+    </div>
+    <p>Con esa fórmula sacas tres datos de cada verbo: <b>persona</b> (quién), <b>aspecto</b> (completo o no) y <b>voz</b> (activa, pasiva, reflexiva, causativa).</p>
+    <p class="muted">Como en los sustantivos, cada forma tiene persona, género y número. La diferencia con el español: el hebreo distingue «tú» varón y «tú» mujer.</p>
+  </section>
+
+  <section class="card rosa sm t-sec">
+    <p><b>Fuertes y débiles.</b> Un verbo fuerte conserva sus 3 consonantes en todas las formas (${fmt("מָשַׁל, שָׁמַר, כָּתַב, פָּקַד, זָכַר, מָלַךְ")}). Si tiene una gutural (${fmt("א ה ח ע")}, a veces ${fmt("ר")}), empieza con ${fmt("נ / י / ו")} o termina en ${fmt("ה")}, es débil. Aquí aprendemos el modelo fuerte: los débiles son variaciones del mismo (Kelley 29.5).</p>
+  </section>`;
+}
+
+function thVqp(){
+  return `
+  <section class="t-sec">
+    <span class="pill p-azul tilt" style="justify-self:start">Bloque 2</span>
+    <h2>Qal perfecto: la raíz + un sufijo</h2>
+    <p>Toma ${fmt("מָשַׁל")} y pégale al final un pedazo de pronombre. Ese pedazo dice <b>quién</b> hizo la acción.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Persona</th><th>Forma</th><th>Traducción</th><th>Viene de</th></tr></thead>
+      <tbody>${VP.map(r=>`<tr><td>${r[0]}</td><td>${hl(r[1])}</td><td>${r[2]}</td><td>${fmt(r[3])}</td></tr>`).join("")}</tbody>
+    </table></div>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>El puente con la Sección 1</h2>
+    <p>Los sufijos del verbo y los del sustantivo salen de los <b>mismos pronombres</b>. Compáralos:</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Pronombre</th><th>En sustantivo</th><th>En verbo perfecto</th></tr></thead>
+      <tbody>
+        <tr><td>${heb("אֲנַחְנוּ")}</td><td>${hl("סוּסֵ|נוּ")}<br><span class="cap">nuestro caballo</span></td><td>${hl("מָשַׁלְ|נוּ")}<br><span class="cap">nosotros gobernamos</span></td></tr>
+        <tr><td>${heb("אַתָּה")}</td><td>${hl("סוּסְ|ךָ")}<br><span class="cap">tu caballo · la ת se volvió כ</span></td><td>${hl("מָשַׁלְ|תָּ")}<br><span class="cap">tú gobernaste · la ת se queda</span></td></tr>
+        <tr><td>${heb("אַתֶּם")}</td><td>${hl("סוּסְ|כֶם")}<br><span class="cap">vuestro caballo</span></td><td>${hl("מְשַׁלְ|תֶּם")}<br><span class="cap">vosotros gobernasteis</span></td></tr>
+        <tr><td>${heb("הִיא")}</td><td>${hl("סוּסָ|הּ")}<br><span class="cap">su caballo (de ella)</span></td><td>${hl("מָשְׁלָ|ה")}<br><span class="cap">ella gobernó · sin mappiq</span></td></tr>
+      </tbody></table></div>
+    <p><b>Regla corta:</b> en el sustantivo el sufijo dice de quién es la cosa (posesivo); en el verbo dice quién hace la acción (sujeto).</p>
+  </section>
+
+  <section class="card t-sec">
+    <h2>Por qué cambian las vocales</h2>
+    <div class="rules">
+      <div class="rule"><span class="pill p-verde">Sufijo con vocal</span><span>${fmt("◌ָה")} y ${fmt("וּ")} se llevan el acento: la vocal de la 2ª radical se reduce a shewa. ${fmt("מָשַׁל → מָשְׁלָה, מָשְׁלוּ")}.</span></div>
+      <div class="rule"><span class="pill p-verde">Sufijo pesado</span><span>${fmt("תֶּם")} y ${fmt("תֶּן")} se llevan el acento: la primera qamets se reduce. ${fmt("מָשַׁל → מְשַׁלְתֶּם")}.</span></div>
+      <div class="rule"><span class="pill p-verde">El resto</span><span>${fmt("תָּ, תְּ, תִּי, נוּ")} no mueven nada: la base queda ${fmt("מָשַׁלְ־")}.</span></div>
+    </div>
+    <p class="cap">Estos sufijos son los mismos en todas las voces y en todos los verbos, fuertes y débiles (Kelley 30.2). Si los dominas aquí, los reconocerás siempre.</p>
+  </section>`;
+}
+
+function thVqi(){
+  return `
+  <section class="t-sec">
+    <span class="pill p-verde tilt" style="justify-self:start">Bloque 3</span>
+    <h2>Qal imperfecto: un prefijo delante</h2>
+    <p>El imperfecto se forma con el infinitivo constructo ${fmt("מְשֹׁל")} y un <b>prefijo</b> que también viene de los pronombres (Kelley 39.1).</p>
+    <div class="levels">
+      ${[["א","yo","אֲנִי"],["י","él, ellos","—"],["ת","tú, ella, vosotros/as, ellas","אַתָּה"],["נ","nosotros","אֲנַחְנוּ"]].map(p=>`<div class="card sm stack" style="text-align:center"><span class="he" style="font-size:2.4em;line-height:1.2">${p[0]}</span><b>${p[1]}</b><span class="cap">${p[2]==="—"?"marca la 3ª persona":"de "+fmt(p[2])}</span></div>`).join("")}
+    </div>
+    <div class="card rosa sm"><b>Para recordarlo:</b> las 4 letras forman la palabra ${fmt("אֵיתָן")} (ʾêṯān, «firme»).</div>
+  </section>
+
+  <section class="t-sec">
+    <h2>La tabla completa</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Persona</th><th>Forma</th><th>Traducción</th></tr></thead>
+      <tbody>${VI.map(r=>{const [p,b]=r[1].split("|");return `<tr><td>${r[0]}</td><td><bdi class="he" lang="he" dir="rtl"><span class="suf y">${esc(p)}</span>${esc(b)}${r[2]?`<span class="suf">${esc(r[2])}</span>`:""}</bdi></td><td>${r[3]}</td></tr>`;}).join("")}</tbody>
+    </table></div>
+    <p class="cap">Morado = prefijo · verde = sufijo.</p>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>Solo 3 sufijos</h2>
+    <div class="rules">
+      <div class="rule"><span class="pill p-verde">◌ִי</span><span>tú, mujer: ${fmt("תִּמְשְׁלִי")}. Es el único sufijo del singular.</span></div>
+      <div class="rule"><span class="pill p-verde">וּ</span><span>plural masculino: ${fmt("יִמְשְׁלוּ")} ellos, ${fmt("תִּמְשְׁלוּ")} vosotros. Es la misma ${fmt("וּ")} del perfecto ${fmt("מָשְׁלוּ")}.</span></div>
+      <div class="rule"><span class="pill p-verde">נָה</span><span>plural femenino: ${fmt("תִּמְשֹׁלְנָה")} ellas o vosotras.</span></div>
+    </div>
+  </section>
+
+  <section class="card t-sec">
+    <h2>Formas gemelas</h2>
+    <p>${fmt("תִּמְשֹׁל")} puede ser «ella gobernará» o «tú gobernarás». ${fmt("תִּמְשֹׁלְנָה")} puede ser «ellas» o «vosotras». El contexto (el sujeto escrito, a quién se habla) decide.</p>
+    <div class="card rosa sm"><b>Trampa:</b> ${fmt("נִמְשֹׁל")} (ḥolem) = «gobernaremos», Qal imperfecto. ${fmt("נִמְשַׁל")} (patach) = «fue gobernado», Nifal perfecto. Mira la última vocal.</div>
+  </section>
+
+  <section class="card t-sec">
+    <h2>Cómo traducirlo</h2>
+    <p>El imperfecto mira la acción como no terminada. Según el contexto:</p>
+    <div class="rules">
+      <div class="rule"><span class="pill p-azul">Futuro</span><span>${fmt("יְהוָה יִמְלֹךְ")} «Jehová reinará» (Ex 15:18).</span></div>
+      <div class="rule"><span class="pill p-azul">Habitual</span><span>Algo que pasa siempre: «escucha las oraciones de los justos» (Pr 15:29).</span></div>
+      <div class="rule"><span class="pill p-azul">Deseo o posibilidad</span><span>«que reine», «podría reinar»: muchas veces se traduce con subjuntivo.</span></div>
+    </div>
+  </section>`;
+}
+
+function thVqo(){
+  return `
+  <section class="t-sec">
+    <span class="pill p-lila tilt" style="justify-self:start">Bloque 4</span>
+    <h2>Imperativo: el imperfecto sin la ת</h2>
+    <p>Para dar una orden, toma la 2ª persona del imperfecto y quítale el prefijo ${fmt("ת")} (Farfán §26).</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th></th><th>Imperfecto</th><th>Imperativo</th><th>Significa</th></tr></thead>
+      <tbody>
+        <tr><td>2ª masc. sg.</td><td>${heb("תִּמְשֹׁל")}</td><td>${heb("מְשֹׁל")}</td><td>¡gobierna!</td></tr>
+        <tr><td>2ª fem. sg.</td><td>${heb("תִּמְשְׁלִי")}</td><td>${heb("מִשְׁלִי")}</td><td>¡gobierna! (a una mujer)</td></tr>
+        <tr><td>2ª masc. pl.</td><td>${heb("תִּמְשְׁלוּ")}</td><td>${heb("מִשְׁלוּ")}</td><td>¡gobernad!</td></tr>
+        <tr><td>2ª fem. pl.</td><td>${heb("תִּמְשֹׁלְנָה")}</td><td>${heb("מְשֹׁלְנָה")}</td><td>¡gobernad! (a mujeres)</td></tr>
+      </tbody></table></div>
+    <p class="cap">Hay una forma larga, más enfática: ${fmt("זָכְרָה־לִּי")} «¡acuérdate de mí!» (Ne 13:14). Con sufijo: ${fmt("זָכְרֵנִי")} (Jue 16:28), con el mismo ${fmt("נִי")} de ${fmt("הִנְנִי")}.</p>
+  </section>
+
+  <section class="t-sec">
+    <h2>Dos infinitivos</h2>
+    <div class="levels">
+      <div class="card sm stack"><span class="pill p-azul" style="justify-self:start">Constructo · ${fmt("מְשֹׁל")}</span><p>El más común. Funciona como un sustantivo: acepta <b>preposiciones</b> y <b>sufijos</b>.</p><p>${fmt("לִמְשֹׁל")} «para gobernar» · ${fmt("לְקַדְּשׁוֹ")} «para santificarlo» (Ex 20:8).</p></div>
+      <div class="card sm stack"><span class="pill p-verde" style="justify-self:start">Absoluto · ${fmt("מָשׁוֹל")}</span><p>No lleva sufijos. Delante de un verbo lo <b>refuerza</b> («ciertamente»). Al inicio de la frase puede ser una <b>orden</b>: ${fmt("זָכוֹר")} «¡acuérdate!» (Ex 20:8).</p></div>
+    </div>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>Participio: el verbo que se comporta como sustantivo</h2>
+    <p>El participio es la frontera entre las dos secciones. Describe a alguien que hace la acción y usa las terminaciones de género y número que ya conoces:</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th></th><th>Masculino</th><th>Femenino</th></tr></thead>
+      <tbody>
+        <tr><td>Singular</td><td>${heb("מֹשֵׁל")}<br><span class="cap">el que gobierna</span></td><td>${heb("מֹשֶׁלֶת")}<br><span class="cap">la que gobierna</span></td></tr>
+        <tr><td>Plural</td><td>${hl("מֹשְׁלִ|ים")}<br><span class="cap">los que gobiernan</span></td><td>${hl("מֹשְׁל|וֹת")}<br><span class="cap">las que gobiernan</span></td></tr>
+      </tbody></table></div>
+    <div class="rules">
+      <div class="rule"><span class="pill p-verde">Activo</span><span>ḥolem tras la 1ª radical + tsere: ${fmt("מֹשֵׁל")}. Se traduce «gobernante» o «que gobierna», y también como presente: «está gobernando».</span></div>
+      <div class="rule"><span class="pill p-verde">Pasivo</span><span>qamets + shureq: ${fmt("בָּרוּךְ")} «bendito», ${fmt("כָּתוּב")} «escrito».</span></div>
+    </div>
+  </section>
+
+  <section class="card t-sec">
+    <h2>La waw que cambia el tiempo</h2>
+    <p>En la narración bíblica, una ${fmt("וְ")} pegada al verbo cambia cómo se traduce:</p>
+    <div class="levels">
+      <div class="card sm stack"><span class="pill p-tinta" style="justify-self:start">wayyiqtol</span><p class="he" style="font-size:1.8em;text-align:center">וַיִּמְשֹׁל</p><p>${fmt("וַ")} + dagesh + imperfecto = <b>pasado narrativo</b>: «y gobernó». Es la forma que cuenta las historias: ${fmt("וַיֹּאמֶר")} «y dijo».</p></div>
+      <div class="card sm stack"><span class="pill p-tinta" style="justify-self:start">weqatal</span><p class="he" style="font-size:1.8em;text-align:center">וּמָשַׁלְתָּ</p><p>${fmt("וְ")} + perfecto en una secuencia = <b>futuro o mandato</b>: «y gobernarás».</p></div>
+    </div>
+    <p class="cap">Truco: ${fmt("וַ")} con patach y letra doble delante de un imperfecto = wayyiqtol. ${fmt("וְ / וּ")} delante de un perfecto en una secuencia = weqatal.</p>
+  </section>`;
+}
+
+function thVbn(){
+  return `
+  <section class="t-sec">
+    <span class="pill p-naranja tilt" style="justify-self:start;background:var(--naranja);color:var(--tinta)">Bloque 5</span>
+    <h2>Las 7 voces: una raíz, siete moldes</h2>
+    <p>La misma raíz entra en <b>7 moldes</b> (binyanim, «construcciones»). Cada molde cambia el sentido: simple, intensivo o causativo; activo, pasivo o reflexivo. Aquí con ${fmt("שׁבר")} «quebrar» (Boskamp):</p>
+    <div class="tbl-wrap"><table style="min-width:560px">
+      <thead><tr><th></th><th>Activo</th><th>Pasivo</th><th>Reflexivo</th></tr></thead>
+      <tbody>
+        <tr><td><b>Simple</b></td><td>Qal ${heb("שָׁבַר")}<br><span class="cap">quebró</span></td><td>Nifal ${heb("נִשְׁבַּר")}<br><span class="cap">fue quebrado</span></td><td><span class="cap">(el Nifal a veces es reflexivo)</span></td></tr>
+        <tr><td><b>Intensivo</b></td><td>Piel ${heb("שִׁבֵּר")}<br><span class="cap">despedazó</span></td><td>Pual ${heb("שֻׁבַּר")}<br><span class="cap">fue despedazado</span></td><td>Hitpael ${heb("הִתְקַדֵּשׁ")}<br><span class="cap">se santificó (de קדשׁ)</span></td></tr>
+        <tr><td><b>Causativo</b></td><td>Hifil ${heb("הִשְׁבִּיר")}<br><span class="cap">hizo quebrar</span></td><td>Hofal ${heb("הָשְׁבַּר")}<br><span class="cap">fue hecho quebrar</span></td><td><span class="cap">—</span></td></tr>
+      </tbody></table></div>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>El nombre ya es la fórmula</h2>
+    <p>Los gramáticos pusieron el verbo ${fmt("פָּעַל")} «hacer» en cada molde. Por eso el nombre de cada voz te muestra cómo se ve:</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Voz</th><th>Nombre</th><th>Con מָשַׁל</th></tr></thead>
+      <tbody>${[["Nifal","נִפְעַל","נִמְשַׁל"],["Piel","פִּעֵל","מִשֵּׁל"],["Pual","פֻּעַל","מֻשַּׁל"],["Hitpael","הִתְפַּעֵל","הִתְמַשֵּׁל"],["Hifil","הִפְעִיל","הִמְשִׁיל"],["Hofal","הָפְעַל","הָמְשַׁל"]].map(r=>`<tr><td><b>${r[0]}</b></td><td>${heb(r[1])}</td><td>${heb(r[2])}</td></tr>`).join("")}</tbody></table></div>
+    <p class="cap">El Qal se llama así por ${fmt("קַל")} «ligero»: es la forma simple, sin añadidos.</p>
+  </section>
+
+  <section class="card t-sec">
+    <h2>4 pistas para reconocer la voz</h2>
+    <div class="rules">
+      <div class="rule"><span class="pill p-verde">1 · Prefijo</span><span>${fmt("נִ")} Nifal · ${fmt("הִתְ")} Hitpael · ${fmt("הִ")} Hifil · ${fmt("הָ")} Hofal. Qal, Piel y Pual no tienen prefijo en el perfecto.</span></div>
+      <div class="rule"><span class="pill p-verde">2 · Letra doble</span><span>Dagesh en la <b>2ª</b> radical = Piel, Pual o Hitpael. Piensa: intensivo = letra reforzada.</span></div>
+      <div class="rule"><span class="pill p-verde">3 · Vocal u / o</span><span>${fmt("◌ֻ")} (u) en la 1ª sílaba = Pual. ${fmt("◌ָ")} leída «o» tras ${fmt("ה")} = Hofal. La u/o marca el pasivo.</span></div>
+      <div class="rule"><span class="pill p-verde">4 · ◌ִי en medio</span><span>${fmt("הִמְשִׁיל, יַמְשִׁיל")}: la ${fmt("◌ִי")} en la 2ª sílaba es la firma del Hifil.</span></div>
+    </div>
+    <div class="card rosa sm"><b>Ojo con el Nifal en imperfecto:</b> la ${fmt("נ")} desaparece y deja la 1ª radical duplicada: ${fmt("יִמָּשֵׁל")}. Letra doble al <b>inicio</b> = Nifal; en el <b>medio</b> = Piel/Pual/Hitpael (Kelley 42.1).</div>
+  </section>
+
+  <section class="t-sec">
+    <h2>Qué añade cada voz</h2>
+    <div class="levels">
+      <div class="card sm stack"><span class="pill p-azul" style="justify-self:start">Nifal</span><p>Pasivo del Qal: ${fmt("זָכַר → נִזְכַּר")} recordó → fue recordado. A veces reflexivo: ${fmt("נִסְתַּר")} se escondió.</p></div>
+      <div class="card sm stack"><span class="pill p-azul" style="justify-self:start">Piel</span><p>Intensivo (${fmt("שִׁבֵּר")} despedazó), factitivo (${fmt("קָדַשׁ → קִדֵּשׁ")} era santo → santificó) o causativo (${fmt("לָמַד → לִמֵּד")} aprendió → enseñó). ${fmt("דִּבֶּר")} «habló» casi solo existe en Piel.</p></div>
+      <div class="card sm stack"><span class="pill p-azul" style="justify-self:start">Hitpael</span><p>Reflexivo: la acción vuelve sobre el sujeto. ${fmt("הִתְקַדֵּשׁ")} se santificó. También acción repetida: ${fmt("הִתְהַלֵּךְ")} anduvo de un lado a otro (Gn 5:24).</p></div>
+      <div class="card sm stack"><span class="pill p-azul" style="justify-self:start">Hifil y Hofal</span><p>Hacer que otro haga: ${fmt("מָלַךְ → הִמְלִיךְ")} reinó → hizo rey. Hofal es su pasivo: ${fmt("הָמְלַךְ")} fue hecho rey (Dn 9:1).</p></div>
+    </div>
+  </section>
+
+  <section class="t-sec">
+    <h2>Las 7 voces en sus formas clave</h2>
+    <div class="tbl-wrap"><table style="min-width:820px">
+      <thead><tr><th>Voz</th><th>Sentido</th><th>Perfecto 3ms</th><th>Imperfecto 3ms</th><th>Imperativo</th><th>Inf. constructo</th><th>Participio</th><th>Pista</th></tr></thead>
+      <tbody>${BIN.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td>${[2,3,4,5,6].map(k=>`<td>${r[k]==="—"?"—":heb(r[k])}</td>`).join("")}<td>${fmt(r[7])}</td></tr>`).join("")}</tbody></table></div>
+    <p class="cap">Los participios de Piel, Pual, Hitpael, Hifil y Hofal empiezan con ${fmt("מ")}. Formas de paradigma con ${fmt("מָשַׁל")}: no todas aparecen en la Biblia con este verbo.</p>
+  </section>
+
+  <section class="t-sec">
+    <h2>Consulta: paradigma completo</h2>
+    <p class="muted">Los mismos sufijos y prefijos que ya aprendiste se repiten en las 7 voces. Solo cambia el molde del medio.</p>
+    <h3>Perfecto (qatal)</h3>
+    ${fullTable(FULLP)}
+    <h3>Imperfecto (yiqtol)</h3>
+    ${fullTable(FULLI)}
+    <p class="cap">Antes de ${fmt("נָה")}, la vocal de la raíz es ḥolem en Qal; patach en Nifal, Pual y Hofal; tsere en Piel, Hitpael y Hifil (Kelley 42.1).</p>
+  </section>`;
+}
+
+function thVme(){
+  const v = DECKS.find(d=>d.id==="vvs").cards[4];
+  const steps = [
+    ["¿Empieza con וַ y letra doble?","Es wayyiqtol: tradúcelo en pasado («y …ó»)."],
+    ["¿Tiene prefijo א, י, ת, נ?","Es imperfecto. ¿Solo sufijo al final? Es perfecto."],
+    ["Busca las 3 radicales","Quita prefijos y sufijos. Lo que queda es la raíz."],
+    ["Identifica la voz","Prefijo נִ / הִתְ / הִ / הָ, letra doble, vocal u/o, ◌ִי en medio."],
+    ["Persona, género y número","Prefijo + sufijo del imperfecto, o sufijo del perfecto."],
+    ["Traduce","Voz (activa, pasiva…) + tiempo (contexto) + persona."]];
+  return `
+  <section class="card t-sec">
+    <span class="pill p-line tilt" style="justify-self:start">Para el examen</span>
+    <h2>Cómo analizar cualquier verbo</h2>
+    <div class="plan">${steps.map((s,i)=>`<div class="step" style="grid-template-columns:36px 1fr"><span class="n">${i+1}</span><span><b>${fmt(s[0])}</b><span class="cap" style="font-size:14px">${fmt(s[1])}</span></span></div>`).join("")}</div>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>Ejemplo paso a paso: ${fmt("וַיִּתְהַלֵּךְ")}</h2>
+    <div class="parts">
+      <div class="part">${heb("וַ")}<span>waw con patach + letra doble → wayyiqtol, pasado narrativo</span></div>
+      <div class="part">${heb("יִ")}<span>prefijo י → 3ª masc. sg. «él»</span></div>
+      <div class="part">${heb("תְ")}<span>la ת del Hitpael (la ה de הִתְ desaparece tras el prefijo)</span></div>
+      <div class="part">${heb("הַלֵּךְ")}<span>raíz ה־ל־ך «andar», con la ל doble → Hitpael</span></div>
+    </div>
+    <p style="font-family:var(--display);font-weight:800;font-size:22px;text-align:center">«y anduvo (de continuo)»</p>
+  </section>
+
+  <section class="card t-sec">
+    <h2>Versículo completo · ${v.ref}</h2>
+    <p class="he" style="font-size:1.9em;text-align:center">${esc(v.f)}</p>
+    <p class="cap" style="text-align:center;font-style:italic">${esc(v.tr)}</p>
+    <div class="parts">${v.an.map(a=>{const [w,...r]=a.split(" — ");return `<div class="part">${heb(w)}<span>${fmt(r.join(" — "))}</span></div>`;}).join("")}</div>
+    <p style="font-family:var(--display);font-weight:800;font-size:20px;text-align:center">«${esc(v.es)}»</p>
+    <div class="card rosa sm">Este versículo usa las dos secciones: un verbo Hitpael, un Qal perfecto, ${fmt("אֵינֶנּוּ")} y los dos ${fmt("אֵת")} de tu examen.</div>
+  </section>`;
+}
+
 /* ---------- Flashcards ---------- */
 function vDecks(){
   return `<div class="stack" style="gap:6px"><span class="eyebrow">Flashcards</span><h1>Elige un mazo</h1>
-  <p class="muted">«Estudiar» te da las nuevas y las que tocan repasar. «Repaso intensivo» pasa por todo el mazo; úsalo esta noche antes del examen.</p></div>
-  <div class="deck"><div class="deck-h"><span class="deck-badge" style="background:var(--tinta)">ש</span><span><h3>Todo mezclado</h3><span class="cap">${DECKS.reduce((a,d)=>a+d.cards.length,0)} tarjetas de los 5 mazos</span></span><span></span></div>
+  <p class="muted">«Estudiar» te da las nuevas y las que tocan repasar. «Repaso intensivo» pasa por todo el mazo; úsalo la noche antes del examen.</p></div>
+  <div class="deck"><div class="deck-h"><span class="deck-badge" style="background:var(--tinta)">ש</span><span><h3>Todo mezclado</h3><span class="cap">${secCards()} tarjetas de los ${secDecks().length} mazos de la ${cur().short}</span></span><span></span></div>
   <div class="deck-actions"><button class="btn" data-act="study" data-deck="all" data-mode="smart">Estudiar</button><button class="btn ghost" data-act="study" data-deck="all" data-mode="all">Repaso intensivo</button></div></div>
-  ${DECKS.map(deckCard).join("")}`;
+  ${secDecks().map(deckCard).join("")}`;
 }
 function startStudy(deckId, mode){
-  const decks = deckId==="all" ? DECKS : [DECKS.find(d=>d.id===deckId)];
+  const decks = deckId==="all" ? secDecks() : [DECKS.find(d=>d.id===deckId)];
   let ids = []; decks.forEach(d=>d.cards.forEach((c,i)=>ids.push(cid(d.id,i))));
   const now = Date.now();
   if (mode==="smart"){
@@ -951,7 +1552,7 @@ function rate(r){
     const pos = Math.min(fcS.q.length, fcS.i+4); fcS.q.splice(pos,0,id); }
   else { st.b = Math.min(5, st.b + (r===1?1:2)); st.d = now + INTV[st.b]; fcS.ok++; }
   S.cards[id]=st;
-  const t = id.split("-")[0]; tally(t==="ver"?"ver":t, r>0);
+  const t = id.split("-")[0]; tally(t, r>0);
   markDay(); save();
   fcS.i++; fcS.flip=false; render();
 }
@@ -968,11 +1569,11 @@ function vCardDone(){
 
 /* ---------- Práctica ---------- */
 function vLevels(){
-  const sim = S.sim;
+  const sim = S.simBy[S.sec];
   return `<div class="stack" style="gap:6px"><span class="eyebrow">Práctica helicoidal</span><h1>De lo fácil al examen</h1>
   <p class="muted">Los ejercicios de la pizarra, con su solución explicada, y más preguntas del mismo tipo.</p></div>
-  <div class="levels">${LEVELS.map(l=>{ const r=S.lv[l.id];
-    return `<button class="level ${l.id==="n5"?"wide":""}" data-act="level" data-level="${l.id}">
+  <div class="levels">${secLevels().map(l=>{ const r=S.lv[l.id];
+    return `<button class="level ${l.wide?"wide":""}" data-act="level" data-level="${l.id}">
       <div class="row"><span class="eyebrow">${l.name}</span><span class="pill ${l.pill}">${l.diff}</span></div>
       <h3>${l.title}</h3>
       <span class="cap">${l.items.length} ejercicios · ${r?`mejor: <b class="num">${r.best}%</b>`:"sin intentar"}</span>
@@ -981,22 +1582,23 @@ function vLevels(){
   <section class="hero" style="grid-template-columns:1fr auto">
     <div class="stack" style="gap:8px;min-width:0"><span class="eyebrow" style="color:var(--tinta)">Simulacro</span>
       <h2 style="font-family:var(--display);font-weight:800;font-size:28px;line-height:1.1">Examen de prueba</h2>
-      <p>14 preguntas al azar de los cinco niveles, con traducción de versículos al final.</p>
+      <p>14 preguntas al azar de los niveles de la ${cur().short}, con traducción de versículos al final.</p>
       <div class="row"><button class="btn" data-act="sim">Empezar simulacro</button>${sim?`<span class="pill p-miel">Mejor: ${sim.best}%</span>`:""}</div></div>
   </section>`;
 }
 function startLevel(id){
   const L = LEVELS.find(l=>l.id===id);
-  const items = (L.id==="n4" ? L.items.slice() : shuffle(L.items)).map(x=>Object.assign({topic:L.topic},x));
+  const items = (L.items.every(x=>x.t==="rv") ? L.items.slice() : shuffle(L.items)).map(x=>Object.assign({topic:L.topic},x));
   exS = {kind:"level", id, title:L.name+" · "+L.title, items, i:0, done:false, score:0, wrong:[], pick:null, built:[]};
   go("practica");
 }
 function startSim(){
   const pool = [];
-  LEVELS.filter(L=>L.id!=="n4").forEach(L=>L.items.forEach(x=>pool.push(Object.assign({topic:L.topic},x))));
-  const n4 = LEVELS.find(L=>L.id==="n4");
-  const items = shuffle(pool).slice(0,12).concat(shuffle(n4.items).slice(0,2).map(x=>Object.assign({topic:"ver"},x)));
-  exS = {kind:"sim", id:"sim", title:"Simulacro de examen", items, i:0, done:false, score:0, wrong:[], pick:null, built:[]};
+  const sec = cur();
+  secLevels().filter(L=>L.id!==sec.rv).forEach(L=>L.items.forEach(x=>pool.push(Object.assign({topic:L.topic},x))));
+  const R = LEVELS.find(L=>L.id===sec.rv);
+  const items = shuffle(pool).slice(0,12).concat(shuffle(R.items).slice(0,2).map(x=>Object.assign({topic:R.topic},x)));
+  exS = {kind:"sim", id:"sim", sec:sec.id, title:"Simulacro · "+sec.short, items, i:0, done:false, score:0, wrong:[], pick:null, built:[]};
   go("practica");
 }
 function vEx(){
@@ -1018,7 +1620,7 @@ function vEx(){
       <div class="tiles">${it._t.map((w,k)=>`<button class="tile ${exS.built.includes(w)?"used":""}" data-tile="${k}" ${exS.done||exS.built.includes(w)?"disabled":""}>${esc(w)}</button>`).join("")}</div>
       ${exS.done?"":`<div class="row" style="justify-content:center"><button class="btn ghost" data-act="clearB">Borrar</button><button class="btn" data-act="checkB" ${exS.built.length?"":"disabled"}>Comprobar</button></div>`}`;
   } else if (it.t==="rv"){
-    const c = DECKS[4].cards[it.c];
+    const c = rvCard(it);
     body = `<p class="prompt">Traduce al español e identifica cada elemento.</p>
       <div class="big" lang="he">${esc(c.f)}</div>
       ${c.ref?`<span class="pill p-miel" style="justify-self:start">${esc(c.ref)}</span>`:""}
@@ -1054,11 +1656,11 @@ function vExDone(){
   const pct = Math.round(exS.score/exS.items.length*100);
   if (!exS.recorded){ exS.recorded = true;
   if (exS.kind==="level"){ const r=S.lv[exS.id]||{best:0,tries:0}; r.best=Math.max(r.best,pct); r.tries++; S.lv[exS.id]=r; }
-  else { const r=S.sim||{best:0,tries:0}; r.best=Math.max(r.best,pct); r.tries++; r.lastPct=pct; S.sim=r; }
+  else { const k=exS.sec||S.sec; const r=S.simBy[k]||{best:0,tries:0}; r.best=Math.max(r.best,pct); r.tries++; r.lastPct=pct; S.simBy[k]=r; }
   save(); }
   const label = pct>=90?"Listo para el examen":pct>=70?"Vas bien":"Repasa y vuelve";
   const missed = exS.wrong.map(it=>{
-    if (it.t==="rv"){ const c=DECKS[4].cards[it.c]; return `<div class="miss">${heb(c.f)}<span>«${esc(c.es)}»</span></div>`; }
+    if (it.t==="rv"){ const c=rvCard(it); return `<div class="miss">${heb(c.f)}<span>«${esc(c.es)}»</span></div>`; }
     if (it.t==="ord") return `<div class="miss"><b>${fmt(it.q)}</b>${heb(it.ans.join(it.join??" "))}<span class="cap">${fmt(it.x)}</span></div>`;
     return `<div class="miss"><b>${it.he?heb(it.he)+" · ":""}${fmt(it.q)}</b><span>${fmt(it.o[it.a])}</span><span class="cap">${fmt(it.x)}</span></div>`;
   }).join("");
@@ -1076,17 +1678,18 @@ function vExDone(){
 /* ---------- Progreso ---------- */
 function vProgress(){
   const pct = overall();
-  const nCards = Object.keys(S.cards).length, nTot = DECKS.reduce((a,d)=>a+d.cards.length,0);
+  const sec = cur(), SD = secDecks();
+  const nCards = Object.keys(S.cards).filter(id=>sec.decks.includes(id.split("-")[0])).length, nTot = secCards();
   const rev = Object.values(S.cards).reduce((a,c)=>a+c.n,0);
   const days = []; for(let k=6;k>=0;k--){ const d=new Date(); d.setDate(d.getDate()-k); days.push(d); }
   const wd = ["D","L","M","M","J","V","S"];
   let streak=0; { const d=new Date(); while(S.days.includes(today(d))){ streak++; d.setDate(d.getDate()-1);} }
-  const topics = Object.entries(TOPICS).map(([k,n])=>{ const r=S.top[k]; return {k,n,pct:r&&r.n?Math.round(r.ok/r.n*100):null, n2:r?r.n:0}; });
+  const topics = Object.entries(TOPICS).filter(([k])=>sec.decks.includes(k)).map(([k,n])=>{ const r=S.top[k]; return {k,n,pct:r&&r.n?Math.round(r.ok/r.n*100):null, n2:r?r.n:0}; });
   const tried = topics.filter(t=>t.pct!==null && t.n2>=3).sort((a,b)=>a.pct-b.pct);
   const weak = tried[0];
-  return `<div class="stack" style="gap:6px"><span class="eyebrow">Progreso</span><h1>Cómo vas</h1></div>
+  return `<div class="stack" style="gap:6px"><span class="eyebrow">Progreso</span><h1>Cómo vas · ${sec.short}</h1></div>
   <section class="hero">${star}
-    <div class="stack" style="gap:8px"><span class="eyebrow" style="color:var(--tinta)">Dominio de la sesión</span>
+    <div class="stack" style="gap:8px"><span class="eyebrow" style="color:var(--tinta)">Dominio · ${sec.name}</span>
       <h2 style="font-family:var(--display);font-weight:800;font-size:28px;line-height:1.1">${pct>=80?"Muy bien preparado":pct>=50?"A medio camino":"Recién empiezas"}</h2>
       <span>${weak?`Tu tema más débil: <b>${weak.n}</b> (${weak.pct}%).`:"Responde unas preguntas para ver tu tema más débil."}</span></div>
     <div class="ringbox">${ring(pct,"dominio")}</div></section>
@@ -1101,14 +1704,14 @@ function vProgress(){
     <div class="week">${days.map(d=>`<div><i class="${S.days.includes(today(d))?"on":""}"></i>${wd[d.getDay()]}</div>`).join("")}</div></section>
 
   <section class="card crema stack"><h3>Dominio por mazo</h3>
-    ${DECKS.map(d=>{const s=deckStats(d); return `<div class="statrow"><span>${d.name}</span><span class="num">${s.pct}%</span><div class="bar"><i style="width:${s.pct}%;background:${d.color}"></i></div></div>`;}).join("")}</section>
+    ${SD.map(d=>{const s=deckStats(d); return `<div class="statrow"><span>${d.name}</span><span class="num">${s.pct}%</span><div class="bar"><i style="width:${s.pct}%;background:${d.color}"></i></div></div>`;}).join("")}</section>
 
   <section class="card crema stack"><h3>Acierto por tema</h3>
     ${topics.map(t=>`<div class="statrow"><span>${t.n} <span class="cap">${t.n2} respuestas</span></span><span class="num">${t.pct===null?"—":t.pct+"%"}</span><div class="bar"><i style="width:${t.pct||0}%"></i></div></div>`).join("")}</section>
 
   <section class="card crema stack"><h3>Niveles de práctica</h3>
-    ${LEVELS.map(l=>{const r=S.lv[l.id];return `<div class="statrow"><span>${l.name} · ${l.title}</span><span class="num">${r?r.best+"%":"—"}</span></div>`;}).join("")}
-    <div class="statrow"><span><b>Simulacro</b></span><span class="num">${S.sim?S.sim.best+"%":"—"}</span></div>
+    ${secLevels().map(l=>{const r=S.lv[l.id];return `<div class="statrow"><span>${l.name} · ${l.title}</span><span class="num">${r?r.best+"%":"—"}</span></div>`;}).join("")}
+    <div class="statrow"><span><b>Simulacro</b></span><span class="num">${S.simBy[S.sec]?S.simBy[S.sec].best+"%":"—"}</span></div>
   </section>
 
   <section class="stack">
@@ -1120,9 +1723,9 @@ function vProgress(){
 
 /* ---------- Guía inicial ---------- */
 const COACH = [
-  ["Bienvenido a la Sesión 3","Esta app tiene todo lo de tu clase: estado constructo, pronombres y sufijos. El «Plan para hoy» del inicio te dice qué hacer y en qué orden."],
+  ["Bienvenido a Dabar Padilla","La app tiene dos secciones. Sección 1: sustantivos, pronombres y sufijos. Sección 2: el verbo, con el Qal y las 7 voces. Cámbialas con los botones de arriba. El «Plan para hoy» te dice qué hacer y en qué orden."],
   ["Flashcards con repaso espaciado","Mira el hebreo, responde en voz alta y voltea. Luego elige: «Otra vez» si no la sabías (vuelve enseguida), «Bien» si la sabías, «Fácil» si fue inmediata. Las difíciles se repiten más."],
-  ["Práctica y simulacro","Cuatro niveles como en la pizarra, cada respuesta con su explicación. Al final, un simulacro de examen. Todo se guarda solo: verás «Guardado» arriba."]
+  ["Práctica y simulacro","Cada sección tiene sus niveles, de lo fácil al examen, con la explicación de cada respuesta, y su propio simulacro. Todo se guarda solo: verás «Guardado» arriba."]
 ];
 let coachI = 0;
 function showCoach(){
@@ -1152,6 +1755,7 @@ document.addEventListener("click", e=>{
   if (d.goR){ fcS=null; exS=null; go(d.goR); return; }
   if (d.plan){ if (d.plan==="sim") startSim(); else { fcS=null; exS=null; go(d.plan); } return; }
   if (d.th){ thTab=d.th; render(); return; }
+  if (d.sec){ if (d.sec!==S.sec){ S.sec=d.sec; thTab=S.thBy[S.sec]||cur().th[0][0]; openDeck=null; save(); render(); window.scrollTo(0,0); } return; }
   if (d.rate){ rate(+d.rate); return; }
   if (d.opt!==undefined && exS && !exS.done){ exS.pick=+d.opt; answer(+d.opt===exS.items[exS.i].a); return; }
   if (d.tile!==undefined && exS && !exS.done){ const it=exS.items[exS.i]; exS.built.push(it._t[+d.tile]); render(); return; }
@@ -1171,7 +1775,7 @@ document.addEventListener("click", e=>{
     case "checkB": { const it=exS.items[exS.i]; const j=it.join??" "; answer(exS.built.join(j)===it.ans.join(j)); break; }
     case "reset": S._confirmReset=true; render(); break;
     case "resetNo": S._confirmReset=false; render(); break;
-    case "resetYes": S={cards:{},lv:{},sim:null,top:{},days:[],seen:{},onb:true,last:null}; save(); toast("Progreso reiniciado"); go("inicio"); break;
+    case "resetYes": S={cards:{},lv:{},sim:null,simBy:{},top:{},days:[],seen:{},onb:true,last:null,sec:S.sec,thBy:{}}; save(); toast("Progreso reiniciado"); go("inicio"); break;
   }
 });
 document.addEventListener("keydown", e=>{
