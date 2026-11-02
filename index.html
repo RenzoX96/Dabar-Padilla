@@ -27,6 +27,7 @@
   --display: Poppins, "Arial Black", sans-serif;
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   --hebrew: "Noto Serif Hebrew", "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", serif;
+  --cabeza:#c2185b; --raiz:#1f2a5c; --cola:#7a3fd1;
   --r-md:16px; --r-lg:28px; --r-pill:999px; --trazo:3px;
 }
 *{box-sizing:border-box}
@@ -127,12 +128,22 @@ p{margin:0}
 .deck-actions .btn{min-height:40px;padding:8px 16px;font-size:15px}
 
 /* Segmented tabs */
-.secbar{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--cielo-claro);border-radius:var(--r-pill);padding:5px}
+.secbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;background:var(--cielo-claro);border-radius:var(--r-pill);padding:5px}
 .secbar button{border:0;background:transparent;border-radius:var(--r-pill);padding:8px 12px;font-weight:700;font-size:15px;display:grid;gap:0;line-height:1.15;color:var(--tinta)}
 .secbar button small{font-size:11.5px;font-weight:600;color:var(--tinta-suave);letter-spacing:.03em}
 .secbar button[aria-selected="true"]{background:var(--tinta);color:var(--crema)}
 .secbar button[aria-selected="true"] small{color:var(--miel)}
 .p-tinta{background:var(--tinta);color:var(--crema)}
+.p-col{background:var(--cola);color:#fff}
+.p-cab{background:var(--cabeza);color:#fff}
+.vb .cab{color:var(--cabeza)} .vb .rai{color:var(--raiz)} .vb .col{color:var(--cola)}
+.vb.big{font-size:2em;line-height:1.35;font-weight:600}
+.vleg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--tinta-suave)}
+.vleg span{display:inline-flex;align-items:center;gap:6px}
+.vleg i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.fc .vbline{display:grid;gap:2px;justify-items:center}
+.tiles.ltr,.built.ltr{direction:ltr}
+.tiles.ltr .tile,.built.ltr .tile{font-family:var(--display);font-weight:800;font-size:18px}
 .seg{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none}
 .seg::-webkit-scrollbar{display:none}
 .seg button{flex:none;border:var(--trazo) solid var(--tinta);background:var(--crema);border-radius:var(--r-pill);padding:8px 16px;font-weight:600;font-size:15px;display:inline-flex;gap:6px;align-items:center}
@@ -597,7 +608,7 @@ DECKS.push(
   {f:"שִׁבֵּר", tr:"šibbēr", es:"despedazó", an:["Piel perfecto 3ª masc. sg. de שׁבר: intensivo"]},
   {f:"דִּבֶּר", tr:"dibber", es:"habló", an:["Piel perfecto 3ª masc. sg. de דבר"], tip:"Se usa casi solo en Piel. Relaciónalo con דָּבָר «palabra»."},
   {f:"הִתְהַלֵּךְ", tr:"hiṯhallēḵ", es:"anduvo, caminó de un lado a otro", ref:"Gn 5:24", an:["Hitpael perfecto 3ª masc. sg. de הלך"]},
-  {q:"Las 7 voces en 3 preguntas", es:"¿Prefijo? ¿Letra doble? ¿Vocal u/o?", an:["נִ = Nifal · הִתְ = Hitpael · הִ…ִי = Hifil · הָ (o) = Hofal","Dagesh en la 2ª radical = Piel, Pual, Hitpael","u / o en la 1ª sílaba = pasivo (Pual, Hofal)"]}
+  {q:"Las 7 voces en 3 preguntas", es:"¿Prefijo? ¿Letra doble? ¿Vocal u/o?", an:["נִ = Nifal · הִתְ = Hitpael · הִ…◌ִי = Hifil · הָ (o) = Hofal","Dagesh en la 2ª radical = Piel, Pual, Hitpael","u / o en la 1ª sílaba = pasivo (Pual, Hofal)"]}
  ]},
  { id:"vvs", name:"Versículos con verbos", short:"Versículos", color:"var(--coral)", letter:"ת", cards:[
   {f:"בְּרֵאשִׁית בָּרָא אֱלֹהִים", tr:"bᵉrēʾšîṯ bārāʾ ʾᵉlōhîm", es:"En el principio creó Dios", ref:"Gn 1:1", an:["בְּרֵאשִׁית — prep. בְּ «en» + רֵאשִׁית sust. fem. sg. absoluto «principio»","בָּרָא — Qal perfecto 3ª masc. sg. «creó»","אֱלֹהִים — sust. masc. pl. absoluto «Dios» (sujeto)"], tip:"אֱלֹהִים es plural, pero el verbo está en singular: un solo Dios."},
@@ -689,6 +700,179 @@ const SECTIONS = [
 const TOPICS = {pro:"Pronombres", con:"Estado constructo", suf:"Sufijos", pre:"Preposiciones", pat:"Terminaciones", par:"Partículas", ver:"Traducción",
   vqp:"Perfecto", vqi:"Imperfecto", vqo:"Imperativo, infinitivo y participio", vbn:"Las 7 voces", vvs:"Traducción con verbos"};
 
+/* =========================================================
+   SECCIÓN 3 · EXAMEN: EL PERFECTO (Qal y las 7 voces)
+   Cabeza (voz) + Raíz (qué) + Cola (quién) · AJ-TA-TE-TI-Ú-TEM-TEN-NÚ
+   vb: "cabeza|raíz|cola" para colorear
+   ========================================================= */
+DECKS.push(
+ { id:"pco", name:"Las colas (AJ-TA-TE-TI…)", short:"Colas", color:"var(--cola)", letter:"ת", cards:[
+  {f:"מָשַׁל", vb:"|מָשַׁל|", tr:"māšal", es:"él reinó · 3ª masc. sg. · sin cola", an:["La locomotora: la forma de diccionario no lleva cola"]},
+  {f:"מָשְׁלָה", vb:"|מָשְׁלָ|ה", tr:"māšᵉlāh", es:"AJ · ella reinó · 3ª fem. sg.", an:["Cola ◌ָה: la misma terminación femenina de סוּסָה"]},
+  {f:"מָשַׁלְתָּ", vb:"|מָשַׁלְ|תָּ", tr:"māšaltā", es:"TA · tú (varón) reinaste · 2ª masc. sg.", an:["De אַתָּה: TA abierta (qamets) = tú varón"]},
+  {f:"מָשַׁלְתְּ", vb:"|מָשַׁלְ|תְּ", tr:"māšalt", es:"TE · tú (mujer) reinaste · 2ª fem. sg.", an:["De אַתְּ: TE cortita (shewa) = tú mujer"], tip:"Ojo: TA y TE son «tú», no «él» y «ella»."},
+  {f:"מָשַׁלְתִּי", vb:"|מָשַׁלְ|תִּי", tr:"māšaltî", es:"TI · yo reiné · 1ª común sg.", an:["De אָנֹכִי (כִי → תִּי). En español: goberné"]},
+  {f:"מָשְׁלוּ", vb:"|מָשְׁל|וּ", tr:"māšᵉlû", es:"Ú · ellos/ellas reinaron · 3ª común pl.", an:["El plural empieza en Ú"]},
+  {f:"מְשַׁלְתֶּם", vb:"|מְשַׁלְ|תֶּם", tr:"mᵉšaltem", es:"TEM · vosotros reinasteis · 2ª masc. pl.", an:["De אַתֶּם. M = Muchachos"], tip:"Cola pesada: aplasta la qamets del Qal (מָ → מְ)."},
+  {f:"מְשַׁלְתֶּן", vb:"|מְשַׁלְ|תֶּן", tr:"mᵉšalten", es:"TEN · vosotras reinasteis · 2ª fem. pl.", an:["De אַתֵּן. N = Niñas"]},
+  {f:"מָשַׁלְנוּ", vb:"|מָשַׁלְ|נוּ", tr:"māšalnû", es:"NÚ · nosotros reinamos · 1ª común pl.", an:["De אֲנַחְנוּ. NÚ = NOsotros"], tip:"Misma cola que סוּסֵנוּ, pero aquí es sujeto («nosotros»), no posesivo («nuestro»)."},
+  {q:"La palabra mágica del perfecto", es:"AJ · TA · TE · TI · Ú · TEM · TEN · NÚ", an:["Singular: AJ (ella) · TA (tú m) · TE (tú f) · TI (yo)","Plural: Ú (ellos) · TEM (vosotros) · TEN (vosotras) · NÚ (nosotros)","Orden 3 · 2 · 2 · 1 en cada mitad. Él (3ms) no tiene cola."]},
+  {q:"¿Qué colas tienen ת?", es:"Las de «tú» y la de «yo»", an:["TA · TE · TI · TEM · TEN","Ella (AJ) y ellos (Ú) son solo vocal: la 3ª persona es «callada»"]}
+ ]},
+ { id:"pvo", name:"Las 7 cabezas (voces)", short:"Cabezas", color:"var(--cabeza)", letter:"ה", cards:[
+  {f:"מָשַׁל", vb:"|מָשַׁל|", tr:"māšal", es:"Qal · él reinó", an:["Qal = CALVO: sin prefijo ni dagesh","Vocales a – a · activo simple"]},
+  {f:"נִמְשַׁל", vb:"נִ|מְשַׁל|", tr:"nimšal", es:"Nifal · él fue reinado", an:["NIPHAL empieza con NUN: נִ al frente","Pasivo simple; a veces reflexivo: נִסְתַּר «se escondió»"]},
+  {f:"מִשֵּׁל", vb:"|מִשֵּׁל|", tr:"miššēl", es:"Piel · gobernó firmemente", an:["PI-EL = i, e + músculo (dagesh en la 2ª radical)","Activo intensivo (o causativo)"]},
+  {f:"מֻשַּׁל", vb:"|מֻשַּׁל|", tr:"muššal", es:"Pual · fue gobernado (intensivo)", an:["PU-AL = ¡Uy! u, a + dagesh","Pasivo del Piel"]},
+  {f:"הִתְמַשֵּׁל", vb:"הִתְ|מַשֵּׁל|", tr:"hiṯmaššēl", es:"Hitpael · se hizo rey a sí mismo", an:["HIT = me pego a mí mismo: הִתְ + dagesh","Reflexivo · vocales a – e"]},
+  {f:"הִמְשִׁיל", vb:"הִ|מְשִׁיל|", tr:"himšîl", es:"Hifil · hizo reinar", an:["HI-PHIL = H + dos i: הִ al frente e ◌ִי adentro","Causativo activo: «hizo que otro lo haga»"]},
+  {f:"הָמְשַׁל", vb:"הָ|מְשַׁל|", tr:"homšal", es:"Hofal · fue hecho reinar", an:["HO-PHAL = ¡Oh! o, a: הָ con qamets ḥatuf (o)","Causativo pasivo"]},
+  {f:"נִשְׁבַּר", vb:"נִ|שְׁבַּר|", tr:"nišbar", es:"Nifal · fue quebrado", an:["Cabeza נִ → Nifal"]},
+  {f:"דִּבֶּר", vb:"|דִּבֶּר|", tr:"dibber", es:"Piel · habló", an:["i – e + dagesh en la ב → Piel","Nº 40 de tu vocabulario: se usa casi solo en Piel"]},
+  {f:"צִוָּה", vb:"|צִוָּ|ה", tr:"ṣiwwāh", es:"Piel · mandó, ordenó", an:["i + letra doble (וּ con dagesh) → Piel","Nº 109 de tu vocabulario"]},
+  {f:"הִכָּה", vb:"הִ|כָּה|", tr:"hikkāh", es:"Hifil · golpeó, hirió", an:["Cabeza הִ → Hifil (raíz נכה: la נ se esconde en el dagesh)","Nº 105 de tu vocabulario"]},
+  {q:"Agrupa las 7 voces", es:"Simples · Musculosos · Mandones", an:["Simples: Qal, Nifal","Musculosos (dagesh en medio): Piel, Pual, Hitpael","Mandones (cabeza ה): Hifil, Hofal","Pasivas «oscuras» (u, o): Pual, Hofal"]}
+ ]},
+ { id:"pdb", name:"Verbos débiles en perfecto", short:"Débiles", color:"var(--naranja)", letter:"ל", cards:[
+  {f:"רָאִיתִי", vb:"|רָאִי|תִי", tr:"rāʾîṯî", es:"yo vi", an:["Raíz ראה «ver» (III-ה) · Qal pf. 1cs","La ה se vuelve י ante la cola TI"]},
+  {f:"הָיְתָה", vb:"|הָיְ|תָה", tr:"hāyᵉṯāh", es:"ella fue, llegó a ser", an:["Raíz היה (III-ה) · Qal pf. 3fs","En los III-ה, ella lleva ת: ◌ְתָה"]},
+  {f:"בָּנוּ", vb:"|בָּנ|וּ", tr:"bānû", es:"ellos edificaron", an:["Raíz בנה «edificar» (III-ה) · Qal pf. 3cp","La ה desaparece; queda la cola Ú"], tip:"No confundir con בָּנוּ «en nosotros» (בְּ + נוּ). El contexto decide."},
+  {f:"עָשִׂיתָ", vb:"|עָשִׂי|תָ", tr:"ʿāśîṯā", es:"tú hiciste", an:["Raíz עשׂה «hacer» (III-ה) · Qal pf. 2ms"]},
+  {f:"מָצָאתִי", vb:"|מָצָא|תִי", tr:"māṣāʾṯî", es:"yo encontré", an:["Raíz מצא (III-א) · Qal pf. 1cs","La א queda muda y la vocal es qamets"]},
+  {f:"יָצְאוּ", vb:"|יָצְא|וּ", tr:"yāṣᵉʾû", es:"ellos salieron", an:["Raíz יצא (III-א) · Qal pf. 3cp"]},
+  {f:"חָטָאתָ", vb:"|חָטָא|תָ", tr:"ḥāṭāʾṯā", es:"tú pecaste", an:["Raíz חטא (III-א) · Qal pf. 2ms"]},
+  {f:"נָתַתִּי", vb:"|נָתַ|תִּי", tr:"nāṯattî", es:"yo di", an:["Raíz נתן «dar» · Qal pf. 1cs","La נ final se funde con la ת de la cola: תּ con dagesh"]},
+  {f:"נָתַנּוּ", vb:"|נָתַ|נּוּ", tr:"nāṯannû", es:"nosotros dimos", an:["Raíz נתן · Qal pf. 1cp: נ + נוּ = נּוּ"]},
+  {f:"כָּרַתִּי", vb:"|כָּרַ|תִּי", tr:"kārattî", es:"yo hice (un pacto), corté", an:["Raíz כרת · Qal pf. 1cs: ת + תִּי = תִּי con dagesh"]},
+  {f:"קַמְתִּי", vb:"|קַמְ|תִּי", tr:"qamtî", es:"yo me levanté", an:["Raíz קום (hueco) · Qal pf. 1cs","Solo 2 letras: el diccionario la trae como קוּם"]},
+  {f:"בָּאתִי", vb:"|בָּא|תִי", tr:"bāʾṯî", es:"yo vine, entré", an:["Raíz בוא (hueco + III-א) · Qal pf. 1cs"]},
+  {f:"מֵתוּ", vb:"|מֵת|וּ", tr:"mēṯû", es:"ellos murieron", an:["Raíz מות (hueco) · Qal pf. 3cp"]},
+  {f:"עֲזַבְתֶּם", vb:"|עֲזַבְ|תֶּם", tr:"ʿᵃzaḇtem", es:"vosotros abandonasteis", an:["Raíz עזב · Qal pf. 2mp","Gutural ע: el shewa se vuelve ḥatef (◌ֲ) ante TEM"]},
+  {f:"יְדַעְתֶּם", vb:"|יְדַעְ|תֶּם", tr:"yᵉḏaʿtem", es:"vosotros conocisteis", an:["Raíz ידע · Qal pf. 2mp","Los I-י son regulares en el perfecto"]},
+  {q:"Regla de oro de los débiles", es:"La cola NUNCA cambia", an:["Solo se ajusta la raíz:","III-ה: ה → י (רָאִיתִי); ella ◌ְתָה; ellos solo וּ","III-א: א muda + qamets (מָצָאתִי)","Huecos: 2 letras (קַמְתִּי)","נָתַן / כָּרַת: la consonante se funde con la cola (נָתַתִּי)"]}
+ ]},
+ { id:"pvv", name:"Verbos del vocabulario (1–120)", short:"Vocabulario", color:"var(--verde-oscuro)", letter:"ו", cards:[
+  {f:"אָמַר", tr:"ʾāmar", es:"dijo", an:["Nº 12 · 5 309 veces","Qal pf. 1cs: אָמַרְתִּי «yo dije»","Gutural א: 2mp אֲמַרְתֶּם"]},
+  {f:"הָיָה", tr:"hāyāh", es:"fue, llegó a ser", an:["Nº 16 · 3 576 veces · III-ה","הָיִיתִי «yo fui» · הָיְתָה «ella fue» · הָיוּ «fueron»"]},
+  {f:"עָשָׂה", tr:"ʿāśāh", es:"hizo", an:["Nº 18 · 2 640 veces · III-ה","עָשִׂיתִי «yo hice» · עָשׂוּ «hicieron»"]},
+  {f:"בּוֹא", tr:"bôʾ", es:"ir, venir, entrar", an:["Nº 20 · 2 578 veces · hueco","Perfecto: בָּא «vino» · בָּאתִי «vine» · בָּאוּ «vinieron»"]},
+  {f:"נָתַן", tr:"nāṯan", es:"dio, puso", an:["Nº 28 · 2 014 veces","נָתַתִּי «yo di» · נָתַנּוּ «dimos»"]},
+  {f:"הָלַךְ", tr:"hālaḵ", es:"caminó, anduvo, fue", an:["Nº 32 · 1 557 veces · regular en el perfecto","הָלַכְתִּי «fui» · הָלַכְנוּ «anduvimos»"]},
+  {f:"רָאָה", tr:"rāʾāh", es:"vio, miró", an:["Nº 36 · 1 309 veces · III-ה","רָאִיתִי «vi» · רָאוּ «vieron»"]},
+  {f:"שָׁמַע", tr:"šāmaʿ", es:"escuchó, oyó", an:["Nº 38 · 1 165 veces","שָׁמַעְתִּי «oí» · שָׁמַעְנוּ «oímos»"]},
+  {f:"דִּבֶּר", tr:"dibber", es:"habló (Piel)", an:["Nº 40 · 1 144 veces · Piel","דִּבַּרְתִּי «hablé» · דִּבְּרוּ «hablaron»"]},
+  {f:"יָשַׁב", tr:"yāšaḇ", es:"se sentó, habitó", an:["Nº 42 · 1 089 veces · regular en el perfecto","יָשַׁבְתִּי «habité» · יָשְׁבוּ «habitaron»"]},
+  {f:"יָצָא", tr:"yāṣāʾ", es:"salió", an:["Nº 44 · 1 075 veces · III-א","יָצָאתִי «salí» · יָצְאוּ «salieron»"]},
+  {f:"שׁוּב", tr:"šûḇ", es:"volver, dar la vuelta", an:["Nº 45 · 1 073 veces · hueco","Perfecto: שָׁב «volvió» · שַׁבְתִּי «volví»"]},
+  {f:"לָקַח", tr:"lāqaḥ", es:"tomó, agarró", an:["Nº 49 · 966 veces","לָקַחְתִּי «tomé» · לָקְחָה «ella tomó»"]},
+  {f:"יָדַע", tr:"yāḏaʿ", es:"conoció, supo", an:["Nº 50 · 952 veces","יָדַעְתִּי «supe» · יְדַעְתֶּם «conocisteis»"]},
+  {f:"שָׁנָה", tr:"šānāh", es:"repitió, cambió (también sust. «año»)", an:["Nº 51 · 925 veces · III-ה","Como verbo: שָׁנִיתִי «repetí»"]},
+  {f:"עָלָה", tr:"ʿālāh", es:"subió", an:["Nº 53 · 894 veces · III-ה","עָלִיתִי «subí» · עָלוּ «subieron»"]},
+  {f:"קָרָא", tr:"qārāʾ", es:"llamó, proclamó, leyó", an:["Nº 55 · 875 veces · III-א","קָרָאתִי «llamé» · קָרְאוּ «llamaron»"]},
+  {f:"שָׁלַח", tr:"šālaḥ", es:"envió", an:["Nº 57 · 847 veces","שָׁלַחְתִּי «envié» · שָׁלְחוּ «enviaron»"]},
+  {f:"מוּת", tr:"mûṯ", es:"morir", an:["Nº 58 · 846 veces · hueco","Perfecto: מֵת «murió» · מֵתוּ «murieron»"]},
+  {f:"אָכַל", tr:"ʾāḵal", es:"comió", an:["Nº 63 · 813 veces","אָכַלְתִּי «comí» · אָכְלוּ «comieron»"]},
+  {f:"נָשָׂא", tr:"nāśāʾ", es:"levantó, elevó, llevó", an:["Nº 81 · 658 veces · III-א","נָשָׂאתִי «levanté» · נָשְׂאוּ «levantaron»"]},
+  {f:"קוּם", tr:"qûm", es:"levantarse, estar de pie", an:["Nº 84 · 627 veces · hueco","Perfecto: קָם «se levantó» · קַמְתִּי «me levanté»"]},
+  {f:"שִׂים", tr:"śîm", es:"poner", an:["Nº 89 · 588 veces · hueco","Perfecto: שָׂם «puso» · שַׂמְתִּי «puse»"]},
+  {f:"עָבַר", tr:"ʿāḇar", es:"pasó, cruzó", an:["Nº 97 · 555 veces","עָבַרְתִּי «crucé» · עָבְרוּ «cruzaron»"]},
+  {f:"עָמַד", tr:"ʿāmaḏ", es:"se puso de pie, se detuvo", an:["Nº 99 · 524 veces","עָמַדְתִּי «me detuve» · עֲמַדְתֶּם (gutural)"]},
+  {f:"הִכָּה", tr:"hikkāh", es:"golpeó, hirió, mató (Hifil de נכה)", an:["Nº 105 · 501 veces · Hifil","הִכִּיתִי «golpeé» · הִכּוּ «golpearon»"]},
+  {f:"צִוָּה", tr:"ṣiwwāh", es:"mandó, ordenó (Piel)", an:["Nº 109 · 496 veces · Piel","צִוִּיתִי «mandé» · צִוּוּ «mandaron»"]},
+  {f:"יָלַד", tr:"yālaḏ", es:"engendró, dio a luz", an:["Nº 110 · 495 veces","יָלְדָה «ella dio a luz» · יָלַדְתִּי «engendré»"]},
+  {f:"מָצָא", tr:"māṣāʾ", es:"encontró", an:["Nº 115 · 486 veces · III-א","מָצָאתִי «encontré» · מָצְאוּ «encontraron»"]},
+  {f:"קָדַשׁ", tr:"qāḏaš", es:"fue santo (Piel קִדֵּשׁ: santificó)", an:["Nº 117 (raíz de קֹדֶשׁ) · 470 veces","Qal = estado; Piel = hacer santo"]},
+  {f:"שָׁמַר", tr:"šāmar", es:"guardó, observó", an:["Nº 118 · 469 veces · verbo fuerte modelo","שָׁמַרְתִּי «guardé» · שָׁמַרְנוּ «guardamos»"]}
+ ]},
+ { id:"asm", name:"Práctica del Dr. Asmat (20)", short:"Práctica", color:"var(--tinta)", letter:"ש", cards:[
+  {f:"הָאִישׁ יָשַׁב בַּשַּׁעַר עִם־זִקְנֵי הָעִיר בַּיּוֹם הַהוּא", es:"El hombre se sentó en la puerta con los ancianos de la ciudad aquel día.", hint:"יָשַׁב = se sentó (ישׁב) · שַׁעַר = puerta · זְקֵנִים = ancianos · עִיר = ciudad", an:["יָשַׁב — Forma: Qal pf. 3ms · Raíz ישׁב «sentarse, habitar» · sin cola = él","Prep./partículas — בְּ (בַּשַּׁעַר, בַּיּוֹם), עִם","זִקְנֵי — sust. masc. pl. constructo «ancianos de»","הַהוּא — artículo + הוּא tras el sustantivo = «aquel»"]},
+  {f:"הַיֶּלֶד הָלַךְ אֶל־הַשָּׂדֶה וְלֹא מָצָא אֶת־אָבִיו שָׁם", es:"El niño fue al campo, pero no encontró allí a su padre.", hint:"הָלַךְ = fue (הלך) · מָצָא = encontró (מצא) · שָׂדֶה = campo · שָׁם = allí", an:["הָלַךְ — Qal pf. 3ms · Raíz הלך","מָצָא — Qal pf. 3ms · Raíz מצא (III-א)","Prep./partículas — אֶל, לֹא, אֶת, שָׁם","אָבִיו — אָב + 3ms «su padre» (como סוּסָיו)"]},
+  {f:"כִּי שָׁמַעְנוּ אֶת־דִּבְרֵי הַנָּבִיא בְּבֵית אֱלֹהִים", es:"Porque oímos las palabras del profeta en la casa de Dios.", hint:"שָׁמַעְנוּ = oímos (שׁמע) · נָבִיא = profeta", an:["שָׁמַעְנוּ — Qal pf. 1cp · Raíz שׁמע · cola NÚ = nosotros","Prep./partículas — כִּי, אֶת, בְּ","דִּבְרֵי — sust. masc. pl. constructo «palabras de»","בֵית — sust. masc. sg. constructo «casa de»"]},
+  {f:"הָעָם עָבְרוּ אֶת־הַיַּרְדֵּן אֶל־הָאָרֶץ אֲשֶׁר נָתַן יְהוָה לַאֲבֹתָם", es:"El pueblo cruzó el Jordán hacia la tierra que YHWH dio a sus padres.", hint:"עָבְרוּ = cruzaron (עבר) · נָתַן = dio (נתן) · אָבוֹת = padres", an:["עָבְרוּ — Qal pf. 3cp · Raíz עבר · cola Ú (el «pueblo» se trata como plural)","נָתַן — Qal pf. 3ms · Raíz נתן","Prep./partículas — אֶת, אֶל, אֲשֶׁר, לְ","לַאֲבֹתָם — לְ + אָבוֹת + 3mp «a sus padres»"]},
+  {f:"גַּם־אֲנִי זָכַרְתִּי אֶת־הַבְּרִית אֲשֶׁר כָּרַתִּי עִמְּךָ", es:"También yo me acordé del pacto que hice contigo.", hint:"זָכַרְתִּי = me acordé (זכר) · בְּרִית = pacto · כָּרַת בְּרִית = hacer (cortar) un pacto", an:["זָכַרְתִּי — Qal pf. 1cs · Raíz זכר · cola TI = yo","כָּרַתִּי — Qal pf. 1cs · Raíz כרת: ת + תִּי se funden","Prep./partículas — גַּם, אֶת, אֲשֶׁר, עִם + sufijo 2ms (עִמְּךָ «contigo»)"]},
+  {f:"הָאִשָּׁה לָקְחָה לֶחֶם מִן־הַשֻּׁלְחָן לַנַּעַר אֲשֶׁר בַּבַּיִת", es:"La mujer tomó pan de la mesa para el muchacho que estaba en la casa.", hint:"לָקְחָה = tomó (לקח) · לֶחֶם = pan · שֻׁלְחָן = mesa · נַעַר = muchacho", an:["לָקְחָה — Qal pf. 3fs · Raíz לקח · cola AJ = ella","Prep./partículas — מִן, לְ, אֲשֶׁר, בְּ"]},
+  {f:"אַתֶּם יְדַעְתֶּם אֶת־הַדֶּרֶךְ אֲשֶׁר הָלַכְנוּ בָּהּ בַּמִּדְבָּר", es:"Vosotros conocisteis el camino por el que anduvimos en el desierto.", hint:"יְדַעְתֶּם = conocisteis (ידע) · הָלַכְנוּ = anduvimos (הלך) · דֶּרֶךְ = camino · מִדְבָּר = desierto", an:["יְדַעְתֶּם — Qal pf. 2mp · Raíz ידע · cola TEM (pesada: יָ → יְ)","הָלַכְנוּ — Qal pf. 1cp · Raíz הלך · cola NÚ","Prep./partículas — אֶת, אֲשֶׁר, בְּ + sufijo 3fs (בָּהּ «en él»: דֶּרֶךְ es femenino), בְּ"]},
+  {f:"הַמֶּלֶךְ שָׁלַח סְפָרִים אֶל־כָּל־עָרֵי יִשְׂרָאֵל עַל־יַד עֲבָדָיו", es:"El rey envió cartas a todas las ciudades de Israel por medio de sus siervos.", hint:"שָׁלַח = envió (שׁלח) · סְפָרִים = cartas, libros · עָרֵי = ciudades de · עֲבָדִים = siervos", an:["שָׁלַח — Qal pf. 3ms · Raíz שׁלח","Prep./partículas — אֶל, כָּל, עַל־יַד «por medio de»","עֲבָדָיו — עֲבָדִים + 3ms «sus siervos» (la י: plural)"]},
+  {f:"לֹא שָׁמַרְתָּ אֶת־הַתּוֹרָה אֲשֶׁר כָּתַב מֹשֶׁה בַּסֵּפֶר", es:"No guardaste la ley que Moisés escribió en el libro.", hint:"שָׁמַרְתָּ = guardaste (שׁמר) · כָּתַב = escribió (כתב) · תּוֹרָה = ley", an:["שָׁמַרְתָּ — Qal pf. 2ms · Raíz שׁמר · cola TA = tú (varón)","כָּתַב — Qal pf. 3ms · Raíz כתב","Prep./partículas — לֹא, אֶת, אֲשֶׁר, בְּ"]},
+  {f:"הַנְּעָרִים אָכְלוּ לֶחֶם עִם־הָאֲנָשִׁים תַּחַת הָעֵץ בָּעֶרֶב", es:"Los muchachos comieron pan con los hombres debajo del árbol al atardecer.", hint:"אָכְלוּ = comieron (אכל) · עֵץ = árbol · עֶרֶב = tarde", an:["אָכְלוּ — Qal pf. 3cp · Raíz אכל · cola Ú","Prep./partículas — עִם, תַּחַת «debajo de», בְּ"]},
+  {f:"שָׁם עָמַד הַכֹּהֵן לִפְנֵי הַמִּזְבֵּחַ בְּתוֹךְ הֶחָצֵר", es:"Allí estuvo de pie el sacerdote delante del altar, en medio del atrio.", hint:"עָמַד = estuvo de pie (עמד) · כֹּהֵן = sacerdote · מִזְבֵּחַ = altar · חָצֵר = atrio", an:["עָמַד — Qal pf. 3ms · Raíz עמד","Prep./partículas — שָׁם, לִפְנֵי «delante de», בְּתוֹךְ «en medio de»"]},
+  {f:"אֵין אִישׁ בָּעִיר כִּי יָצְאוּ כֻלָּם אֶל־הַמִּלְחָמָה", es:"No hay hombre en la ciudad, porque todos salieron a la guerra.", hint:"יָצְאוּ = salieron (יצא) · כֻּלָּם = todos ellos · מִלְחָמָה = guerra", an:["יָצְאוּ — Qal pf. 3cp · Raíz יצא (III-א) · cola Ú","Prep./partículas — אֵין, בְּ, כִּי, כָּל + sufijo 3mp, אֶל"]},
+  {f:"הִנֵּה שָׁמַרְנוּ אֶת־הַצֹּאן בַּלַּיְלָה עַל־הָהָר הַגָּבֹהַּ", es:"He aquí, guardamos el rebaño de noche sobre el monte alto.", hint:"שָׁמַרְנוּ = guardamos (שׁמר) · צֹאן = rebaño · לַיְלָה = noche · גָּבֹהַּ = alto", an:["שָׁמַרְנוּ — Qal pf. 1cp · Raíz שׁמר · cola NÚ","Prep./partículas — הִנֵּה, אֶת, בְּ, עַל"]},
+  {f:"בַּיָּמִים הָהֵם מָלַךְ דָּוִד עַל־יְהוּדָה בְּחֶבְרוֹן שֶׁבַע שָׁנִים", es:"En aquellos días David reinó sobre Judá en Hebrón siete años.", hint:"מָלַךְ = reinó (מלך) · יָמִים = días · שָׁנִים = años", an:["מָלַךְ — Qal pf. 3ms · Raíz מלך","Prep./partículas — בְּ, עַל, בְּ","הָהֵם — artículo + הֵם tras el sustantivo = «aquellos»"]},
+  {f:"אַתְּ שָׁפַטְתְּ אֶת־יִשְׂרָאֵל תַּחַת הַתֹּמֶר בֵּין הָרָמָה וּבֵין בֵּית־אֵל", es:"Tú (mujer) juzgaste a Israel bajo la palmera, entre Ramá y Betel.", hint:"שָׁפַטְתְּ = juzgaste (שׁפט) · תֹּמֶר = palmera", an:["שָׁפַטְתְּ — Qal pf. 2fs · Raíz שׁפט · cola TE = tú (mujer)","Prep./partículas — אֶת, תַּחַת, בֵּין… וּבֵין «entre… y…»"], tip:"El pronombre אַתְּ te confirma la cola TE."},
+  {f:"הָאֲנָשִׁים בָּנוּ בַּיִת לַמֶּלֶךְ מֵאֲבָנִים וּמֵעֲצֵי אֶרֶז", es:"Los hombres edificaron una casa para el rey con piedras y madera de cedro.", hint:"בָּנוּ = edificaron (בנה) · אֲבָנִים = piedras · עֲצֵי = maderas de · אֶרֶז = cedro", an:["בָּנוּ — Qal pf. 3cp · Raíz בנה (III-ה): la ה desaparece, queda Ú","Prep./partículas — לְ, מִן (מֵ), וְ"]},
+  {f:"לֹא רָאִיתִי אֶת־פְּנֵי אָחִי מִן־הַיּוֹם הַהוּא עַד־הַיּוֹם הַזֶּה", es:"No he visto el rostro de mi hermano desde aquel día hasta este día.", hint:"רָאִיתִי = vi (ראה) · פְּנֵי = rostro de · אָחִי = mi hermano", an:["רָאִיתִי — Qal pf. 1cs · Raíz ראה (III-ה): ה → י ante TI","Prep./partículas — לֹא, אֶת, מִן, עַד"]},
+  {f:"הַבָּנוֹת יָרְדוּ אֶל־הַבְּאֵר אֲשֶׁר מִחוּץ לָעִיר עִם־הַצֹּאן", es:"Las hijas descendieron al pozo que está fuera de la ciudad, con el rebaño.", hint:"יָרְדוּ = descendieron (ירד) · בְּאֵר = pozo · מִחוּץ לְ = fuera de", an:["יָרְדוּ — Qal pf. 3cp · Raíz ירד · cola Ú (vale para ellos y ellas)","Prep./partículas — אֶל, אֲשֶׁר, מִחוּץ לְ, עִם"]},
+  {f:"לָמָּה עֲזַבְתֶּם אֶת־בֵּית אֲבִיכֶם וְאֶת־אַרְצְכֶם", es:"¿Por qué abandonasteis la casa de vuestro padre y vuestra tierra?", hint:"עֲזַבְתֶּם = abandonasteis (עזב) · לָמָּה = ¿por qué?", an:["עֲזַבְתֶּם — Qal pf. 2mp · Raíz עזב · cola TEM (gutural: ḥatef)","Prep./partículas — לָמָּה, אֶת, וְ","אֲבִיכֶם / אַרְצְכֶם — sufijo 2mp «vuestro»: misma cola כֶם"]},
+  {f:"אִם־חָטָאתָ לַיהוָה בַּסֵּתֶר הוּא יָדַע אֶת־לְבָבְךָ", es:"Si pecaste contra YHWH en secreto, él conoció tu corazón.", hint:"חָטָאתָ = pecaste (חטא) · יָדַע = conoció (ידע) · סֵתֶר = secreto · לֵבָב = corazón", an:["חָטָאתָ — Qal pf. 2ms · Raíz חטא (III-א) · cola TA","יָדַע — Qal pf. 3ms · Raíz ידע","Prep./partículas — אִם, לְ, בְּ, אֶת"]}
+ ]}
+);
+DECKS.find(d=>d.id==="asm").cards.forEach(c=>c.ref="Práctica del Dr. Asmat");
+
+LEVELS.push(
+ { id:"p1", name:"Nivel 1", title:"La cola: ¿quién lo hizo?", diff:"Fácil", pill:"p-lima", topic:"pco", items:[
+  {t:"ord", ltr:true, q:"Ordena la palabra mágica del perfecto (de izquierda a derecha)", tiles:["AJ","TA","TE","TI","Ú","TEM","TEN","NÚ"], ans:["AJ","TA","TE","TI","Ú","TEM","TEN","NÚ"], join:"·", x:"AJ · TA · TE · TI | Ú · TEM · TEN · NÚ. Singular y luego plural, cada mitad en orden 3 · 2 · 2 · 1."},
+  {t:"mc", he:"שָׁמַרְתָּ", vb:"|שָׁמַרְ|תָּ", q:"¿Quién lo hizo?", o:["Tú, varón (2ms) · cola TA","Él (3ms)","Tú, mujer (2fs) · cola TE","Yo (1cs) · cola TI"], a:0, x:"TA abierta (qamets) = tú varón."},
+  {t:"mc", he:"הָלַכְנוּ", vb:"|הָלַכְ|נוּ", q:"¿Quién lo hizo?", o:["Nosotros (1cp) · cola NÚ","Ellos (3cp)","Vosotros (2mp)","Yo (1cs)"], a:0, x:"NÚ = NOsotros, de אֲנַחְנוּ: «anduvimos»."},
+  {t:"mc", he:"לָקְחָה", vb:"|לָקְחָ|ה", q:"¿Quién lo hizo?", o:["Ella (3fs) · cola AJ","Él (3ms)","Tú, mujer (2fs)","Ellas (3cp)"], a:0, x:"AJ = ◌ָה: ella tomó."},
+  {t:"mc", he:"יְדַעְתֶּם", vb:"|יְדַעְ|תֶּם", q:"¿Quién lo hizo?", o:["Vosotros (2mp) · cola TEM","Vosotras (2fp) · cola TEN","Ellos (3cp)","Nosotros (1cp)"], a:0, x:"TEM: M = Muchachos. Y la cola pesada aplastó la qamets (יָ → יְ)."},
+  {t:"mc", he:"שָׁפַטְתְּ", vb:"|שָׁפַטְ|תְּ", q:"¿Quién lo hizo?", o:["Tú, mujer (2fs) · cola TE","Tú, varón (2ms) · cola TA","Ella (3fs)","Yo (1cs)"], a:0, x:"TE cortita (shewa) = tú mujer."},
+  {t:"mc", he:"אָכְלוּ", vb:"|אָכְל|וּ", q:"¿Quién lo hizo?", o:["Ellos/ellas (3cp) · cola Ú","Vosotros (2mp)","Nosotros (1cp)","Él (3ms)"], a:0, x:"Ú = ellos. La vocal del medio «se desmayó» en shewa."},
+  {t:"mc", he:"זָכַרְתִּי", vb:"|זָכַרְ|תִּי", q:"¿Qué significa?", o:["Yo recordé","Tú recordaste","Recordamos","Ella recordó"], a:0, x:"TI = yo. Como en español «recordé»: la terminación dice quién."},
+  {t:"mc", he:"עָמַד", vb:"|עָמַד|", q:"¿Quién lo hizo?", o:["Él (3ms): sin cola","Ella (3fs)","Ellos (3cp)","Tú (2ms)"], a:0, x:"Sin cola = 3ms, la locomotora."},
+  {t:"mc", q:"¿Qué colas son «solo vocal», sin ת?", o:["AJ (ella) y Ú (ellos)","TA y TE","TEM y TEN","TI y NÚ"], a:0, x:"La 3ª persona es la más callada: ◌ָה y וּ."},
+  {t:"mc", q:"TA y TE significan…", o:["tú varón (TA) y tú mujer (TE)","él (TA) y ella (TE)","yo (TA) y nosotros (TE)","vosotros y vosotras"], a:0, x:"Las dos son «tú». El título de la página 4 del PDF original decía «él/ella» por error."}
+ ]},
+ { id:"p2", name:"Nivel 2", title:"La cabeza: ¿qué voz?", diff:"Intermedio", pill:"p-miel", topic:"pvo", items:[
+  {t:"mc", he:"נִמְשְׁלוּ", vb:"נִ|מְשְׁל|וּ", q:"Voz y persona:", o:["Nifal 3cp: «fueron reinados»","Qal 1cp: «reinaremos»","Piel 3cp","Hifil 3cp"], a:0, x:"Cabeza נִ = Nifal (empieza con NUN). Cola Ú = ellos."},
+  {t:"mc", he:"מִשַּׁלְתִּי", vb:"|מִשַּׁלְ|תִּי", q:"Voz y persona:", o:["Piel 1cs: «goberné firmemente»","Qal 1cs","Pual 1cs","Nifal 1cs"], a:0, x:"i + dagesh en la ש = Piel (músculo). Ante TI la vocal pasa a pátaj (regla 1)."},
+  {t:"mc", he:"הִמְשִׁילָה", vb:"הִ|מְשִׁילָ|ה", q:"Voz y persona:", o:["Hifil 3fs: «ella hizo reinar»","Hofal 3fs","Hitpael 3fs","Nifal 3fs"], a:0, x:"הִ + ◌ִי = Hifil. El Hifil es terco: guarda su ◌ִי ante AJ (regla 2)."},
+  {t:"mc", he:"הָמְשַׁלְתָּ", vb:"הָ|מְשַׁלְ|תָּ", q:"Voz y persona:", o:["Hofal 2ms: «fuiste hecho reinar»","Hifil 2ms","Qal 2ms","Hofal 2fs"], a:0, x:"הָ con o = Hofal (¡Oh!). TA = tú varón."},
+  {t:"mc", he:"הִתְמַשַּׁלְנוּ", vb:"הִתְ|מַשַּׁלְ|נוּ", q:"Voz y persona:", o:["Hitpael 1cp: «nos hicimos reyes»","Hifil 1cp","Piel 1cp","Nifal 1cp"], a:0, x:"הִתְ + dagesh = Hitpael. NÚ = nosotros."},
+  {t:"mc", he:"מֻשַּׁלְתֶּם", vb:"|מֻשַּׁלְ|תֶּם", q:"Voz y persona:", o:["Pual 2mp: «fuisteis gobernados»","Piel 2mp","Qal 2mp","Hofal 2mp"], a:0, x:"u + dagesh = Pual (¡Uy!). TEM = vosotros."},
+  {t:"mc", he:"מָשַׁלְתְּ", vb:"|מָשַׁלְ|תְּ", q:"Voz y persona:", o:["Qal 2fs: «tú (mujer) reinaste»","Qal 2ms","Piel 2fs","Nifal 2fs"], a:0, x:"Sin cabeza = Qal (calvo). TE = tú mujer."},
+  {t:"mc", he:"דִּבַּרְתִּי", vb:"|דִּבַּרְ|תִּי", q:"Voz y persona:", o:["Piel 1cs: «hablé»","Qal 1cs","Pual 1cs","Nifal 1cs"], a:0, x:"i + dagesh en la ב = Piel. דבר «hablar» se usa en Piel (Nº 40)."},
+  {t:"mc", he:"נִשְׁבַּר", vb:"נִ|שְׁבַּר|", q:"¿Qué significa?", o:["Fue quebrado (Nifal)","Quebró (Qal)","Despedazó (Piel)","Hizo quebrar (Hifil)"], a:0, x:"נִ = Nifal, pasivo del Qal."},
+  {t:"mc", q:"¿Qué voces tienen dagesh en la 2ª radical (los «musculosos»)?", o:["Piel, Pual, Hitpael","Hifil, Hofal","Qal, Nifal","Nifal, Hifil, Hofal"], a:0, x:"Musculosos: Piel, Pual, Hitpael. Mandones (cabeza ה): Hifil, Hofal."},
+  {t:"mc", q:"Además de pasivo, el Nifal a veces es…", o:["Reflexivo: נִסְתַּר «se escondió»","Causativo","Intensivo","Imperativo"], a:0, x:"Lo dice el Dr. Asmat: נִשְׁמַר «se guardó», נִסְתַּר «se escondió»."},
+  {t:"mc", q:"¿Cambia la cola cuando cambia la voz?", o:["No: la cola es la misma en las 7 voces","Sí: cada voz tiene sus colas","Solo en el Hifil","Solo en los pasivos"], a:0, x:"Cambia la cabeza; la cola (AJ-TA-TE-TI…) se queda."}
+ ]},
+ { id:"p3", name:"Nivel 3", title:"Encuentra la raíz (débiles)", diff:"Avanzado", pill:"p-rosa", topic:"pdb", items:[
+  {t:"mc", he:"רָאִיתִי", vb:"|רָאִי|תִי", q:"Raíz y persona:", o:["ראה «ver» · 1cs: «vi»","ראי · 1cs","רעה · 3ms","ירא «temer» · 1cs"], a:0, x:"III-ה: la ה se vuelve י ante la cola TI."},
+  {t:"mc", he:"נָתַתִּי", vb:"|נָתַ|תִּי", q:"Raíz y persona:", o:["נתן «dar» · 1cs: «di»","נתת · 1cs","תתן · 3ms","נות · 1cs"], a:0, x:"La נ final se funde con la ת de la cola (dagesh)."},
+  {t:"mc", he:"בָּנוּ", vb:"|בָּנ|וּ", q:"Raíz y persona:", o:["בנה «edificar» · 3cp: «edificaron»","בן «hijo» + nosotros","בין · 3cp","נבא · 3cp"], a:0, x:"III-ה: la ה desaparece y queda la cola Ú."},
+  {t:"mc", he:"קַמְתִּי", vb:"|קַמְ|תִּי", q:"Raíz y persona:", o:["קום «levantarse» · 1cs","קמם · 1cs","מות · 1cs","קמת · 3ms"], a:0, x:"Hueco: solo 2 letras visibles. El diccionario la trae como קוּם."},
+  {t:"mc", he:"מָצָאתִי", vb:"|מָצָא|תִי", q:"Raíz y persona:", o:["מצא «encontrar» · 1cs","מצת · 3ms","יצא · 1cs","מצה · 1cs"], a:0, x:"III-א: la א queda muda; la cola TI no cambia."},
+  {t:"mc", he:"הָיְתָה", vb:"|הָיְ|תָה", q:"Raíz y persona:", o:["היה «ser» · 3fs: «ella fue»","היתה · 3ms","יתה · 3fs","הית · 2ms"], a:0, x:"En los III-ה, ella lleva ת antes de la AJ: ◌ְתָה."},
+  {t:"mc", he:"כָּרַתִּי", vb:"|כָּרַ|תִּי", q:"Raíz y persona:", o:["כרת «cortar, hacer pacto» · 1cs","כרה · 1cs","כור · 1cs","ירת · 1cs"], a:0, x:"La ת de la raíz y la de la cola se funden en תּ."},
+  {t:"mc", he:"עָשִׂיתָ", vb:"|עָשִׂי|תָ", q:"Raíz y persona:", o:["עשׂה «hacer» · 2ms: «hiciste»","עשׂי · 2ms","שׂית · 3ms","עשׂה · 2fs"], a:0, x:"III-ה con cola TA = tú varón."},
+  {t:"mc", he:"בָּאתִי", vb:"|בָּא|תִי", q:"Raíz y persona:", o:["בוא «venir, entrar» · 1cs","באת · 3ms","בתי · 1cs","יבא · 1cs"], a:0, x:"Hueco + III-א: 2 letras, א muda."},
+  {t:"mc", he:"יָצְאוּ", vb:"|יָצְא|וּ", q:"Raíz y persona:", o:["יצא «salir» · 3cp: «salieron»","צאו · 3cp","יצא · 1cp","יצה · 3cp"], a:0, x:"Ú = ellos. En el perfecto la י inicial se mantiene."},
+  {t:"mc", he:"עֲזַבְתֶּם", vb:"|עֲזַבְ|תֶּם", q:"Raíz y persona:", o:["עזב «abandonar» · 2mp","עזב · 3cp","זבת · 2mp","עזב · 2fp"], a:0, x:"Cola TEM = vosotros. La gutural ע toma ḥatef (◌ֲ)."}
+ ]},
+ { id:"p4", name:"Nivel 4", title:"Arma la forma: cabeza + raíz + cola", diff:"Intermedio", pill:"p-azul", topic:"pco", items:[
+  {t:"ord", q:"Arma: «yo guardé» (Qal)", tiles:["שָׁמַרְ","תִּי","תָּ","נִ"], ans:["שָׁמַרְ","תִּי"], join:"", x:"Sin cabeza (Qal) + raíz + TI = שָׁמַרְתִּי."},
+  {t:"ord", q:"Arma: «nosotros fuimos reinados» (Nifal)", tiles:["נִ","מְשַׁלְ","נוּ","תֶּם","הִ"], ans:["נִ","מְשַׁלְ","נוּ"], join:"", x:"Cabeza נִ + raíz + NÚ = נִמְשַׁלְנוּ."},
+  {t:"ord", q:"Arma: «vosotros conocisteis» (Qal)", tiles:["יְדַעְ","תֶּם","תֶּן","נוּ"], ans:["יְדַעְ","תֶּם"], join:"", x:"TEM = vosotros (M = Muchachos): יְדַעְתֶּם."},
+  {t:"ord", q:"Arma: «tú (mujer) juzgaste» (Qal)", tiles:["שָׁפַטְ","תְּ","תָּ","תִּי"], ans:["שָׁפַטְ","תְּ"], join:"", x:"TE cortita = tú mujer: שָׁפַטְתְּ."},
+  {t:"ord", q:"Arma: «yo hice reinar» (Hifil)", tiles:["הִ","מְשַׁלְ","תִּי","נִ","הָ"], ans:["הִ","מְשַׁלְ","תִּי"], join:"", x:"Cabeza הִ + raíz (ante TI, pátaj) + TI = הִמְשַׁלְתִּי."},
+  {t:"ord", q:"Arma: «tú (varón) fuiste hecho reinar» (Hofal)", tiles:["הָ","מְשַׁלְ","תָּ","הִ","תְּ"], ans:["הָ","מְשַׁלְ","תָּ"], join:"", x:"Cabeza הָ (o) + raíz + TA = הָמְשַׁלְתָּ."},
+  {t:"ord", q:"Arma: «yo vi» (Qal, III-ה)", tiles:["רָאִי","תִי","רָאָה","תָ"], ans:["רָאִי","תִי"], join:"", x:"III-ה: la ה se vuelve י. La cola TI no cambia: רָאִיתִי."}
+ ]},
+ { id:"p5", name:"Nivel 5", title:"Práctica del Dr. Asmat: traducción", diff:"Examen", pill:"p-line", topic:"asm", wide:true, items:
+   Array.from({length:20},(_,i)=>({t:"rv", d:"asm", c:i})) }
+);
+
+SECTIONS.push(
+ { id:"s3", short:"Sección 3", tab:"Perfecto", name:"Examen: el perfecto en las 7 voces",
+   hero:["Cabeza + raíz + ","cola",""],
+   decks:["pco","pvo","pdb","pvv","asm"],
+   levels:["p1","p2","p3","p4","p5"],
+   th:[["pcc","Cabeza + cola","pco","p1"],["pca","Las 7 cabezas","pvo","p2"],["prg","3 reglitas","pco","p4"],["pdb","Verbos débiles","pdb","p3"],["pvc","Tus verbos (1–120)","pvv","p5"],["pme","Método de examen","asm","p5"]],
+   rv:"p5" }
+);
+Object.assign(TOPICS, {pco:"Las colas", pvo:"Las cabezas (voces)", pdb:"Verbos débiles", pvv:"Vocabulario de verbos", asm:"Traducción (práctica Asmat)"});
+
 const INTV = [0, 10*60e3, 864e5, 3*864e5, 7*864e5, 16*864e5];
 const INTV_LABEL = ["1 min","10 min","1 día","3 días","7 días","16 días"];
 
@@ -715,6 +899,7 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 const HEB = /[◌֐-׿יִ-ﭏ]+(?:[\s־\/]+[◌֐-׿יִ-ﭏ]+)*/g;
 const fmt = s => esc(s).replace(HEB, m => `<bdi class="he" lang="he" dir="rtl">${m}</bdi>`);
+const partW = w => /[\u05D0-\u05EA]/.test(w) ? heb(w) : `<b>${esc(w)}</b>`;
 const heb = s => `<bdi class="he" lang="he" dir="rtl">${esc(s)}</bdi>`;
 const hl = (s, cls="") => { const [a,b] = s.split("|"); return `<bdi class="he" lang="he" dir="rtl">${esc(a)}<span class="suf ${cls}">${esc(b)}</span></bdi>`; };
 const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
@@ -736,6 +921,7 @@ if (!S.simBy) S.simBy = {};
 if (S.sim && !S.simBy.s1) S.simBy.s1 = S.sim;
 if (!S.thBy) S.thBy = {};
 if (!S.sec) S.sec = "s1";
+if (!S.s3intro){ S.sec = "s3"; S.s3intro = true; }
 const cur = () => SECTIONS.find(x=>x.id===S.sec) || SECTIONS[0];
 const secDecks = () => DECKS.filter(d=>cur().decks.includes(d.id));
 const secLevels = () => LEVELS.filter(l=>cur().levels.includes(l.id));
@@ -858,7 +1044,8 @@ function deckCard(d){
 
 /* ---------- Teoría ---------- */
 const TH_FN = {con:()=>thCon(), pro:()=>thPro(), suf:()=>thSuf(), map:()=>thMap(), par:()=>thPar(), exa:()=>thExa(),
-  vra:()=>thVra(), vqp:()=>thVqp(), vqi:()=>thVqi(), vqo:()=>thVqo(), vbn:()=>thVbn(), vme:()=>thVme()};
+  vra:()=>thVra(), vqp:()=>thVqp(), vqi:()=>thVqi(), vqo:()=>thVqo(), vbn:()=>thVbn(), vme:()=>thVme(),
+  pcc:()=>thPcc(), pca:()=>thPca(), prg:()=>thPrg(), pdb:()=>thPdb(), pvc:()=>thPvc(), pme:()=>thPme()};
 function vTheory(){
   const sec = cur();
   if (!sec.th.some(x=>x[0]===thTab)) thTab = sec.th[0][0];
@@ -1108,7 +1295,7 @@ function thExa(){
     <h2>Ejemplo resuelto · ${v.ref}</h2>
     <p class="he" style="font-size:2.2em;text-align:center">${esc(v.f)}</p>
     <p class="cap" style="text-align:center;font-style:italic">${esc(v.tr)}</p>
-    <div class="parts">${v.an.map(a=>{const [w,...r]=a.split(" — ");return `<div class="part">${heb(w)}<span>${fmt(r.join(" — "))}</span></div>`;}).join("")}</div>
+    <div class="parts">${v.an.map(a=>{const [w,...r]=a.split(" — ");return `<div class="part">${partW(w)}<span>${fmt(r.join(" — "))}</span></div>`;}).join("")}</div>
     <p style="font-family:var(--display);font-weight:800;font-size:22px;text-align:center">«${esc(v.es)}»</p>
   </section>`;
 }
@@ -1480,9 +1667,177 @@ function thVme(){
     <h2>Versículo completo · ${v.ref}</h2>
     <p class="he" style="font-size:1.9em;text-align:center">${esc(v.f)}</p>
     <p class="cap" style="text-align:center;font-style:italic">${esc(v.tr)}</p>
-    <div class="parts">${v.an.map(a=>{const [w,...r]=a.split(" — ");return `<div class="part">${heb(w)}<span>${fmt(r.join(" — "))}</span></div>`;}).join("")}</div>
+    <div class="parts">${v.an.map(a=>{const [w,...r]=a.split(" — ");return `<div class="part">${partW(w)}<span>${fmt(r.join(" — "))}</span></div>`;}).join("")}</div>
     <p style="font-family:var(--display);font-weight:800;font-size:20px;text-align:center">«${esc(v.es)}»</p>
     <div class="card rosa sm">Este versículo usa las dos secciones: un verbo Hitpael, un Qal perfecto, ${fmt("אֵינֶנּוּ")} y los dos ${fmt("אֵת")} de tu examen.</div>
+  </section>`;
+}
+
+/* ---------- Teoría · Sección 3: el perfecto ---------- */
+const vbh = (s, big) => { const [a,b,c] = s.split("|"); return `<bdi class="he vb${big?" big":""}" lang="he" dir="rtl"><span class="cab">${esc(a||"")}</span><span class="rai">${esc(b||"")}</span><span class="col">${esc(c||"")}</span></bdi>`; };
+const LEG = `<div class="vleg"><span><i style="background:var(--cabeza)"></i>Cabeza = cómo (voz)</span><span><i style="background:var(--raiz)"></i>Raíz = qué</span><span><i style="background:var(--cola)"></i>Cola = quién</span></div>`;
+const COLAS = [
+  ["—","3ms","él","|מָשַׁל|","—","reinó"],
+  ["AJ","3fs","ella","|מָשְׁלָ|ה","como סוּסָה","reinó"],
+  ["TA","2ms","tú (varón)","|מָשַׁלְ|תָּ","אַתָּה","reinaste"],
+  ["TE","2fs","tú (mujer)","|מָשַׁלְ|תְּ","אַתְּ","reinaste"],
+  ["TI","1cs","yo","|מָשַׁלְ|תִּי","אָנֹכִי","reiné"],
+  ["Ú","3cp","ellos / ellas","|מָשְׁל|וּ","—","reinaron"],
+  ["TEM","2mp","vosotros","|מְשַׁלְ|תֶּם","אַתֶּם","reinasteis"],
+  ["TEN","2fp","vosotras","|מְשַׁלְ|תֶּן","אַתֵּן","reinasteis"],
+  ["NÚ","1cp","nosotros","|מָשַׁלְ|נוּ","אֲנַחְנוּ","reinamos"]];
+function thPcc(){
+  return `
+  <section class="card t-sec">
+    <span class="pill p-tinta tilt" style="justify-self:start">La gran idea</span>
+    <h2>Un verbo es un tren de 3 piezas</h2>
+    <p>Todo verbo en perfecto se arma con <b>cabeza + raíz + cola</b>. Si las separas, no memorizas 63 formas sueltas: memorizas <b>7 cabezas y 1 cola</b>.</p>
+    <div class="levels" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+      <div class="card sm stack" style="text-align:center;background:var(--crema)"><span class="he" style="font-size:2em;color:var(--cola)">תִּי</span><b style="color:var(--cola)">COLA</b><span class="cap">dice QUIÉN: persona, género y número. Igual en las 7 voces.</span></div>
+      <div class="card sm stack" style="text-align:center;background:var(--crema)"><span class="he" style="font-size:2em;color:var(--raiz)">מְשַׁל</span><b style="color:var(--raiz)">RAÍZ</b><span class="cap">dice QUÉ: 3 consonantes que no cambian.</span></div>
+      <div class="card sm stack" style="text-align:center;background:var(--crema)"><span class="he" style="font-size:2em;color:var(--cabeza)">נִ</span><b style="color:var(--cabeza)">CABEZA</b><span class="cap">dice CÓMO: la voz (binyan).</span></div>
+    </div>
+    <p style="text-align:center">${vbh("נִ|מְשַׁלְ|תִּי",1)}<br><span class="cap">nimšaltî · «yo fui reinado» = Nifal + 1cs</span></p>
+    ${LEG}
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>La palabra mágica: AJ · TA · TE · TI · Ú · TEM · TEN · NÚ</h2>
+    <p>Son las 8 colas en orden. Dila con palmas: <b>AJ-TA-TE-TI</b> (singular) · <b>Ú-TEM-TEN-NÚ</b> (plural). En cada mitad el orden es 3ª · 2ª · 2ª · 1ª. «Él» (3ms) no tiene cola: es la locomotora.</p>
+    <p class="muted">Funciona como en español: en «goberné, gobernaste, gobernó», la terminación también te dice quién lo hizo.</p>
+  </section>
+
+  <section class="t-sec">
+    <h2>Las 9 formas, con su origen</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Cola</th><th>PGN</th><th>Forma</th><th>Traducción</th><th>Viene de</th></tr></thead>
+      <tbody>${COLAS.map(r=>`<tr><td><b style="color:var(--cola)">${r[0]}</b></td><td>${r[1]}</td><td>${vbh(r[3])}</td><td>${r[2]} ${r[5]}</td><td>${fmt(r[4])}</td></tr>`).join("")}</tbody>
+    </table></div>
+  </section>
+
+  <section class="card t-sec">
+    <h2>Pistas escondidas en la cola</h2>
+    <div class="rules">
+      <div class="rule"><span class="pill p-col">T de TÚ</span><span>Las colas de «tú» y de «yo» llevan ${fmt("ת")}: TA, TE, TI, TEM, TEN. Salen de ${fmt("אַתָּה, אַתְּ, אָנֹכִי, אַתֶּם, אַתֵּן")}.</span></div>
+      <div class="rule"><span class="pill p-col">TA / TE</span><span><b>TA</b> abierta (qamets) = <b>tú varón</b>. <b>TE</b> cortita (shewa) = <b>tú mujer</b>. Las dos son «tú», nunca «él» ni «ella».</span></div>
+      <div class="rule"><span class="pill p-col">NÚ</span><span>NÚ = NOsotros, de ${fmt("אֲנַחְנוּ")}. Es la misma cola de ${fmt("סוּסֵנוּ")} «nuestro caballo»: en el sustantivo dice de quién es; en el verbo, quién lo hace.</span></div>
+      <div class="rule"><span class="pill p-col">Callados</span><span>La 3ª persona no lleva ת: ella = AJ (${fmt("◌ָה")}), ellos = Ú (${fmt("וּ")}).</span></div>
+      <div class="rule"><span class="pill p-col">M / N</span><span>TEM = Muchachos (${fmt("ם")}), TEN = Niñas (${fmt("ן")}). Igual que en ${fmt("סוּסְכֶם / סוּסְכֶן")} de la Sección 1.</span></div>
+    </div>
+  </section>`;
+}
+function thPca(){
+  const C = [
+    ["Qal","Qal = CALVO","|מָשַׁל|","Sin prefijo ni dagesh. Vocales a – a.","activo simple","él reinó"],
+    ["Nifal","NIPHAL empieza con NUN","נִ|מְשַׁל|","Siempre lleva נִ al frente. N de «No lo hice yo: me lo hicieron».","pasivo simple (a veces reflexivo)","fue reinado"],
+    ["Piel","PI-EL = i, e + músculo","|מִשֵּׁל|","Vocales i – e y dagesh en la 2ª radical.","activo intensivo (o causativo)","gobernó firmemente"],
+    ["Pual","PU-AL = ¡Uy! u, a","|מֻשַּׁל|","El mismo músculo del Piel, pero recibe el golpe.","pasivo intensivo","fue gobernado"],
+    ["Hitpael","HIT = me pego a mí mismo","הִתְ|מַשֵּׁל|","Cabeza הִתְ + dagesh. Vocales a – e.","reflexivo","se hizo rey a sí mismo"],
+    ["Hifil","HI-PHIL = H + dos i","הִ|מְשִׁיל|","הִ al frente e ◌ִי adentro. H de «Hago que otro lo haga».","causativo activo","hizo reinar"],
+    ["Hofal","HO-PHAL = ¡Oh! o, a","הָ|מְשַׁל|","הָ con qamets ḥatuf (o): «¡Oh, me hicieron hacerlo!».","causativo pasivo","fue hecho reinar"]];
+  return `
+  <section class="t-sec">
+    <span class="pill p-cab tilt" style="justify-self:start">Las cabezas</span>
+    <h2>Las 7 cabezas: el nombre es la pista</h2>
+    <p>Los nombres vienen de ${fmt("פָּעַל")} «hacer» puesto en cada molde. Por eso <b>las vocales del nombre son las vocales del verbo</b>: léelo despacio.</p>
+    ${LEG}
+    <div class="stack">${C.map(c=>`<div class="card sm" style="display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center">
+      <div class="stack" style="gap:4px;min-width:0"><div class="row"><b style="font-size:18px">${c[0]}</b><span class="pill p-tinta" style="font-size:12.5px;padding:2px 10px">${c[1]}</span></div>
+      <span>${fmt(c[3])}</span><span class="cap">${c[4]} · «${c[5]}»</span></div>
+      <div style="text-align:center">${vbh(c[2],1)}</div></div>`).join("")}</div>
+  </section>
+
+  <section class="t-sec">
+    <h2>Tres familias</h2>
+    <div class="levels" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+      <div class="card sm stack" style="background:var(--lima)"><b>Simples</b><span>Qal · Nifal</span></div>
+      <div class="card sm stack" style="background:var(--miel)"><b>Musculosos</b><span>Piel · Pual · Hitpael</span><span class="cap">dagesh en el medio</span></div>
+      <div class="card sm stack" style="background:var(--rosa)"><b>Mandones</b><span>Hifil · Hofal</span><span class="cap">cabeza ה</span></div>
+    </div>
+    <div class="card rosa sm"><b>Pasivas «oscuras»:</b> los pasivos de los musculosos y de los mandones tienen vocal oscura (u, o): <b>Pu</b>al y <b>Ho</b>fal, como si recibieran un moretón.</div>
+  </section>
+
+  <section class="card miel t-sec">
+    <h2>La máquina: cambia la cabeza, la cola se queda</h2>
+    <div class="tbl-wrap"><table style="min-width:520px">
+      <thead><tr><th>Voz</th><th>1cs · TI</th><th>1cp · NÚ</th><th>3cp · Ú</th></tr></thead>
+      <tbody>${[["Qal","|מָשַׁלְ|תִּי","|מָשַׁלְ|נוּ","|מָשְׁל|וּ"],["Nifal","נִ|מְשַׁלְ|תִּי","נִ|מְשַׁלְ|נוּ","נִ|מְשְׁל|וּ"],["Piel","|מִשַּׁלְ|תִּי","|מִשַּׁלְ|נוּ","|מִשְּׁל|וּ"],["Pual","|מֻשַּׁלְ|תִּי","|מֻשַּׁלְ|נוּ","|מֻשְּׁל|וּ"],["Hitpael","הִתְ|מַשַּׁלְ|תִּי","הִתְ|מַשַּׁלְ|נוּ","הִתְ|מַשְּׁל|וּ"],["Hifil","הִ|מְשַׁלְ|תִּי","הִ|מְשַׁלְ|נוּ","הִ|מְשִׁיל|וּ"],["Hofal","הָ|מְשַׁלְ|תִּי","הָ|מְשַׁלְ|נוּ","הָ|מְשְׁל|וּ"]].map(r=>`<tr><td><b>${r[0]}</b></td>${r.slice(1).map(x=>`<td>${vbh(x)}</td>`).join("")}</tr>`).join("")}</tbody>
+    </table></div>
+    <p class="cap">Con ${fmt("מָשַׁל")}, Pual, Hofal e Hitpael son formas de práctica (paradigma de gramática): sirven para entrenar el ojo.</p>
+  </section>`;
+}
+function thPrg(){
+  return `
+  <section class="t-sec">
+    <span class="pill p-tinta tilt" style="justify-self:start">Uniones</span>
+    <h2>Las 3 reglitas que unen cabeza y cola</h2>
+    <p>Cuando la cola se pega, la vocal del medio (la de la 2ª radical) a veces cambia. Solo hay 3 casos:</p>
+    <div class="rules">
+      <div class="rule"><span class="pill p-verde">1</span><span><b>Ante T o N: pátaj para todos.</b> Si la cola empieza con consonante (TA, TE, TI, TEM, TEN, NÚ), la vocal de la 2ª radical se vuelve pátaj en todas las voces: ${vbh("|מִשֵּׁל|")} → ${vbh("|מִשַּׁלְ|תִּי")} (Piel) · ${vbh("הִ|מְשִׁיל|")} → ${vbh("הִ|מְשַׁלְ|תִּי")} (Hifil).</span></div>
+      <div class="rule"><span class="pill p-verde">2</span><span><b>Ante AJ o Ú, la vocal se desmaya</b> en shewa: ${vbh("|מָשַׁל|")} → ${vbh("|מָשְׁלָ|ה")}. Excepción: el Hifil es terco y guarda su ◌ִי: ${vbh("הִ|מְשִׁיל|וּ")}.</span></div>
+      <div class="rule"><span class="pill p-verde">3</span><span><b>TEM y TEN son pesados</b>: se llevan el acento y aplastan la primera qamets del Qal: ${vbh("|מָשַׁלְ|נוּ")} pero ${vbh("|מְשַׁלְ|תֶּם")}. En las otras voces no pasa: la cabeza las protege.</span></div>
+    </div>
+    <div class="card miel sm"><b>Frase para recordarlas:</b> «Pátaj para todos, el que es solo vocal se desmaya, y los pesados aplastan».</div>
+  </section>`;
+}
+function thPdb(){
+  const T = [
+    ["III-ה","הָיָה · עָשָׂה · רָאָה · עָלָה · בָּנָה","La ה final desaparece. Ante T o N aparece una י. Ella lleva ת antes de la AJ. Ellos: solo וּ.",["|רָאִי|תִי","yo vi"],["|הָיְ|תָה","ella fue"],["|בָּנ|וּ","edificaron"]],
+    ["III-א","יָצָא · קָרָא · מָצָא · נָשָׂא · חָטָא","La א queda muda y la vocal anterior es qamets. La cola no cambia.",["|מָצָא|תִי","encontré"],["|יָצְא|וּ","salieron"],["|חָטָא|תָ","pecaste"]],
+    ["Huecos","בּוֹא · שׁוּב · מוּת · קוּם · שִׂים","Solo 2 consonantes visibles. El diccionario los trae en infinitivo (קוּם), no en perfecto.",["|קַמְ|תִּי","me levanté"],["|בָּא|תִי","vine"],["|מֵת|וּ","murieron"]],
+    ["נָתַן y כָּרַת","נָתַן · כָּרַת","La última consonante se funde con la de la cola: queda una sola con dagesh.",["|נָתַ|תִּי","di"],["|נָתַ|נּוּ","dimos"],["|כָּרַ|תִּי","hice (pacto)"]],
+    ["Guturales","עָמַד · אָמַר · עָבַר · עָזַב","Con TEM/TEN, la gutural inicial toma ḥatef (◌ֲ) en vez de shewa.",["|עֲזַבְ|תֶּם","abandonasteis"],["|אֲמַרְ|תֶּם","dijisteis"],["|עָבְר|וּ","cruzaron"]]];
+  return `
+  <section class="card miel t-sec">
+    <span class="pill p-tinta tilt" style="justify-self:start">Clave para traducir</span>
+    <h2>En los verbos débiles, la cola NUNCA cambia</h2>
+    <p>De los 30 verbos de tu vocabulario (1–120), la mayoría son débiles. Buena noticia: <b>la cola sigue siendo AJ-TA-TE-TI…</b>. Solo se ajusta un poco la raíz. Si reconoces la cola, ya sabes quién; luego buscas la raíz.</p>
+    <p class="cap">Los que empiezan con י (יָשַׁב, יָדַע, יָצָא, יָלַד) o con ה (הָלַךְ) son regulares en el perfecto: no te preocupes por ellos.</p>
+  </section>
+  ${T.map(t=>`<section class="card sm t-sec">
+    <div class="row" style="justify-content:space-between"><h3>${t[0]}</h3><span class="cap">${fmt(t[1])}</span></div>
+    <p>${fmt(t[2])}</p>
+    <div class="levels" style="grid-template-columns:repeat(3,minmax(0,1fr))">${t.slice(3).map(x=>`<div class="card sm stack" style="text-align:center;background:var(--crema)">${vbh(x[0],1)}<span class="cap">${x[1]}</span></div>`).join("")}</div>
+  </section>`).join("")}`;
+}
+function thPvc(){
+  const V = DECKS.find(d=>d.id==="pvv").cards;
+  return `
+  <section class="t-sec">
+    <span class="pill p-verde tilt" style="justify-self:start">Vocabulario 1–120</span>
+    <h2>Tus 30 verbos, por frecuencia</h2>
+    <p>Sacados de tu lista de vocabulario. Están en 3ª masc. sg. del perfecto, como en el diccionario («él dijo»). Los huecos se citan en infinitivo (${fmt("בּוֹא, קוּם")}).</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Nº</th><th>Verbo</th><th>Significa</th><th>Ejemplo en perfecto</th></tr></thead>
+      <tbody>${V.map(c=>{const n=c.an[0].split(" ")[1];return `<tr><td class="num">${n}</td><td>${heb(c.f)}</td><td>${esc(c.es)}</td><td>${fmt(c.an[c.an.length-1])}</td></tr>`;}).join("")}</tbody>
+    </table></div>
+    <p class="cap">La lista trae dos entradas parecidas (Nº 102 y 105); aquí se usa נכה en Hifil, ${fmt("הִכָּה")} «golpeó».</p>
+  </section>`;
+}
+function thPme(){
+  const v = DECKS.find(d=>d.id==="asm").cards[4];
+  const steps = [
+    ["Busca el verbo","Es la palabra que tiene cola (תִּי, נוּ, וּ…) o que está en 3ms al inicio o después del sujeto."],
+    ["Cola → quién","AJ-TA-TE-TI-Ú-TEM-TEN-NÚ te da la PGN (persona, género, número)."],
+    ["Cabeza → voz","Sin cabeza = Qal. נִ Nifal · הִתְ Hitpael · הִ…◌ִי Hifil · הָ Hofal · dagesh en medio = Piel/Pual."],
+    ["Lo que queda → raíz","3 consonantes. Si son 2, piensa en III-ה, hueco o נָתַן."],
+    ["Preposiciones y partículas","בְּ, לְ, מִן, אֶל, עַל, עִם, תַּחַת, אֶת, אֲשֶׁר, כִּי, לֹא, אֵין, הִנֵּה (Sección 1)."],
+    ["Traduce","Perfecto = acción completa: casi siempre pasado. El sujeto puede ir antes o después del verbo."]];
+  return `
+  <section class="card t-sec">
+    <span class="pill p-line tilt" style="justify-self:start">Formato del Dr. Asmat</span>
+    <h2>Traducir y analizar: Forma · Raíz · PGN · Prep.</h2>
+    <div class="plan">${steps.map((s,i)=>`<div class="step" style="grid-template-columns:36px 1fr"><span class="n">${i+1}</span><span><b>${s[0]}</b><span class="cap" style="font-size:14px">${fmt(s[1])}</span></span></div>`).join("")}</div>
+  </section>
+  <section class="card miel t-sec">
+    <h2>Ejemplo resuelto (oración 5)</h2>
+    <p class="he" style="font-size:1.8em;text-align:center">${esc(v.f)}</p>
+    <div class="parts">
+      <div class="part">${vbh("|זָכַרְ|תִּי")}<span>Forma: Qal pf. · Raíz זכר «recordar» · PGN: 1cs (cola TI)</span></div>
+      <div class="part">${vbh("|כָּרַ|תִּי")}<span>Forma: Qal pf. · Raíz כרת «cortar (un pacto)» · PGN: 1cs (ת + תִּי se funden)</span></div>
+      <div class="part">${heb("גַּם · אֶת · אֲשֶׁר · עִמְּךָ")}<span>Prep./partículas: גַּם «también», אֶת (objeto), אֲשֶׁר «que», עִם + 2ms «contigo»</span></div>
+    </div>
+    <p style="font-family:var(--display);font-weight:800;font-size:20px;text-align:center">«${esc(v.es)}»</p>
   </section>`;
 }
 
@@ -1520,6 +1875,7 @@ function vCard(){
   const back = fcS.flip ? `
     ${card.tr?`<div class="tr">${esc(card.tr)}</div>`:""}
     <div class="es">${fmt(card.es)}</div>
+    ${card.vb?`<div class="vbline">${vbh(card.vb,1)}<span class="cap">cabeza · raíz · cola</span></div>`:""}
     ${card.ref?`<span class="pill p-miel tag">${esc(card.ref)}</span>`:""}
     ${card.an?`<div class="an">${card.an.map(a=>`<div>${fmt(a)}</div>`).join("")}</div>`:""}
     ${card.tip?`<div class="tip"><b>Recuerda:</b> ${fmt(card.tip)}</div>`:""}` : "";
@@ -1615,18 +1971,19 @@ function vEx(){
   } else if (it.t==="ord"){
     if (!it._t) it._t = shuffle(it.tiles);
     body = `<p class="prompt">${fmt(it.q)}</p>
-      <div class="readdir">se escribe ← de derecha a izquierda</div>
-      <div class="built" id="built">${exS.built.map((w,k)=>`<button class="tile" data-unb="${k}" ${exS.done?"disabled":""}>${esc(w)}</button>`).join("")}</div>
-      <div class="tiles">${it._t.map((w,k)=>`<button class="tile ${exS.built.includes(w)?"used":""}" data-tile="${k}" ${exS.done||exS.built.includes(w)?"disabled":""}>${esc(w)}</button>`).join("")}</div>
+      ${it.ltr?"":`<div class="readdir">se escribe ← de derecha a izquierda</div>`}
+      <div class="built ${it.ltr?"ltr":""}" id="built">${exS.built.map((w,k)=>`<button class="tile" data-unb="${k}" ${exS.done?"disabled":""}>${esc(w)}</button>`).join("")}</div>
+      <div class="tiles ${it.ltr?"ltr":""}">${it._t.map((w,k)=>`<button class="tile ${exS.built.includes(w)?"used":""}" data-tile="${k}" ${exS.done||exS.built.includes(w)?"disabled":""}>${esc(w)}</button>`).join("")}</div>
       ${exS.done?"":`<div class="row" style="justify-content:center"><button class="btn ghost" data-act="clearB">Borrar</button><button class="btn" data-act="checkB" ${exS.built.length?"":"disabled"}>Comprobar</button></div>`}`;
   } else if (it.t==="rv"){
     const c = rvCard(it);
     body = `<p class="prompt">Traduce al español e identifica cada elemento.</p>
       <div class="big" lang="he">${esc(c.f)}</div>
       ${c.ref?`<span class="pill p-miel" style="justify-self:start">${esc(c.ref)}</span>`:""}
-      ${exS.reveal ? `<div class="card sm stack"><span class="cap" style="font-style:italic">${esc(c.tr)}</span>
+      ${c.hint && !exS.reveal ? (exS.hint ? `<div class="card miel sm"><b>Pista:</b> ${fmt(c.hint)}</div>` : `<button class="btn ghost" data-act="hint" style="justify-self:start">Ver pista: raíces y vocabulario</button>`) : ""}
+      ${exS.reveal ? `<div class="card sm stack">${c.tr?`<span class="cap" style="font-style:italic">${esc(c.tr)}</span>`:""}
           <p style="font-family:var(--display);font-weight:800;font-size:22px">«${esc(c.es)}»</p>
-          <div class="parts">${c.an.map(a=>{const [w,...r]=a.split(" — ");return `<div class="part">${heb(w)}<span>${fmt(r.join(" — "))}</span></div>`;}).join("")}</div></div>
+          <div class="parts">${c.an.map(a=>{const [w,...r]=a.split(" — ");return `<div class="part">${partW(w)}<span>${fmt(r.join(" — "))}</span></div>`;}).join("")}</div></div>
           ${exS.done?"":`<p class="prompt" style="font-size:16px">¿Tu traducción y tu análisis coincidían?</p>
           <div class="row"><button class="btn" data-self="1">Sí, lo tenía</button><button class="btn ghost" data-self="0">No del todo</button></div>`}`
         : `<p class="muted">Escríbela en tu cuaderno o dila en voz alta. Luego compara.</p><button class="btn block" data-act="reveal">Ver traducción y análisis</button>`}`;
@@ -1636,8 +1993,9 @@ function vEx(){
     const ok = exS.lastOk;
     const msg = ok ? ["Correcto.","Exacto.","Bien visto."][exS.i%3] : ["Casi.","Revisa esto.","Aquí está la clave."][exS.i%3];
     const x = it.t==="rv" ? (ok?"Sigue así: este tipo de versículo es el que pide el profesor.":"Repasa el análisis palabra por palabra y vuelve a intentarlo luego.") : it.x;
-    const sol = it.t==="ord" && !ok ? `<span>Respuesta: ${heb(it.ans.join(it.join??" "))}</span>` : "";
-    fb = `<div class="feedback ${ok?"ok":"bad"}"><b>${msg}</b>${sol}<span>${fmt(x)}</span></div>
+    const sol = it.t==="ord" && !ok ? `<span>Respuesta: ${it.ltr?esc(it.ans.join(" · ")):heb(it.ans.join(it.join??" "))}</span>` : "";
+    const vbx = it.vb ? `<div style="text-align:center">${vbh(it.vb,1)}</div>` : "";
+    fb = `<div class="feedback ${ok?"ok":"bad"}"><b>${msg}</b>${vbx}${sol}<span>${fmt(x)}</span></div>
       <button class="btn block" data-act="next">${exS.i+1<n?"Siguiente":"Ver resultado"}</button>`;
   }
   return `<div class="fc-top"><button class="iconbtn" data-act="exitEx" aria-label="Salir">✕</button>
@@ -1651,7 +2009,7 @@ function answer(ok){
   if (ok) exS.score++; else exS.wrong.push(it);
   tally(it.topic, ok); markDay(); save(); render();
 }
-function next(){ exS.i++; exS.done=false; exS.pick=null; exS.built=[]; exS.reveal=false; render(); window.scrollTo(0,0); }
+function next(){ exS.i++; exS.done=false; exS.pick=null; exS.built=[]; exS.reveal=false; exS.hint=false; render(); window.scrollTo(0,0); }
 function vExDone(){
   const pct = Math.round(exS.score/exS.items.length*100);
   if (!exS.recorded){ exS.recorded = true;
@@ -1661,7 +2019,7 @@ function vExDone(){
   const label = pct>=90?"Listo para el examen":pct>=70?"Vas bien":"Repasa y vuelve";
   const missed = exS.wrong.map(it=>{
     if (it.t==="rv"){ const c=rvCard(it); return `<div class="miss">${heb(c.f)}<span>«${esc(c.es)}»</span></div>`; }
-    if (it.t==="ord") return `<div class="miss"><b>${fmt(it.q)}</b>${heb(it.ans.join(it.join??" "))}<span class="cap">${fmt(it.x)}</span></div>`;
+    if (it.t==="ord") return `<div class="miss"><b>${fmt(it.q)}</b>${it.ltr?esc(it.ans.join(" · ")):heb(it.ans.join(it.join??" "))}<span class="cap">${fmt(it.x)}</span></div>`;
     return `<div class="miss"><b>${it.he?heb(it.he)+" · ":""}${fmt(it.q)}</b><span>${fmt(it.o[it.a])}</span><span class="cap">${fmt(it.x)}</span></div>`;
   }).join("");
   const again = exS.kind==="sim" ? `data-act="sim"` : `data-act="level" data-level="${exS.id}"`;
@@ -1723,7 +2081,7 @@ function vProgress(){
 
 /* ---------- Guía inicial ---------- */
 const COACH = [
-  ["Bienvenido a Dabar Padilla","La app tiene dos secciones. Sección 1: sustantivos, pronombres y sufijos. Sección 2: el verbo, con el Qal y las 7 voces. Cámbialas con los botones de arriba. El «Plan para hoy» te dice qué hacer y en qué orden."],
+  ["Bienvenido a Dabar Padilla","La app tiene tres secciones. Sección 1: sustantivos, pronombres y sufijos. Sección 2: el verbo completo. Sección 3: el perfecto para tu examen (cabeza + raíz + cola). Cámbialas con los botones de arriba. El «Plan para hoy» te dice qué hacer y en qué orden."],
   ["Flashcards con repaso espaciado","Mira el hebreo, responde en voz alta y voltea. Luego elige: «Otra vez» si no la sabías (vuelve enseguida), «Bien» si la sabías, «Fácil» si fue inmediata. Las difíciles se repiten más."],
   ["Práctica y simulacro","Cada sección tiene sus niveles, de lo fácil al examen, con la explicación de cada respuesta, y su propio simulacro. Todo se guarda solo: verás «Guardado» arriba."]
 ];
@@ -1771,6 +2129,7 @@ document.addEventListener("click", e=>{
     case "exitEx": exS=null; go("practica"); break;
     case "next": next(); break;
     case "reveal": exS.reveal=true; render(); break;
+    case "hint": exS.hint=true; render(); break;
     case "clearB": exS.built=[]; render(); break;
     case "checkB": { const it=exS.items[exS.i]; const j=it.join??" "; answer(exS.built.join(j)===it.ans.join(j)); break; }
     case "reset": S._confirmReset=true; render(); break;
